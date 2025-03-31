@@ -1,4 +1,4 @@
-name: Lint Check
+name: LintCheck
 
 on:
   pull_request:
@@ -6,6 +6,7 @@ on:
 
 jobs:
   lint:
+    name: lintCheckJob
     runs-on: ubuntu-latest
 
     steps:
