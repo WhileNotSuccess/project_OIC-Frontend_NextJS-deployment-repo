@@ -11,7 +11,17 @@
   "dependencies": {
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "next": "15.2.4"
+    "next": "15.2.4",
+    "@googlemaps/js-api-loader": "^1.16.8",
+    "@next/third-parties": "^15.2.1",
+    "@tinymce/tinymce-react": "^5.1.1",
+    "@types/google__maps": "^0.5.20",
+    "flowbite": "^3.1.2",
+    "html-react-parser": "^5.2.2",
+    "js-cookie": "^3.0.5",
+    "react-kakao-maps-sdk": "^1.1.27",
+    "swr": "^2.3.2",
+    "tinymce": "^6.8.5"
   },
   "devDependencies": {
     "typescript": "^5",
@@ -22,6 +32,8 @@
     "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "@eslint/eslintrc": "^3"
+    "@eslint/eslintrc": "^3",
+    "@types/js-cookie": "^3.0.6",
+    "postcss": "^8"
   }
 }
