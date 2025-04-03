@@ -468,6 +468,7 @@ export const boardPage: Record<Language, Record<string, string>> = {
     number: "순번",
     author: "작성자",
     writeTitle: "제목을 입력하세요",
+    writeSomething : "검색어를 입력하세요",
   },
   [Language.japanese]: {
     notice: "通知",
@@ -480,6 +481,7 @@ export const boardPage: Record<Language, Record<string, string>> = {
     number: "番号",
     author: "作成者",
     writeTitle: "タイトルを入力してください",
+    writeSomething : "検索語を入力してください",
   },
   [Language.english]: {
     notice: "Notice",
@@ -492,6 +494,7 @@ export const boardPage: Record<Language, Record<string, string>> = {
     number: "Number",
     author: "Author",
     writeTitle: "Enter a title",
+    writeSomething : "Please enter a search term",
   },
 };
 

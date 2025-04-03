@@ -36,9 +36,10 @@ export default function TermsAgreement() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 bg-center bg-cover"
+    <div
+      className="relative flex flex-col items-center justify-center min-h-screen p-6 bg-center bg-cover"
       style={{
-        backgroundImage: `url('/images/background.jpg')`,
+        backgroundImage: "url('/images/background.jpg')",
         height: "100vh",
       }}
     >
@@ -46,7 +47,9 @@ export default function TermsAgreement() {
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
 
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md z-20">
-        <h1 className="text-2xl font-bold mb-4">{TermsAgreementMenu[language].MainTermOfUse}</h1>
+        <h1 className="text-2xl font-bold mb-4">
+          {TermsAgreementMenu[language].MainTermOfUse}
+        </h1>
         <div className="space-y-3">
           <label className="flex items-center space-x-2">
             <input
@@ -83,7 +86,9 @@ export default function TermsAgreement() {
           onClick={handleSubmit}
           disabled={!allChecked}
           className={`w-full mt-4 py-2 rounded-md text-white ${
-            allChecked ? "bg-blue-500 hover:bg-blue-600" : "bg-gray-400 cursor-not-allowed"
+            allChecked
+              ? "bg-blue-500 hover:bg-blue-600"
+              : "bg-gray-400 cursor-not-allowed"
           }`}
         >
           {TermsAgreementMenu[language].next}

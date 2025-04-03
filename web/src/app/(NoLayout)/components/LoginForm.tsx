@@ -9,7 +9,6 @@ import { Language } from "@/app/common/types";
 import Cookies from "js-cookie";
 import Image from "next/image";
 
-
 export default function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -19,14 +18,11 @@ export default function LoginForm() {
   const { login } = useAuth();
   const [language, setLanguage] = useState<Language>(Language.korean);
 
-
   useEffect(() => {
     async function userCheck() {
-
       if (user) {
-        
-        router.push("/")
-        return null
+        router.push("/");
+        return null;
       }
     }
     userCheck();
@@ -35,11 +31,8 @@ export default function LoginForm() {
     if (savedLanguage) {
       setLanguage(savedLanguage);
     }
-  
-    
   }, []);
 
-  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -51,10 +44,10 @@ export default function LoginForm() {
   };
 
   const handleKeydown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSubmit(e);
     }
-  }
+  };
 
   const handleGoogleLogin = () => {
     window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google/login`;
@@ -64,7 +57,7 @@ export default function LoginForm() {
     <main
       className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
       style={{
-        backgroundImage: `url('/images/background.jpg')`,
+        backgroundImage: "url('/images/background.jpg')",
         height: "100vh",
       }}
     >
@@ -110,12 +103,13 @@ export default function LoginForm() {
             onClick={handleGoogleLogin}
             className="w-full bg-[#F2F2F2] rounded-lg font-semibold mt-2 flex justify-center"
           >
-            <Image 
-            src="/images/loginTab.png" 
-            alt=""
-            width={200}
-            height={40} 
-            className="" />
+            <Image
+              src="/images/loginTab.png"
+              alt=""
+              width={200}
+              height={40}
+              className=""
+            />
           </button>
           <button
             type="button"

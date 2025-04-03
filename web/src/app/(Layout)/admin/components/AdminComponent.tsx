@@ -33,7 +33,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
   const [teacher, setTeacher] = useState<Teacher[]>([]);
   const [staff, setStaff] = useState<Teacher[]>([]);
   const [staffPostModal, setStaffPostModal] = useState<boolean>(false);
-  const [course, setCourse] = useState<Course[]>([])
+  const [course, setCourse] = useState<Course[]>([]);
   const [coursePostModal, setCoursePostModal] = useState<boolean>(false);
 
   // 페이지네이션 상태
@@ -44,14 +44,78 @@ export default function AdminComponent({ category }: AdminComponentProps) {
   const [loading, setLoading] = useState(false);
 
   // 상담 신청 처리
-  if (category === "counseling") {
-    useEffect(() => {
+  useEffect(() => {
+    if (category === "counseling") {
       async function getCounseling() {
         const response = await customFetch("/consult");
         setCounselingList(response.data);
       }
       getCounseling();
-    }, []);
+    }
+  },[category,customFetch]);
+  // 신청서 리스트를 받아오는 함수
+  useEffect(()=>{
+    if (category === "applications") {
+      const getApplications = async (page: number) => {
+        setLoading(true);
+        const response = await customFetch(
+          `/application-form?limit=10&page=${page}&ignore=true`,
+          {
+            method: "GET",
+          },
+        );
+        setApplications(response.data);
+        setCurrentPage(response.currentPage); // 현재 페이지 번호
+        setTotalPages(response.totalPage); // 전체 페이지 수
+        setPrevPage(response.prevPage); // 이전 페이지 번호
+        setNextPage(response.nextPage); // 다음 페이지 번호
+        setLoading(false);
+      };
+      getApplications(currentPage);
+    }
+  },[currentPage,category,customFetch]);
+
+  // 페이지네이션을 위한 함수
+  const handlePageChange = (page: number | null) => {
+    if (page) {
+      setCurrentPage(page); // 페이지 변경
+    }
+  };
+
+  useEffect(() => {
+    if (category === "banner") {
+      async function getBanners() {
+        const response = await customFetch("/banners?ignore=true");
+        setBanners(response.data);
+      }
+      getBanners();
+    }
+  }, [category,customFetch]);
+
+  
+  useEffect(() => {
+    if (category === "staff") {
+      async function getStaff() {
+        const response = await customFetch("/staff");
+        setTeacher(response.teacher);
+        setStaff(response.staff);
+      }
+      getStaff();
+    }
+  }, [category,customFetch]);
+
+
+  useEffect(() => {
+    if (category === "course") {
+      async function getCourse() {
+        const response = await customFetch("/course");
+        setCourse(response.data);
+      }
+      getCourse();
+    }
+  }, [category,customFetch]);
+
+  if(category==="counseling"){
     return (
       <>
         <h1 className="text-3xl mb-4 font-bold text-center">상담 신청 확인</h1>
@@ -66,33 +130,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
         </div>
       </>
     );
-  } else if (category === "applications") {
-    // 신청서 리스트를 받아오는 함수
-    const getApplications = async (page: number) => {
-      setLoading(true);
-      const response = await customFetch(`/application-form?limit=10&page=${page}&ignore=true`,{
-        method : "GET"
-      });
-      setApplications(response.data);
-      setCurrentPage(response.currentPage); // 현재 페이지 번호
-      setTotalPages(response.totalPage); // 전체 페이지 수
-      setPrevPage(response.prevPage); // 이전 페이지 번호
-      setNextPage(response.nextPage); // 다음 페이지 번호
-      setLoading(false);
-    };
-
-    // 초기 데이터 요청 (첫 페이지)
-    useEffect(() => {
-      getApplications(currentPage);
-    }, [currentPage]);
-
-    // 페이지네이션을 위한 함수
-    const handlePageChange = (page: number | null) => {
-      if (page) {
-        setCurrentPage(page); // 페이지 변경
-      }
-    };
-
+  }else if(category==="applications"){
     return (
       <>
         <h1 className="text-3xl mb-4 font-bold text-center">서류 확인</h1>
@@ -105,7 +143,6 @@ export default function AdminComponent({ category }: AdminComponentProps) {
             );
           })}
         </div>
-
         {/* 페이지네이션 */}
         <div className="mt-4 flex justify-center">
           <Pagination
@@ -116,18 +153,10 @@ export default function AdminComponent({ category }: AdminComponentProps) {
             onPageChange={handlePageChange}
           />
         </div>
-
         {loading && <div>Loading...</div>} {/* 로딩 중 표시 */}
       </>
     );
-  } else if (category === "banner") {
-    useEffect(() => {
-      async function getBanners() {
-        const response = await customFetch("/banners?ignore=true");
-        setBanners(response.data);
-      }
-      getBanners();
-    }, []);
+  }else if(category==="banner"){
     return (
       <>
         {bannerPostModal ? (
@@ -159,15 +188,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
         </div>
       </>
     );
-  } else if (category === "staff") {
-    useEffect(() => {
-      async function getStaff() {
-        const response = await customFetch("/staff");
-        setTeacher(response.teacher);
-        setStaff(response.staff);
-      }
-      getStaff();
-    }, []);
+  }else if(category==="staff"){
     return (
       <>
         {staffPostModal && (
@@ -202,14 +223,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
         </div>
       </>
     );
-  } else if (category === "course") {
-    useEffect(() => {
-      async function getCourse() {
-        const response = await customFetch("/course");
-        setCourse(response.data);
-      }
-      getCourse();
-    }, []);
+  }else if(category==="course"){
     return (
       <>
         {coursePostModal && (
@@ -241,7 +255,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
         </div>
       </>
     );
-  }  else {
+  }else{
     return (
       <div className="w-full flex justify-center items-center">
         <BoardPageCompo name={category} />

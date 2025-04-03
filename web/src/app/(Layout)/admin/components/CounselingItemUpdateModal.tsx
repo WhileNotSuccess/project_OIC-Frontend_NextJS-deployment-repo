@@ -127,6 +127,6 @@ export default function CounselingItemUpdateModal({
         </div>
       </div>
     </dialog>,
-    document.body
+    document.body,
   );
 }

@@ -1,9 +1,8 @@
-import { Counseling } from "@/app/common/types";
 import useCustomFetch from "@/app/lib/customFormFetch";
-
-import { url } from "inspector";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 type ModalProps = {
   onClose: () => void;
@@ -17,7 +16,7 @@ export default function BannerPostModal({ onClose }: ModalProps) {
   });
 
   const [image, setImage] = useState<File>();
-  const [preview, setPreview] = useState<string>();
+  const [preview, setPreview] = useState<string|StaticImport>("");
   const customFetch = useCustomFetch();
   const onSubmit = async () => {
     if (!image || !inputs.expiredDate || !inputs.language || !inputs.url) {
@@ -28,10 +27,7 @@ export default function BannerPostModal({ onClose }: ModalProps) {
     formData.append("language", inputs.language);
     formData.append("expiredDate", inputs.expiredDate);
     formData.append("image", image);
-    for (const [key, value] of formData.entries()) {
-
-    }
-    const response = await customFetch(`/banners`, {
+    const response = await customFetch("/banners", {
       method: "POST",
       body: formData,
     });
@@ -53,7 +49,7 @@ export default function BannerPostModal({ onClose }: ModalProps) {
         >
           ✖
         </button>
-        {image ? <img src={preview} alt="" /> : null}
+        {image ? <Image src={preview} alt="" width={200} height={200}/> : null}
         <label
           htmlFor="image"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -136,6 +132,6 @@ export default function BannerPostModal({ onClose }: ModalProps) {
         </div>
       </article>
     </dialog>,
-    document.body
+    document.body,
   );
 }

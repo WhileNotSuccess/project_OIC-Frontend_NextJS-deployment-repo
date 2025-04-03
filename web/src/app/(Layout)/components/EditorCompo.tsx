@@ -16,6 +16,7 @@ import { Language, ServerDocumentFile } from "@/app/common/types";
 import useCustomFetch from "@/app/lib/customFetch";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { Editor as EditorType } from "tinymce";
 
 type EditorProps = {
   id?: string;
@@ -28,7 +29,7 @@ type EditorProps = {
 // 파일 업로드, 카테고리+언어선택, 에디터, 버튼 으로 컴포넌트 분리
 
 export default function EditorComponent(props: EditorProps) {
-  const editorRef = useRef<any>(null); // tinymce를 직접 조작하는
+  const editorRef = useRef<EditorType | null>(null); // tinymce를 직접 조작하는
   const [content, setContent] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [title, setTitle] = useState<string>("");
@@ -49,7 +50,8 @@ export default function EditorComponent(props: EditorProps) {
     }
   }, []);
 
-  useEffect(() => { // 재요청이 아니라 수정버튼을 누르면 로컬에 저장시켜놓고 로컬에 저장한 값을 들고오고 로컬 값 지우기기
+  useEffect(() => {
+    // 재요청이 아니라 수정버튼을 누르면 로컬에 저장시켜놓고 로컬에 저장한 값을 들고오고 로컬 값 지우기
     const oldPost = async () => {
       if (!props.id) return;
       try {
@@ -60,86 +62,67 @@ export default function EditorComponent(props: EditorProps) {
         setTitle(data.data.title);
         setCategory(data.data.category);
         setDocumentFileNames(
-          data.files.map((file: ServerDocumentFile) => file.filename)
+          data.files.map((file: ServerDocumentFile) => file.filename),
         );
       } catch (error) {
         console.error(error);
       }
     };
     oldPost();
-  }, [props.id]);
+  }, [props.id,customFetch]);
 
-  useEffect(() => { 
+  useEffect(() => {
     const fetchUserInfo = async () => {
       try {
         const adminData = await customFetch("/users");
         setIsAdmin(adminData.result);
-      } catch (error) {
+      } catch {
         alert("로그인이 필요합니다");
         router.back();
       }
     };
     fetchUserInfo();
-  }, []);
+  }, [customFetch, router]);
 
-  // title과 content 빈값인지 확인하는 함수 1개 만들기
   // formdata append하는 함수 1개 만들기
-  const submit = async () => {  // submit과 update는 하나의 함수로 합치기 아니면 같은 부분만 따로 함수로 뺀다던지지
-    if (title === "") {
-      alert(editorCompo[language].needInputTitle);
-    } else if (content === "") {
-      alert(editorCompo[language].needInputContent);
-    } else {
-      try {
-        const formData = new FormData();
-        formData.append("title", title);
-        formData.append("content", content);
-        formData.append("category", category);
-        formData.append("language", language);
 
-        // 첨부파일이 있다면, FormData에 추가
-        documentFiles.forEach((file) => {
-          formData.append("files", file); // 문서 파일도 함께 전송
-        });
-        const response = await customFormFetch("/posts", {
-          method: "POST",
-          body: formData,
-        });
-        alert(postSuccess[language]?.contentPost);
-        router.back();
-      } catch (error) {
-        alert(postError[language]?.subError);
-      }
+  const onCheckTitleContent = ()=>{
+    if(title===""){
+      alert(editorCompo[language].needInputTitle);
+      return false;
     }
+    if(content===""){
+      alert(editorCompo[language].needInputContent);
+      return false;
+    }
+    return true;
   };
 
-  const update = async () => {
-    if (title === "") {
-      alert(editorCompo[language].needInputTitle);
-    } else if (content === "") {
-      alert(editorCompo[language].needInputContent);
-    } else {
-    try {
+  const onSubmitAndUpdate = async (isUpdate :boolean)=>{
+    if(!onCheckTitleContent()) return;
+    try{
+      const url = isUpdate ? `/posts/${props.id}` : "/posts";
+      const method = isUpdate ? "PATCH" : "POST";
       const formData = new FormData();
       formData.append("title", title);
       formData.append("content", content);
       formData.append("category", category);
       formData.append("language", language);
-
-      formData.append("deleteFilePath", JSON.stringify(deleteFileNames));
       documentFiles.forEach((file) => {
         formData.append("files", file); // 문서 파일도 함께 전송
       });
-      const response = await customFormFetch(`/posts/${props.id}`, {
-        method: "PATCH",
-        body: formData,
+      if(isUpdate){
+        formData.append("deleteFilePath", JSON.stringify(deleteFileNames));
+      }
+      await customFetch(url,{
+        method,
+        body : formData,
       });
-      alert(updateSuccess[language]?.updatePost);
+      alert(isUpdate ? updateSuccess[language]?.updatePost : postSuccess[language]?.contentPost);
       router.back();
-    } catch (error) {
-      alert(updateError[language]?.update);
+    }catch{
+      alert(isUpdate ? updateError[language]?.update : postError[language]?.subError);
     }
-  }
   };
 
   const handleFileSelect = async (file: File) => {
@@ -156,7 +139,7 @@ export default function EditorComponent(props: EditorProps) {
         });
         const imageUrl = decodeURIComponent(data.url);
         return imageUrl;
-      } catch (error) {
+      } catch {
         alert(postError[language]?.imgError);
       }
     }
@@ -167,7 +150,7 @@ export default function EditorComponent(props: EditorProps) {
       const filesArray = Array.from(e.target.files);
       const newFileNames = filesArray.map((file) => file.name);
       setDeleteFileNames((prev) =>
-        prev.filter((name) => !newFileNames.includes(name))
+        prev.filter((name) => !newFileNames.includes(name)),
       );
       setDocumentFiles((prev) => [...prev, ...filesArray]);
       setDocumentFileNames((prev) => [
@@ -211,7 +194,11 @@ export default function EditorComponent(props: EditorProps) {
           {isAdmin ? (
             <div className="w-full flex justify-between border mb-1">
               <select
-                className="shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 dark:border-gray-700 dark:text-white rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                className="shrink-0 z-10 inline-flex items-center py-2.5 px-4 
+                text-sm font-medium text-center text-gray-900 bg-gray-100 border 
+                border-e-0 border-gray-300 dark:border-gray-700 dark:text-white 
+                rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none 
+                focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -259,36 +246,36 @@ export default function EditorComponent(props: EditorProps) {
 
             <ul className={documentFileNames.length > 0 ? "border mt-4" : ""}>
               {documentFileNames.map((fileName, index) => (
-                  <div
-                    key={index}
-                    className={`flex justify-between items-center ${
-                      deleteFileNames.includes(fileName) ? "hidden" : ""
-                    }`}
-                  >
-                    <div className="flex flex-rows items-center">
-                      <Image
-                        src="/images/attachFile.png"
-                        alt=""
-                        width={96}
-                        height={96}
-                        className="size-4 flex justify-center items-center mr-4"
-                      />
-                      <li>
-                        {fileName.match(/^\d{8}-\d{6}_/)
-                          ? fileName.substring(16)
-                          : fileName}
-                      </li>
-                    </div>
+                <div
+                  key={index}
+                  className={`flex justify-between items-center ${
+                    deleteFileNames.includes(fileName) ? "hidden" : ""
+                  }`}
+                >
+                  <div className="flex flex-rows items-center">
                     <Image
-                      src="/images/xbutton.png"
+                      src="/images/attachFile.png"
                       alt=""
                       width={96}
                       height={96}
-                      className="size-4 cursor-pointer"
-                      onClick={() => addDeleteFileName(fileName)}
+                      className="size-4 flex justify-center items-center mr-4"
                     />
+                    <li>
+                      {fileName.match(/^\d{8}-\d{6}_/)
+                        ? fileName.substring(16)
+                        : fileName}
+                    </li>
                   </div>
-                ))}
+                  <Image
+                    src="/images/xbutton.png"
+                    alt=""
+                    width={96}
+                    height={96}
+                    className="size-4 cursor-pointer"
+                    onClick={() => addDeleteFileName(fileName)}
+                  />
+                </div>
+              ))}
             </ul>
           </section>
         </div>
@@ -297,7 +284,7 @@ export default function EditorComponent(props: EditorProps) {
             tinymceScriptSrc={"/tinymce/tinymce.min.js"}
             id="tinymce-editor"
             value={content}
-            onInit={(evt, editor) => {
+            onInit={( _, editor) => {
               editorRef.current = editor;
             }}
             init={{
@@ -306,7 +293,7 @@ export default function EditorComponent(props: EditorProps) {
               remove_script_host: false,
               document_base_url: process.env.NEXT_PUBLIC_BACKEND_URL?.replace(
                 "/api",
-                ""
+                "",
               ),
               language_url: "/tinymce/langs/ko_KR.js",
               height: 500,
@@ -315,7 +302,7 @@ export default function EditorComponent(props: EditorProps) {
               toolbar:
                 "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | forecolor backcolor | table",
               file_picker_types: "image", // 파일 선택기에서 다룰 파일 형식
-              file_picker_callback: (cb, value, meta) => {
+              file_picker_callback: (cb) => {
                 const input = fileInputRef.current;
                 input?.addEventListener("change", async (e) => {
                   const target = e.target as HTMLInputElement;
@@ -345,14 +332,14 @@ export default function EditorComponent(props: EditorProps) {
         {props.id ? (
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4"
-            onClick={update}
+            onClick={()=>onSubmitAndUpdate(true)}
           >
             {editorCompo[language]?.update}
           </button>
         ) : (
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4"
-            onClick={submit}
+            onClick={()=>onSubmitAndUpdate(false)}
           >
             {editorCompo[language]?.submit}
           </button>

@@ -78,7 +78,7 @@ export default function RegisterCompo() {
     <main
       className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
       style={{
-        backgroundImage: `url('/images/background.jpg')`,
+        backgroundImage: "url('/images/background.jpg')",
         height: "100vh",
       }}
     >
@@ -162,12 +162,13 @@ export default function RegisterCompo() {
               onClick={handleGoogleRegister}
               className="w-full bg-[#F2F2F2] rounded-lg font-semibold mt-2 flex justify-center"
             >
-              <Image 
-              src="/images/signup.png" 
-              alt="구글로그인 회원가입 버튼"
-              width={200}
-              height={40} 
-              className="border-none" />
+              <Image
+                src="/images/signup.png"
+                alt="구글로그인 회원가입 버튼"
+                width={200}
+                height={40}
+                className="border-none"
+              />
             </button>
           </form>
         )}

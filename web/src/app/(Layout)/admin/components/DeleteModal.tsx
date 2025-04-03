@@ -1,6 +1,4 @@
-
 import useCustomFetch from "@/app/lib/customFetch";
-
 import { createPortal } from "react-dom";
 
 type ModalProps = {
@@ -48,6 +46,6 @@ export default function DeleteModal({ onClose, id, target }: ModalProps) {
         </div>
       </div>
     </dialog>,
-    document.body
+    document.body,
   );
 }

@@ -11,20 +11,18 @@ const CheckAdmin = () => {
   const router = useRouter();
   const fetch = useCustomFetch();
 
-  
   useEffect(() => {
     const savedLanguage = Cookies.get("language") as Language;
-   
+
     async function check() {
       const response = await fetch("/users");
       if (response && !response.result) {
-
         alert(CheckAdminAlert[savedLanguage].noPermission);
         router.push("/");
       }
     }
     check();
-  }, []);
+  }, [fetch, router]);
 
   return null;
 };

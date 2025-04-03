@@ -124,3 +124,21 @@ export type ApplicationAttach = {
   filetype: string;
   fileSize: number;
 };
+
+export type AllData = {
+  content: string;
+  title: string;
+  documentFiles: ServerDocumentFile[];
+  guidanceId: string;
+  author: string;
+  createdDate: string;
+  userId: number;
+}
+
+export type AllBoardData = {
+  boardData : BoardData[]
+  currentPage : number;
+  nextPage : number;
+  prevPage : number;
+  totalPage : number;
+}

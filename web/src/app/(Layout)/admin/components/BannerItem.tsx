@@ -6,7 +6,6 @@ import Image from "next/image";
 
 export default function BannerItem(props: Banner) {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-
   const [modalDeleteOpen, setModalDeleteOpen] = useState<boolean>(false);
 
   return (
@@ -23,14 +22,14 @@ export default function BannerItem(props: Banner) {
       <section className="w-full p-4 bg-white shadow-lg rounded-lg border border-gray-200">
         <div className="w-full relative">
           <figure>
-          <Image
-            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${props.image}`}
-            alt=""
-            width={2000}
-            height={300}
-            unoptimized={true}
-          />
-        </figure>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${props.image}`}
+              alt=""
+              width={2000}
+              height={300}
+              unoptimized={true}
+            />
+          </figure>
           <span
             onClick={() => {
               setMenuOpen(!menuOpen);

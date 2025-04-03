@@ -14,19 +14,19 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
     data
       ? data
       : {
-          id: 0,
-          name: "",
-          position: "",
-          phone: "",
-          email: "",
-        }
+        id: 0,
+        name: "",
+        position: "",
+        phone: "",
+        email: "",
+      },
   );
 
   const customFetch = useCustomFetch();
 
   const onSubmit = async () => {
     const response = await customFetch(
-      method == "POST" ? `/staff` : `/staff/${inputs.id}`,
+      method == "POST" ? "/staff" : `/staff/${inputs.id}`,
       {
         method: method,
         body: JSON.stringify({
@@ -35,7 +35,7 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
           phone: inputs.phone,
           position: inputs.position,
         }),
-      }
+      },
     );
 
     if (response) {
@@ -130,6 +130,6 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
         </div>
       </div>
     </dialog>,
-    document.body
+    document.body,
   );
 }

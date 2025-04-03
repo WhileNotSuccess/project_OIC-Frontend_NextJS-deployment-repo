@@ -1,4 +1,4 @@
-import {Course} from "@/app/common/types";
+import { Course } from "@/app/common/types";
 import useCustomFetch from "@/app/lib/customFetch";
 import { useState } from "react";
 import { createPortal } from "react-dom";
@@ -14,18 +14,18 @@ export default function CourseModal({ onClose, data, method }: ModalProps) {
     data
       ? data
       : {
-          id: 0,
-          korean: "",
-          japanese: "",
-          english: "",
-        }
+        id: 0,
+        korean: "",
+        japanese: "",
+        english: "",
+      },
   );
 
   const customFetch = useCustomFetch();
 
   const onSubmit = async () => {
     const response = await customFetch(
-      method == "POST" ? `/course` : `/course/${inputs.id}`,
+      method == "POST" ? "/course" : `/course/${inputs.id}`,
       {
         method: method,
         body: JSON.stringify({
@@ -33,7 +33,7 @@ export default function CourseModal({ onClose, data, method }: ModalProps) {
           japanese: inputs.japanese,
           english: inputs.english,
         }),
-      }
+      },
     );
 
     if (response) {
@@ -112,6 +112,6 @@ export default function CourseModal({ onClose, data, method }: ModalProps) {
         </div>
       </div>
     </dialog>,
-    document.body
+    document.body,
   );
 }

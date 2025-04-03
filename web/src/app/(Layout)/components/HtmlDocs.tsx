@@ -8,8 +8,8 @@ import Image from "next/image";
 import {
   HtmlDocsProps,
   Language,
-  ServerDocumentFile,
   UserInfo,
+  AllData,
 } from "@/app/common/types";
 import {
   getError,
@@ -23,12 +23,11 @@ import MapCompo from "./MapCompo";
 import { useAuth } from "@/app/hook/auth";
 
 // useEffect 에서는 함수 호출만 선언은 밖에서
-// allData의 타입을 정해주기
 export default function HtmlDocs(props: HtmlDocsProps) {
-  const [allData, setAllData] = useState({
+  const [allData, setAllData] = useState<AllData>({
     content: "",
     title: "",
-    documentFiles: [] as ServerDocumentFile[],
+    documentFiles: [],
     guidanceId: "",
     author: "",
     createdDate: "",
@@ -66,7 +65,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
           createdDate: data.data.createdDate,
           userId: data.data.userId,
         });
-      } catch (error) {
+      } catch {
         alert(getError[language]?.htmlError);
         console.error(getError[language]?.htmlError);
       }
@@ -75,7 +74,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
     const fetchUserInfo = async () => {
       try {
         if (user) {
-        setUserInfo(user);
+          setUserInfo(user);
         }
         const adminData = await customFetch("/users");
         setIsAdmin(adminData.result);
@@ -86,7 +85,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
 
     fetchData();
     fetchUserInfo();
-  }, []);
+  }, [customFetch, language, props.category, props.id, user]);
 
   const onUpdate = (guidanceId?: string) => {
     router.push(`/post-update/${guidanceId ?? props.id}`);
@@ -128,11 +127,11 @@ export default function HtmlDocs(props: HtmlDocsProps) {
 
             <section className="text-sm mt-2 border-b-2 pb-2 flex items-center">
               <Image
-              alt="작성자 아이콘" 
-              src="/images/author.png"
-              width={15}
-              height={15} 
-                />
+                alt="작성자 아이콘"
+                src="/images/author.png"
+                width={15}
+                height={15}
+              />
               <div>{allData.author}</div>
               <Image
                 alt="작성일 아이콘"
@@ -145,10 +144,10 @@ export default function HtmlDocs(props: HtmlDocsProps) {
               <div>{allData.createdDate.substring(0, 10)}</div>
             </section>
 
-            <section className="border-b-2 pb-2 pt-2">
-              {/* 이것도 함수로 뺴 너도 리턴 되잖아 */}
-              {allData.documentFiles.length > 0 ? (
-                allData.documentFiles.map((item) => (
+
+            {allData.documentFiles.length > 0 ? (
+              <section className="border-b-2 pb-2 pt-2">
+                {allData.documentFiles.map((item) => (
                   <div key={item.id} className="flex items-center">
                     <Image
                       alt="첨부파일 아이콘"
@@ -160,7 +159,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
                     <button
                       onClick={() =>
                         router.push(
-                          `${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.filename}`
+                          `${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.filename}`,
                         )
                       }
                       className="text-blue-600 hover:underline"
@@ -168,11 +167,13 @@ export default function HtmlDocs(props: HtmlDocsProps) {
                       {item.filename}
                     </button>
                   </div>
-                ))
-              ) : (
-                <p className="mt-2">{getError[language]?.noFile}</p>
-              )}
-            </section>
+                  
+                ))}
+              </section>
+            ) : (
+              <p className="mt-2">{getError[language]?.noFile}</p>
+            )}
+
 
             {canEditOrDelete && (
               <div className="flex space-x-4 ml-auto mt-2">

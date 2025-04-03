@@ -33,7 +33,7 @@ export default function SelectTabComponent({
   const [selectedCourse, setSelectedCourse] = useState(""); // 기본값 설정
   const [deleteFileNames, setDeleteFileNames] = useState<Array<string>>([]); // 삭제할 파일 이름 리스트
   const [courseOptions, setCourseOptions] = useState<
-    Array<{ id: number; korean: string; english: string; japanese: string}>
+    Array<{ id: number; korean: string; english: string; japanese: string }>
   >([]); // 지원과정 목록
   const [language, setLanguage] = useState<Language>(Language.korean);
   const [userCheck, setUserCheck] = useState<boolean>(false);
@@ -140,21 +140,19 @@ export default function SelectTabComponent({
     async function userCheck() {
       if (user) {
         setUserCheck(true);
-      }else if (selectedTab === "upload-documents") 
-      {
-        alert(SelectPageCompoMenu[language].needLogin)
-        router.push("/login")
+      } else if (selectedTab === "upload-documents") {
+        alert(SelectPageCompoMenu[language].needLogin);
+        router.push("/login");
       }
     }
     userCheck();
-     
   }, [selectedTab]);
 
   return (
     <main className="w-full">
       {/* 카테고리 제목 표시 */}
       <header className="h-12 border-b flex items-center justify-center mb-4">
-        <div className="text-3xl font-bold">{selectMenu[language]?.[name]}</div>  
+        <div className="text-3xl font-bold">{selectMenu[language]?.[name]}</div>
       </header>
       <div className="w-3/5 mx-auto">
         {/* 탭 메뉴 */}
@@ -183,31 +181,33 @@ export default function SelectTabComponent({
               ? parser(content)
               : SelectPageCompoMenu[language].failLoadContent}
           </article>
-        ) :
+        ) : (
           <section className="w-3/5 p-4 border">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="w-full text-xs  bg-blue-500 text-white p-2 rounded-md mb-10">
                   {SelectPageCompoMenu[language].fileSelect}
 
-                <input
-                  type="file"
-                  id="file"
-                  name="file"
-                  onChange={(e) =>
-                    handleFileChange(
-                      e,
-                      setFile,
-                      setDocumentFileNames,
-                      setDeleteFileNames
-                    )
-                  }
-                  className="hidden"
-                  multiple
-                />
+                  <input
+                    type="file"
+                    id="file"
+                    name="file"
+                    onChange={(e) =>
+                      handleFileChange(
+                        e,
+                        setFile,
+                        setDocumentFileNames,
+                        setDeleteFileNames
+                      )
+                    }
+                    className="hidden"
+                    multiple
+                  />
                 </label>
-                
-                <ul className={documentFileNames.length > 0 ? "border mt-4" : ""}>
+
+                <ul
+                  className={documentFileNames.length > 0 ? "border mt-4" : ""}
+                >
                   {documentFileNames &&
                     documentFileNames.map((fileName, index) => (
                       <div
@@ -284,9 +284,7 @@ export default function SelectTabComponent({
               </button>
             </form>
           </section>
-     
-        
-        }
+        )}
       </section>
     </main>
   );

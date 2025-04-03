@@ -49,7 +49,7 @@ export default function DashboardCompo() {
 
       fetchSubmittedDocuments();
     }
-  }, [user]); // user가 변경될 때마다 실행되도록
+  }, [customFetch, user]); // user가 변경될 때마다 실행되도록
 
   const toggleMenu = (id: number) => {
     setMenuOpen((prev) => ({
@@ -61,9 +61,9 @@ export default function DashboardCompo() {
   const fileDownload = async (filename: string) => {
     try {
       router.push(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/attachments/${filename}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/attachments/${filename}`,
       );
-    } catch (error) {
+    } catch {
       alert(getError[language].fileDownloadError);
     }
   };

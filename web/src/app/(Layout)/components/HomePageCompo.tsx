@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { homePage, guidanceMenu, boardMenu, getError } from "@/app/menu";
-import { Attachments, BoardData, Language } from "@/app/common/types";
+import { Attachments, Language } from "@/app/common/types";
 import Cookies from "js-cookie";
 import useCustomFetch from "@/app/lib/customFetch";
-import { formatDate } from "@/app/common/formatDate";
+//import { formatDate } from "@/app/common/formatDate";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import BoardDataMapCompo from "./BoardDataMapCompo";
+//import BoardDataMapCompo from "./BoardDataMapCompo";
 import Image from "next/image";
 
 interface BannerType {
@@ -74,15 +74,15 @@ export default function HomePageCompo() {
           "/posts?category=guidelinesForApplicants",
           {
             method: "GET",
-          }
+          },
         );
         setGuidelinesForApplicants(guidelinesForApplicants.files[0]);
-      } catch (error) {
+      } catch {
         alert(getError[language]?.newsError);
       }
     };
     newsData();
-  }, []);
+  }, [customFetch, language]);
 
   useEffect(() => {
     const bannerData = async () => {
@@ -91,12 +91,12 @@ export default function HomePageCompo() {
           method: "GET",
         });
         setBanner(data.data);
-      } catch (error) {
+      } catch {
         alert(getError[language]?.bannerError);
       }
     };
     bannerData();
-  }, []);
+  }, [customFetch, language]);
 
   useEffect(() => {
     // 모집요강 및 입학신청서를 불러오는 함수수
@@ -106,12 +106,12 @@ export default function HomePageCompo() {
           method: "GET",
         });
         setEntranceApplication(data);
-      } catch (error) {
+      } catch {
         alert(getError[language].entranceApplicationError);
       }
     };
     entranceApplicationData();
-  }, []);
+  }, [customFetch, language]);
 
   const onGoBoard = async (category: string) => {
     router.push(`/board/${category}`);
@@ -120,6 +120,17 @@ export default function HomePageCompo() {
   const onGoUrl = async (url: string) => {
     router.push(url);
   };
+
+  const onScrollRight = useCallback(() => {
+    if (sliderRef.current) {
+      const slider = sliderRef.current;
+      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1) {
+        slider.scrollLeft = 0;
+      } else {
+        slider.scrollLeft += itemWidth;
+      }
+    }
+  },[itemWidth]);
 
   useEffect(() => {
     // 자동+클릭으로 넘어가는 길이 설정
@@ -139,7 +150,7 @@ export default function HomePageCompo() {
     }, 10000); // 10초마다 실행
 
     return () => clearInterval(interval); // 컴포넌트 언마운트 시 정리
-  }, [itemWidth]);
+  }, [itemWidth, onScrollRight]);
 
   const onScrollLeft = () => {
     if (sliderRef.current) {
@@ -152,24 +163,13 @@ export default function HomePageCompo() {
     }
   };
 
-  const onScrollRight = () => {
-    if (sliderRef.current) {
-      const slider = sliderRef.current;
-      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1) {
-        slider.scrollLeft = 0;
-      } else {
-        slider.scrollLeft += itemWidth;
-      }
-    }
-  };
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % banner.length);
-    }, 5000); 
-  
-    return () => clearInterval(interval); 
-  }, [banner.length]); 
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [banner.length]);
 
   return (
     <div className="w-full flex flex-wrap">
@@ -222,7 +222,7 @@ export default function HomePageCompo() {
               />
             </header>
             <div className="flex flex-col px-2">
-              <BoardDataMapCompo category={"notice"} limit={8} />
+              {/* <BoardDataMapCompo category={"notice"} limit={8} /> */}
             </div>
           </div>
         </section>
@@ -243,7 +243,7 @@ export default function HomePageCompo() {
                 />
               </header>
               <div className="flex flex-col px-2">
-                <BoardDataMapCompo category={"review"} limit={3} />
+                {/* <BoardDataMapCompo category={"review"} limit={3} /> */}
               </div>
             </div>
           </section>
@@ -263,7 +263,7 @@ export default function HomePageCompo() {
                 />
               </header>
               <div className="flex flex-col px-2">
-                <BoardDataMapCompo category={"faq"} limit={3} />
+                {/* <BoardDataMapCompo category={"faq"} limit={3} /> */}
               </div>
             </div>
           </section>
@@ -275,12 +275,7 @@ export default function HomePageCompo() {
               href={"/guidance/introduction"}
               className="size-12 p-2 border rounded-full bg-[#ffffff]"
             >
-              <Image 
-              src="/images/home.png"
-              alt="홈"
-              width={64}
-              height={64}
-              />
+              <Image src="/images/home.png" alt="홈" width={64} height={64} />
             </Link>
             <Link
               href={"/guidance/introduction"}
@@ -294,13 +289,7 @@ export default function HomePageCompo() {
               href={"/board/faq"}
               className="size-12 p-2 border rounded-full bg-[#ffffff]"
             >
-              <Image 
-              src="/images/faq.png" 
-              alt="faq"
-              width={64}
-              height={64}
-              />
-            
+              <Image src="/images/faq.png" alt="faq" width={64} height={64} />
             </Link>
             <Link
               href={"/board/faq"}
@@ -314,12 +303,7 @@ export default function HomePageCompo() {
               href={"/board/review"}
               className="size-12 p-2 border rounded-full bg-[#ffffff]"
             >
-              <Image 
-              src="/images/review.png"
-              alt=""
-              width={64}
-              height={64}
-               />
+              <Image src="/images/review.png" alt="" width={64} height={64} />
             </Link>
             <Link
               href={"/board/review"}
@@ -333,11 +317,11 @@ export default function HomePageCompo() {
               href={"/board/news"}
               className="size-12 p-2 border rounded-full bg-[#ffffff]"
             >
-              <Image 
-              src="/images/light.png"
-              alt="전구"
-              width={64}
-              height={64}
+              <Image
+                src="/images/light.png"
+                alt="전구"
+                width={64}
+                height={64}
               />
             </Link>
             <Link
@@ -352,12 +336,12 @@ export default function HomePageCompo() {
               href={"/select/applied-to"}
               className="size-12 p-2 border rounded-full bg-[#ffffff]"
             >
-              <Image 
-              src="/images/document1.png"
-              alt=""
-              width={64}
-              height={64}
-               />
+              <Image
+                src="/images/document1.png"
+                alt=""
+                width={64}
+                height={64}
+              />
             </Link>
             <Link
               href={"/select/applied-to"}
@@ -371,11 +355,11 @@ export default function HomePageCompo() {
               href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${guidelinesForApplicants.filename}`}
               className="size-12 p-2 border rounded-full bg-[#ffffff]"
             >
-              <Image 
-              src="/images/graduationcap.png" 
-              alt="학사모"
-              width={64}
-              height={64}
+              <Image
+                src="/images/graduationcap.png"
+                alt="학사모"
+                width={64}
+                height={64}
               />
             </Link>
             <Link
@@ -420,22 +404,22 @@ export default function HomePageCompo() {
           </div>
           <div className="w-48 flex justify-between items-center">
             <div onClick={onScrollLeft}>
-              <Image 
-              src="/images/left.png"
-              alt="왼쪽 화살표" 
-              className="size-8 cursor-pointer" 
-              width={96}
-              height={96}
+              <Image
+                src="/images/left.png"
+                alt="왼쪽 화살표"
+                className="size-8 cursor-pointer"
+                width={96}
+                height={96}
               />
             </div>
             <div onClick={onScrollRight}>
-              <Image 
-              src="/images/right.png"
-              alt="오른쪽 화살표"
-               className="size-8 cursor-pointer"
-               width={96}
-               height={96}
-               />
+              <Image
+                src="/images/right.png"
+                alt="오른쪽 화살표"
+                className="size-8 cursor-pointer"
+                width={96}
+                height={96}
+              />
             </div>
           </div>
         </div>
@@ -447,7 +431,7 @@ export default function HomePageCompo() {
             className="text-center bg-gray-100 hover:bg-gray-200 cursor-pointer p-2 text-lg rounded-lg"
             onClick={() => {
               router.push(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.applicationFileName}`
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.applicationFileName}`,
               );
             }}
           >
@@ -467,7 +451,7 @@ export default function HomePageCompo() {
             className="text-center bg-gray-100 hover:bg-gray-200 cursor-pointer p-2 text-lg rounded-lg"
             onClick={() => {
               router.push(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.guidelinesForApplicantsFileName}`
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.guidelinesForApplicantsFileName}`,
               );
             }}
           >

@@ -6,7 +6,10 @@ import { NameChangeModalMenu } from "@/app/menu";
 import { Language, NameChangeModalProps } from "@/app/common/types";
 import Cookies from "js-cookie";
 
-export default function NameChangeModal({ isOpen, onClose }: NameChangeModalProps) {
+export default function NameChangeModal({
+  isOpen,
+  onClose,
+}: NameChangeModalProps) {
   const [newName, setNewName] = useState("");
   const customFetch = useCustomFetch();
   const [language, setLanguage] = useState<Language>(Language.korean);
@@ -17,7 +20,6 @@ export default function NameChangeModal({ isOpen, onClose }: NameChangeModalProp
       setLanguage(savedLanguage);
     }
   }, []);
-
 
   if (!isOpen) return null;
 
@@ -37,14 +39,16 @@ export default function NameChangeModal({ isOpen, onClose }: NameChangeModalProp
       onClose();
     } catch (error) {
       alert(NameChangeModalMenu[language].nameChangeError);
-      onClose();  // 오류가 나도 모달은 닫아줌
+      onClose(); // 오류가 나도 모달은 닫아줌
     }
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 className="text-lg font-semibold mb-4">{NameChangeModalMenu[language].nameChange}</h2>
+        <h2 className="text-lg font-semibold mb-4">
+          {NameChangeModalMenu[language].nameChange}
+        </h2>
         <input
           type="text"
           value={newName}
@@ -54,14 +58,14 @@ export default function NameChangeModal({ isOpen, onClose }: NameChangeModalProp
         />
         <div className="flex justify-end gap-2 p-2 rounded-md">
           <button
-            onClick={handleNameChange} 
+            onClick={handleNameChange}
             className="px-4 py-2 bg-blue-500 text-white rounded-md"
           >
             {NameChangeModalMenu[language].save}
           </button>
-          
+
           <button
-            onClick={onClose} 
+            onClick={onClose}
             className="px-4 py-2 bg-blue-300 text-white rounded-md"
           >
             {NameChangeModalMenu[language].cancel}

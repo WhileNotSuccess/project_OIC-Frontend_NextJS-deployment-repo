@@ -60,7 +60,8 @@ export const useAuth = () => {
       } else {
         router.push("/");
       }
-    } catch (err) {
+    } catch {
+      console.log("123");
       setError(serverError[language].server);
     }
   };
