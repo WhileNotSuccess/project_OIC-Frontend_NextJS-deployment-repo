@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/app/hook/auth";
 import { useEffect, useState } from "react";
-import NameChangeModal from "../components/NameChangeModal";
+import NameChangeModal from "./NameChangeModal";
 import { useRouter } from "next/navigation";
 import useCustomFetch from "@/app/lib/customFetch";
 import { DashboardCompoMenu, getError } from "@/app/menu";
