@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { ReactNode, useState } from "react";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -25,52 +26,52 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             {open === 1 && (
               <ul className="ml-4 mt-2">
                 <li>
-                  <a
+                  <Link
                     href="/admin/review"
                     className="block hover:underline text-xs"
                   >
                     유학생 후기
-                  </a>
+                  </Link>                    
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/application-form"
                     className="block hover:underline text-xs"
                   >
                     신청 서류
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/learning-materials"
                     className="block hover:underline text-xs"
                   >
                     학습 자료 안내
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/notice"
                     className="block hover:underline text-xs"
                   >
                     공지사항
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/news"
                     className="block hover:underline text-xs"
                   >
                     한국어교육센터 알림
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/faq"
                     className="block hover:underline text-xs"
                   >
                     FAQ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
@@ -88,100 +89,100 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             {open === 2 && (
               <ul className="ml-4 mt-2">
                 <li>
-                  <a
+                  <Link
                     href="/admin/introduction"
                     className="block hover:underline text-xs"
                   >
                     한국어 교육센터 소개
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/directions"
                     className="block hover:underline text-xs"
                   >
                     오시는 길
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/visa"
                     className="block hover:underline text-xs"
                   >
                     비자 안내
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/dormitory"
                     className="block hover:underline text-xs"
                   >
                     기숙사 안내
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/facility"
                     className="block hover:underline text-xs"
                   >
                     학교 시설 안내
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/insurance"
                     className="block hover:underline text-xs"
                   >
                     건강 보험 안내
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/korean-outline"
                     className="block hover:underline text-xs"
                   >
                     한국어교육과정 개요
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/korean-sample"
                     className="block hover:underline text-xs"
                   >
                     한국어교육과정 프로그램 샘플
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/opencampus-purpose"
                     className="block hover:underline text-xs"
                   >
                     오픈캠퍼스 목적
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/opencampus-content"
                     className="block hover:underline text-xs"
                   >
                     오픈캠퍼스 일정 및 내용
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/opencampus-schedule"
                     className="block hover:underline text-xs"
                   >
                     오픈캠퍼스 스케쥴
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/procedure-guide"
                     className="block hover:underline text-xs"
                   >
                     입학신청 절차안내
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
@@ -199,64 +200,64 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             {open === 3 && (
               <ul className="ml-4 mt-2">
                 <li>
-                  <a
+                  <Link
                     href="/admin/counseling"
                     className="block hover:underline text-xs"
                   >
                     상담 신청 확인
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/admin/applications"
                     className="block hover:underline text-xs"
                   >
                     서류확인
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
           </li>
 
           <li className="mb-4">
-            <a
+            <Link
               href="/admin/banner"
               className="w-full text-left text-lg text-[#0093EE]"
             >
               배너
-            </a>
+            </Link>
           </li>
           <li className="mb-4">
-            <a
+            <Link
               href="/admin/staff"
               className="w-full text-left text-lg text-[#0093EE]"
             >
               강사진 및 교직원 소개
-            </a>
+            </Link>
           </li>
           <li className="mb-4">
-            <a
+            <Link
               href="/admin/guidelinesForApplicants"
               className="w-full text-left text-lg text-[#0093EE]"
             >
               모집요강
-            </a>
+            </Link>
           </li>
           <li className="mb-4">
-            <a
+            <Link
               href="/admin/applicants"
               className="w-full text-left text-lg text-[#0093EE]"
             >
               입학신청서
-            </a>
+            </Link>
           </li>
           <li className="mb-4">
-            <a
+            <Link
               href="/admin/course"
               className="w-full text-left text-lg text-[#0093EE]"
             >
               강좌
-            </a>
+            </Link>
           </li>
         </ul>
       </aside>
