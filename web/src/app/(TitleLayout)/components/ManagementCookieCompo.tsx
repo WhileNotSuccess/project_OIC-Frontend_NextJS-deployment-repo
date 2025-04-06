@@ -52,7 +52,7 @@ export default function ManagementCookieCompo() {
   };
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-center">
       {language !== "japanese" ? (
         <Image
           alt="일본 국기"
