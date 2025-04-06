@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { HomePageTitle, menu, smallMenu } from "./app/menu";
 import LoginCompo from "./app/(TitleLayout)/components/LoginCompo";
 import ManagementCookieCompo from "./app/(TitleLayout)/components/ManagementCookieCompo";
+import Link from "next/link";
 
 
 export default function SideMenu(){
@@ -35,7 +36,7 @@ export default function SideMenu(){
             {HomePageTitle[language].OfficeOfInternationalCooperation}
           </h1>
         </div>
-        <div className="w-full h-8  group-hover:h-32 duration-300 ease-in-out">
+        <div className="mt-4 w-full h-8  group-hover:h-32 duration-300 ease-in-out">
           <div className="h-8 flex justify-center items-center">
             {menu[language].introduction}
           </div>
@@ -65,67 +66,71 @@ export default function SideMenu(){
           </div>
         </div>
       </div>
-      <div className="group-hover:block fixed top-0 left-40 bg-[#0072aa] opacity-0 group-hover:opacity-80 translate-x-[-40%] 
+      <div className="group-hover:block fixed top-0 left-40 bg-[#0072aa] opacity-0 group-hover:opacity-80 translate-x-[-100%] 
       group-hover:translate-x-0 transition-transform duration-300 ease-in-out w-40 h-full 
       flex flex-col items-center py-4 text-white font-bold text-center z-12">
-        <div className="w-full h-24">
+        <div className="mt-4 w-full h-24">
         </div>
         <div className="h-32 border-b">
-          <div className="h-1/4">
+          <div className="h-1/4 flex items-center justify-center">
             {smallMenu[language].introduction}
           </div>
-          <div className="h-1/4">
+          <div className="h-1/4 flex items-center justify-center">
             {smallMenu[language].facultyAndStaffIntroduction}
           </div>
-          <div className="h-1/4">
+          <div className="h-1/4 flex items-center justify-center">
             {smallMenu[language].internationalAgreementsStatus}
           </div>
-          <div className="h-1/4">
+          <div className="h-1/4 flex items-center justify-center">
             {smallMenu[language].contactInformation}
           </div>
         </div>
         <div className="h-48 border-b">
-          <div className="h-1/6">
+          <div className="h-1/6 flex items-center justify-center">
             {smallMenu[language].admissionInformation}
           </div>
-          <div className="h-1/6">
+          <Link
+            href={"https://ipsi.yju.ac.kr/ipsi/3828/subview.do"} 
+            className="h-1/6 flex items-center justify-center">
             {smallMenu[language].departmentInformation}
-          </div>
-          <div className="h-1/6">
+          </Link>
+          <div className="h-1/6 flex items-center justify-center">
             {smallMenu[language].campusLife}
           </div>
-          <div className="h-1/6">
+          <div className="h-1/6 flex items-center justify-center">
             {smallMenu[language].studentSupportServices}
           </div>
-          <div className="h-1/6">
+          <div className="h-1/6 flex items-center justify-center">
             {smallMenu[language].dormitoryInformation}
           </div>
-          <div className="h-1/6">
+          <div className="h-1/6 flex items-center justify-center">
             {smallMenu[language].qna}
           </div>
         </div>
         <div className="h-24 border-b">
-          <div className="h-1/3">
+          <div className="h-1/3 flex items-center justify-center">
             {smallMenu[language].globalProgram}
           </div>
-          <div className="h-1/3">
+          <div className="h-1/3 flex items-center justify-center">
             {smallMenu[language].globalFieldStudy}
           </div>
-          <div className="h-1/3">
+          <div className="h-1/3 flex items-center justify-center">
             {smallMenu[language].overseasEmploymentSupporting}
           </div>
         </div>
         <div className="h-16 border-b">
-          <div className="h-1/2">
+          <div className="h-1/2 flex items-center justify-center">
             {smallMenu[language].notifications}
           </div>
-          <div className="h-1/2">
+          <div className="h-1/2 flex items-center justify-center">
             {smallMenu[language].announcements}
           </div>
         </div>
-        <div className="h-8">
+        <Link
+          href={"https://kcenter.yju.ac.kr/home"} 
+          className="h-8 flex items-center justify-center">
           {smallMenu[language].shortcut}
-        </div>
+        </Link>
       </div>
     </div>
   );
