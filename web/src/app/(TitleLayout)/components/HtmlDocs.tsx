@@ -4,7 +4,7 @@ import useCustomFetch from "@/app/lib/customFetch";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import parser from "html-react-parser";
-import Image from "next/image";
+// import Image from "next/image";
 import {
   HtmlDocsProps,
   Language,
@@ -15,12 +15,13 @@ import {
   getError,
   deleteSuccess,
   deleteError,
-  editorCompo,
+  //editorCompo,
   locationMap,
-  guidanceMenu,
+  //guidanceMenu,
 } from "../../menu";
 import MapCompo from "./MapCompo";
 import { useAuth } from "@/app/hook/auth";
+import HtmlDocsIdProps from "./HtmlDocsIdProps";
 
 // useEffect 에서는 함수 호출만 선언은 밖에서
 export default function HtmlDocs(props: HtmlDocsProps) {
@@ -40,6 +41,9 @@ export default function HtmlDocs(props: HtmlDocsProps) {
   const router = useRouter();
   const { user } = useAuth();
   const [language, setLanguage] = useState<Language>(Language.korean);
+
+  // date-fns 라는 유틸이 있다고 함  따로 검색해봐봐 -> 바꿔놓겠습니다 20250407 작성
+  // canEditOrDelete 어떻게 바꾸라고 했는지 잘 기억이 안남
 
   useEffect(() => {
     const savedLanguage = Cookies.get("language") as Language;
@@ -110,90 +114,21 @@ export default function HtmlDocs(props: HtmlDocsProps) {
     <main className="w-full">
       <div className="h-12"></div>
 
-      <section className="w-full flex justify-center">
-        {/* div넣지말 그냥 함수로 빼 div리턴되잖아 */}
-        {props.category ? (
-          <header
-            className="w-full flex justify-center items-center font-bold text-3xl"
-            style={{ height: "200px" }}
-          >
-            {guidanceMenu[language]?.[props.category]}
-          </header>
-        ) : (
-          <article className="w-11/12 flex flex-col mt-4">
-            <div className="flex justify-between items-center border-t-2 border-blue-400 pt-2">
-              <div className="text-lg font-bold">{allData.title}</div>
-            </div>
-
-            <section className="text-sm mt-2 border-b-2 pb-2 flex items-center">
-              <Image
-                alt="작성자 아이콘"
-                src="/images/author.png"
-                width={15}
-                height={15}
-              />
-              <div>{allData.author}</div>
-              <Image
-                alt="작성일 아이콘"
-                src="/images/createdDate.png"
-                width={15}
-                height={15}
-                className="ml-4 mr-2"
-              />
-              {/* data-fns 라는 유틸이 있다고 함  따로 검색해봐봐*/}
-              <div>{allData.createdDate.substring(0, 10)}</div>
-            </section>
-
-
-            {allData.documentFiles.length > 0 ? (
-              <section className="border-b-2 pb-2 pt-2">
-                {allData.documentFiles.map((item) => (
-                  <div key={item.id} className="flex items-center">
-                    <Image
-                      alt="첨부파일 아이콘"
-                      src="/images/attachFile.png"
-                      className="mr-2"
-                      width={15}
-                      height={15}
-                    />
-                    <button
-                      onClick={() =>
-                        router.push(
-                          `${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.filename}`,
-                        )
-                      }
-                      className="text-blue-600 hover:underline"
-                    >
-                      {item.filename}
-                    </button>
-                  </div>
-                  
-                ))}
-              </section>
-            ) : (
-              <p className="mt-2">{getError[language]?.noFile}</p>
-            )}
-
-
-            {canEditOrDelete && (
-              <div className="flex space-x-4 ml-auto mt-2">
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                  onClick={() => onUpdate(allData.guidanceId)}
-                >
-                  {editorCompo[language]?.update}
-                </button>
-                <button
-                  className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
-                  onClick={() => onDelete(allData.guidanceId)}
-                >
-                  {editorCompo[language]?.delete}
-                </button>
-              </div>
-            )}
-          </article>
-        )}
-      </section>
+      {props.category ? 
+        null
+        : 
+        <HtmlDocsIdProps
+          title={allData.title}
+          author={allData.author} 
+          createdDate={allData.createdDate} 
+          documentFiles={allData.documentFiles} 
+          guidanceId={allData.guidanceId}
+          language={language} 
+          onUpdate={onUpdate} 
+          onDelete={onDelete} 
+          canEditOrDelete={canEditOrDelete} 
+        />
+      }
 
       {props.category === "directions" && (
         <>

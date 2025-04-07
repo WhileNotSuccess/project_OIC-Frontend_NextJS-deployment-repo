@@ -1,16 +1,15 @@
 import { Props } from "@/app/common/types";
-import Editor from "../../components/Editor";
+import HtmlDocs from "../../components/HtmlDocs";
 import Title from "../../components/Title";
 
-
-export default async function PostPage({ params } : Props){
+export default async function GuidancePage ({ params } : Props) {
   const resolvedParams = await params;
 
   const { category } = resolvedParams;
   return(
     <div className="ml-40">
       <Title category={category}/>
-      <Editor/>
+      <HtmlDocs category={category}/>
     </div>
   );
 }

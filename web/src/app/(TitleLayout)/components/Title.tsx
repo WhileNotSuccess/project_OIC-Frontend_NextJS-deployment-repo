@@ -1,4 +1,9 @@
+"use client";
+import { Language } from "@/app/common/types";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { smallMenu } from "@/app/menu";
 
 
 type TitleProps = {
@@ -6,6 +11,15 @@ type TitleProps = {
 }
 
 export default function Title({ category } : TitleProps){
+  const [language, setLanguage] = useState<Language>(Language.korean);
+
+  useEffect(() => {
+    const savedLanguage = Cookies.get("language") as Language;
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
   return(        
     <div className="w-full h-32 sm:h-68 border flex items-center bg-[#000000] relative">
       <Image
@@ -17,7 +31,7 @@ export default function Title({ category } : TitleProps){
       >
       </Image>
       <div className="absolute top-1/3 left-4 text-white font-bold text-4xl sm:text-7xl">
-        {category}
+        {smallMenu[language][category]}
       </div>
     </div>
   );
