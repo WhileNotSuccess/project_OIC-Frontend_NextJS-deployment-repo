@@ -1,7 +1,8 @@
 "use client";
 
 import { Language, ServerDocumentFile } from "@/app/common/types";
-import { editorCompo, getError } from "@/app/menu";
+import useCustomFetch from "@/app/lib/customFetch";
+import { deleteError, deleteSuccess, editorCompo, getError } from "@/app/menu";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -12,8 +13,6 @@ interface HtmlDocsIdProps {
   documentFiles : ServerDocumentFile[];
   guidanceId : string;
   language : Language;
-  onUpdate : (guidanceId : string)=> void;
-  onDelete : (guidanceId : string)=> void;
   canEditOrDelete : boolean;
 }
 
@@ -24,11 +23,30 @@ export default function HtmlDocsIdProps({
   documentFiles,
   guidanceId,
   language,
-  onUpdate,
-  onDelete,
   canEditOrDelete,
 } : HtmlDocsIdProps){
   const router = useRouter();
+  const customFetch = useCustomFetch();
+
+
+  const onUpdate = (guidanceId?: string) => {
+    router.push(`/post-update/${guidanceId}`);
+  };
+
+  const onDelete = async (guidanceId?: string) => {
+    try {
+      const response = await customFetch(`/posts/${guidanceId}`, {
+        method: "DELETE",
+      });
+      if(response.ok){
+        alert(deleteSuccess[language]?.contentDelete);
+        router.back();
+      }
+    } catch (error) {
+      alert(deleteError[language]?.delete);
+      console.error(error);
+    }
+  };
 
   return(
     <section className="w-full flex justify-center">

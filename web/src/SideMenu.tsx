@@ -24,7 +24,9 @@ export default function SideMenu(){
     <div className="group">
       <div className="fixed top-0 left-0 bg-[#0C588D] w-40 h-full flex flex-col items-center 
         py-4 text-white text-sm font-semibold text-center">
-        <div className="w-full h-24 flex flex-col justify-center items-center">
+        <Link
+          href={"/home"} 
+          className="w-full h-24 flex flex-col justify-center items-center">
           <Image
             src={"/images/yeungjinLogo.svg"}
             alt="영진전문대 로고"
@@ -35,7 +37,7 @@ export default function SideMenu(){
           <h2>{HomePageTitle[language].yeungjin}<br></br>
             {HomePageTitle[language].OfficeOfInternationalCooperation}
           </h2>
-        </div>
+        </Link>
         <div className="mt-4 w-full h-8  group-hover:h-32 duration-300 ease-in-out">
           <div className="h-8 flex justify-center items-center ">
             {menu[language].introduction}
