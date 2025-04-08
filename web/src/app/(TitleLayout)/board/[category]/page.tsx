@@ -1,16 +1,17 @@
 import { Props } from "@/app/common/types";
-import Editor from "../../components/Editor";
+import BoardPageCompo from "../../components/BoardPageCompo";
 import Title from "../../components/Title";
 
 
-export default async function PostPage({ params } : Props){
+
+export default async function BoardPage({ params } : Props) {
   const resolvedParams = await params;
 
   const { category } = resolvedParams;
-  return(
+  return (
     <div className="ml-40">
       <Title category={category}/>
-      <Editor/>
+      <BoardPageCompo name={category} />
     </div>
   );
 }

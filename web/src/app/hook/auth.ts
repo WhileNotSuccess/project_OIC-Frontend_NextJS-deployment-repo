@@ -33,7 +33,7 @@ export const useAuth = () => {
     },
     {
       refreshInterval: 60000 * 30,
-    }
+    },
   );
   const customFetch = useCustomFetch();
   const router = useRouter();
@@ -47,7 +47,7 @@ export const useAuth = () => {
   }, []);
   const login = async (
     payload: LoginBody,
-    setError: (error: string) => void
+    setError: (error: string) => void,
   ) => {
     try {
       const data = await customFetch("/auth/login", {

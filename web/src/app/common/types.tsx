@@ -142,3 +142,11 @@ export type AllBoardData = {
   prevPage : number;
   totalPage : number;
 }
+
+export type Props = {
+  params : Promise<CategoryParams>
+}
+
+export type IdProps = {
+  params : Promise<IdParams>
+}

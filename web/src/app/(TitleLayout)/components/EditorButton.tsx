@@ -9,7 +9,7 @@ type EditorButtonProps = {
   deleteFileNames : string[],
   onCheckTitleContent : ()=>boolean,
   onFormDataAppend : ()=> FormData,
-  customFetch : <T>(url : string, options : RequestInit) => Promise<T>,
+  customFetch : (url : string, options? : RequestInit) => Promise<Response>,
   id? : string,
   language : Language,
 }

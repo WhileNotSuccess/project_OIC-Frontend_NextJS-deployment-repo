@@ -47,9 +47,10 @@ export default function Editor(props: EditorProps){
     const oldPost = async () => {
       if (!props.id) return;
       try {
-        const data = await customFetch(`/posts?id=${props.id}`, {
+        const response = await customFetch(`/posts?id=${props.id}`, {
           method: "GET",
         });
+        const data = await response.json();
         setContent(data.data.content);
         setTitle(data.data.title);
         setCategory(data.data.category);
