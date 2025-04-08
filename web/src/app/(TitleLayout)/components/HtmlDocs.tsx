@@ -34,8 +34,6 @@ export default function HtmlDocs(props: HtmlDocsProps) {
   const { canEditOrDelete } = useCheckAdmin(allData.userId);
   const [language, setLanguage] = useState<Language>(Language.korean);
 
-  console.log(canEditOrDelete);
-
   // date-fns 라는 유틸이 있다고 함  따로 검색해봐봐 -> 바꿔놓겠습니다 20250407 작성
   // canEditOrDelete 어떻게 바꾸라고 했는지 잘 기억이 안남
 
@@ -52,8 +50,9 @@ export default function HtmlDocs(props: HtmlDocsProps) {
         const endpoint = props.id
           ? `/posts?id=${props.id}`
           : `/posts?category=${props.category}`;
-        const data = await customFetch(endpoint, { method: "GET" });
-
+        const response = await customFetch(endpoint, { method: "GET" });
+        const data = await response.json();
+        console.log(data);
         setAllData({
           content: data.data.content,
           title: data.data.title,
@@ -63,6 +62,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
           createdDate: data.data.createdDate,
           userId: data.data.userId,
         });
+        console.log(allData.content);
       } catch {
         alert(getError[language]?.htmlError);
         console.error(getError[language]?.htmlError);
@@ -70,7 +70,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
     };
 
     fetchData();
-  }, [customFetch, language, props.category, props.id]);
+  }, [language, props.category, props.id]);
 
 
   return (
@@ -94,14 +94,15 @@ export default function HtmlDocs(props: HtmlDocsProps) {
       {props.category === "contact" && (
         <HtmlDocsDirection language={language}/>
       )}
-
+      {allData.content &&       
       <section className="w-full flex justify-center">
         <div className="w-3/5 min-h-dvh">
           <div className="prose w-full break-words">
             {parser(allData.content)}
           </div>
         </div>
-      </section>
+      </section>}
+
     </main>
   );
 }

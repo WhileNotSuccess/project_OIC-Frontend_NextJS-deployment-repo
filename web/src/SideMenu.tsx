@@ -85,21 +85,24 @@ export default function SideMenu(){
             {smallMenu[language].staff}
           </Link>
           <Link
-            href={"/"} 
+            href={"/"}
+            // href={"/"} 
             className="h-1/4 flex items-center justify-center">
             {smallMenu[language]["international-agreements"]}
           </Link>
           <Link
-            href={"/guidance/contact"} 
+            href={"/guidance/directions"}
+            // href={"/guidance/contact"} 
             className="h-1/4 flex items-center justify-center">
-            {smallMenu[language].contact}
+            {/* {smallMenu[language].contact} */}
+            {smallMenu[language].directions}
           </Link>
         </div>
         <div className="h-48 border-b">
           <Link
-            href={"/guidance/admission-guide"} 
+            href={"/guidance/procedure-guide"} 
             className="h-1/6 flex items-center justify-center">
-            {smallMenu[language]["admission-guide"]}
+            {smallMenu[language]["procedure-guide"]}
           </Link>
           <Link
             href={"https://ipsi.yju.ac.kr/ipsi/3828/subview.do"} 
@@ -122,14 +125,14 @@ export default function SideMenu(){
             {smallMenu[language].dormitory}
           </Link>
           <Link
-            href={"/board/qna"} 
+            href={"/board/faq"} 
             className="h-1/6 flex items-center justify-center">
-            {smallMenu[language].qna}
+            {smallMenu[language].faq}
           </Link>
         </div>
         <div className="h-24 border-b">
           <Link
-            href={"/"} 
+            href={"/global-programs"} 
             className="h-1/3 flex items-center justify-center">
             {smallMenu[language]["global-programs"]}
           </Link>

@@ -143,10 +143,10 @@ export type AllBoardData = {
   totalPage : number;
 }
 
-export type Params = {
-  category : string;
+export type Props = {
+  params : Promise<CategoryParams>
 }
 
-export type Props = {
-  params : Promise<Params>
+export type IdProps = {
+  params : Promise<IdParams>
 }

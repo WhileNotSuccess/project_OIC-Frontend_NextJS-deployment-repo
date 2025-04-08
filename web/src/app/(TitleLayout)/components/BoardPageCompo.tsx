@@ -47,12 +47,13 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
   useEffect(() => {
     const fetchBoard = async (currentPage: number) => {
       try {
-        const data = await customFetch(
+        const response = await customFetch(
           `/posts/${name}?limit=10&page=${currentPage}`,
           {
             method: "GET",
           },
         );
+        const data = await response.json();
         setAllBoardData({
           boardData : data.data,
           currentPage : data.currentPage,
@@ -72,7 +73,8 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
     // userCheck랑 adminCheck는 합치기 같은 로직이니까 (보류)
     async function checkAdmin() {
       const response = await customFetch("/users");
-      if (response && response.result) {
+      const data = await response.json();
+      if (data && data.result) {
         setAdminCheck(true);
       }
     }
@@ -107,12 +109,13 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
       window.location.reload();
     }
     try {
-      const data = await customFetch(
+      const response = await customFetch(
         `/posts/search?limit=10&page=1&category=${name}&${searchOption}=${value}`,
         {
           method: "GET",
         },
       );
+      const data = await response.json();
       setAllBoardData({
         boardData : data.data,
         currentPage : data.currentPage,
@@ -131,7 +134,7 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
         className="w-full flex justify-center items-center font-bold text-3xl"
         style={{ height: "200px" }}
       >
-        {boardMenu[language]?.[name]}
+        {/* {boardMenu[language]?.[name]} */}
       </header>
       <section className="w-full flex sm:px-40 px-20">
         <div className="w-full flex flex-col sm:flex-row sm:justify-between justify-start">
