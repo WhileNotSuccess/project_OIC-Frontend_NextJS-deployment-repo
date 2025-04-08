@@ -48,7 +48,7 @@ export default function RegisterCompo() {
           setMessage(RegisterCompoMenu[language].nameChangeComplete);
           router.push("/");
         }
-      } catch (err) {
+      } catch {
         setError(serverError[language].server);
       }
     } else {
@@ -68,7 +68,7 @@ export default function RegisterCompo() {
           // setMessage(RegisterCompoMenu[language].registerComplete);
           // setIsOpen(true);
         }
-      } catch (err) {
+      } catch {
         setError(serverError[language].server);
       }
     }

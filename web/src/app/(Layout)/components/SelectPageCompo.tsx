@@ -36,7 +36,6 @@ export default function SelectTabComponent({
     Array<{ id: number; korean: string; english: string; japanese: string }>
   >([]); // 지원과정 목록
   const [language, setLanguage] = useState<Language>(Language.korean);
-  const [userCheck, setUserCheck] = useState<boolean>(false);
   useEffect(() => {
     const savedLanguage = Cookies.get("language") as Language;
     if (savedLanguage) {
@@ -60,7 +59,7 @@ export default function SelectTabComponent({
             method: "GET",
           });
           setContent(data.data.content);
-        } catch (error) {
+        } catch {
           alert(SelectPageCompoMenu[language].failLoadPosts);
           console.error(SelectPageCompoMenu[language].failLoadPosts);
         }
@@ -84,7 +83,7 @@ export default function SelectTabComponent({
         } else {
           setCourseOptions([]); // 강좌가 없을 경우 빈 배열
         }
-      } catch (error) {
+      } catch {
         console.error(SelectPageCompoMenu[language].failLoadCourse);
         setCourseOptions([]); // API 호출 실패 시 빈 배열
       }
@@ -93,7 +92,7 @@ export default function SelectTabComponent({
     fetchCourseOptions();
   }, [selectedTab, name, categoryTab, selectedCourse]); // selectedCourse를 의존성 배열에 추가
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     if (file.length === 0) {
       alert(SelectPageCompoMenu[language].needFile);
@@ -109,7 +108,7 @@ export default function SelectTabComponent({
       formData.append("courseId", selectedCourse); // 선택된 과정 값 전달
       formData.append("phoneNumber", applicationPhoneNumber);
       try {
-        const response = await customFormFetch("/application-form", {
+        await customFormFetch("/application-form", {
           method: "POST",
           body: formData,
         });
@@ -128,7 +127,7 @@ export default function SelectTabComponent({
       return `${numbers.slice(0, 3)}-${numbers.slice(3)}`;
     return `${numbers.slice(0, 3)}-${numbers.slice(3, 7)}-${numbers.slice(
       7,
-      11
+      11,
     )}`;
   };
 
@@ -139,13 +138,13 @@ export default function SelectTabComponent({
   useEffect(() => {
     async function userCheck() {
       if (user) {
-        setUserCheck(true);
       } else if (selectedTab === "upload-documents") {
         alert(SelectPageCompoMenu[language].needLogin);
         router.push("/login");
       }
     }
     userCheck();
+
   }, [selectedTab]);
 
   return (
@@ -160,11 +159,9 @@ export default function SelectTabComponent({
           {categoryTab[language].map((item) => (
             <button
               key={item.key}
-              className={`py-2 px-4 text-nowrap text-base font-medium text-center border transition w-40 flex-grow ${
-                selectedTab === item.key
-                  ? "bg-blue-500 text-white font-black"
-                  : "bg-sky-500/50 text-white font-black"
-              }`}
+              className={`py-2 px-4 text-nowrap text-base font-medium text-center border transition w-40 flex-grow ${selectedTab === item.key
+                ? "bg-blue-500 text-white font-black"
+                : "bg-sky-500/50 text-white font-black"}`}
               onClick={() => setSelectedTab(item.key)}
             >
               {item.value}
@@ -181,9 +178,9 @@ export default function SelectTabComponent({
               ? parser(content)
               : SelectPageCompoMenu[language].failLoadContent}
           </article>
-        ) : (
+        ) :
           <section className="w-3/5 p-4 border">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={() => handleSubmit} className="space-y-4">
               <div>
                 <label className="w-full text-xs  bg-blue-500 text-white p-2 rounded-md mb-10">
                   {SelectPageCompoMenu[language].fileSelect}
@@ -197,7 +194,7 @@ export default function SelectTabComponent({
                         e,
                         setFile,
                         setDocumentFileNames,
-                        setDeleteFileNames
+                        setDeleteFileNames,
                       )
                     }
                     className="hidden"
@@ -205,16 +202,12 @@ export default function SelectTabComponent({
                   />
                 </label>
 
-                <ul
-                  className={documentFileNames.length > 0 ? "border mt-4" : ""}
-                >
+                <ul className={documentFileNames.length > 0 ? "border mt-4" : ""}>
                   {documentFileNames &&
                     documentFileNames.map((fileName, index) => (
                       <div
                         key={index}
-                        className={`w-1/3 flex justify-between items-center ${
-                          deleteFileNames.includes(fileName) ? "hidden" : ""
-                        }`}
+                        className={`w-1/3 flex justify-between items-center ${deleteFileNames.includes(fileName) ? "hidden" : ""}`}
                       >
                         <li className="w-1/2 overflow-hidden text-ellipsis whitespace-nowrap">
                           {fileName.match(/^\d{8}-\d{6}_/)
@@ -232,7 +225,7 @@ export default function SelectTabComponent({
                               fileName,
                               setFile,
                               setDocumentFileNames,
-                              setDeleteFileNames
+                              setDeleteFileNames,
                             )
                           }
                         />
@@ -284,7 +277,9 @@ export default function SelectTabComponent({
               </button>
             </form>
           </section>
-        )}
+
+
+        }
       </section>
     </main>
   );

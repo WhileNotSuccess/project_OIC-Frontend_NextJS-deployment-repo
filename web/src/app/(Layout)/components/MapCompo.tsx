@@ -21,7 +21,7 @@ export default function MapCompo() {
         const options = {
           center: new window.kakao.maps.LatLng(
             35.89624247445099,
-            128.62269497391293
+            128.62269497391293,
           ), // 기본 중심 좌표 설정
           level: 3,
         };
@@ -30,7 +30,7 @@ export default function MapCompo() {
         // 마커 위치 설정
         const markerPosition = new window.kakao.maps.LatLng(
           35.89624247445099,
-          128.62269497391293
+          128.62269497391293,
         ); // 마커 위치
         const markerInstance = new window.kakao.maps.Marker({
           position: markerPosition,

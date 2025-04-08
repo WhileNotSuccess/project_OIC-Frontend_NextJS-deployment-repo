@@ -37,7 +37,7 @@ export default function NameChangeModal({
       }
 
       onClose();
-    } catch (error) {
+    } catch {
       alert(NameChangeModalMenu[language].nameChangeError);
       onClose(); // 오류가 나도 모달은 닫아줌
     }

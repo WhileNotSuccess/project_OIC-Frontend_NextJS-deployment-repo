@@ -26,6 +26,7 @@ export default function StaffIntro({ name }: StaffPageProps) {
     }
   }, []);
 
+
   useEffect(() => {
     const staffData = async () => {
       try {
@@ -34,7 +35,7 @@ export default function StaffIntro({ name }: StaffPageProps) {
         });
         setTeacher(data.teacher);
         setStaff(data.staff);
-      } catch (error) {
+      } catch {
         alert(getError[language]?.staffError);
       }
     };
@@ -100,8 +101,7 @@ export default function StaffIntro({ name }: StaffPageProps) {
                         src="/images/telephone.png"
                         width={15}
                         height={15}
-                        className="mr-2"
-                      />{" "}
+                        className="mr-2" />{" "}
                       {item.phone}
                     </div>
                     <div className="h-8 ml-2 font-bold flex flex-row items-center overflow-hidden">

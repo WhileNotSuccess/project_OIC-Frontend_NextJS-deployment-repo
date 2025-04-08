@@ -43,7 +43,7 @@ export default function TermsAgreement() {
         height: "100vh",
       }}
     >
-      {/* Transparent overlay */}
+
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
 
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md z-20">
@@ -85,11 +85,9 @@ export default function TermsAgreement() {
         <button
           onClick={handleSubmit}
           disabled={!allChecked}
-          className={`w-full mt-4 py-2 rounded-md text-white ${
-            allChecked
-              ? "bg-blue-500 hover:bg-blue-600"
-              : "bg-gray-400 cursor-not-allowed"
-          }`}
+          className={`w-full mt-4 py-2 rounded-md text-white ${allChecked
+            ? "bg-blue-500 hover:bg-blue-600"
+            : "bg-gray-400 cursor-not-allowed"}`}
         >
           {TermsAgreementMenu[language].next}
         </button>
