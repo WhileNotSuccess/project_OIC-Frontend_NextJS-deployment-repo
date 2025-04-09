@@ -9,7 +9,7 @@ export default async function BoardPage({ params } : Props) {
 
   const { category } = resolvedParams;
   return (
-    <div className="ml-40">
+    <div>
       <Title category={category}/>
       <BoardPageCompo name={category} />
     </div>

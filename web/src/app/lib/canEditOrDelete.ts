@@ -5,7 +5,7 @@ import { Language } from "../common/types";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-export const useCheckAdmin = (userId : number) => {
+export const useCheckAdmin = (userId? : number, category? : string) => {
   const [language, setLanguage] = useState<Language>(Language.korean);
 
   useEffect(() => {
@@ -67,6 +67,7 @@ export const useCheckAdmin = (userId : number) => {
   );
 
   return {
+    adminUserCheck : isAdmin?.result || (category==="faq" || category==="review") && user,
     canEditOrDelete : isAdmin?.result || userId === user?.id,
     isAdminLoading,
     isLoading,

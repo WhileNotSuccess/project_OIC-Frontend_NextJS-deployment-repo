@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import { Language, AllBoardData } from "@/app/common/types";
 import { formatDate } from "@/app/common/formatDate";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/hook/auth";
+import { useCheckAdmin } from "@/app/lib/canEditOrDelete";
 
 type BoardPageProps = {
   name: keyof (typeof boardMenu)[Language];
@@ -20,13 +20,11 @@ type BoardPageProps = {
 
 export default function BoardPageCompo({ name }: BoardPageProps) {
   const customFetch = useCustomFetch();
-  const { user } = useAuth();
   const [searchOption, setSearchOption] = useState<string>("title");
-  const [adminCheck, setAdminCheck] = useState<boolean>(false); // 타입 string, number같은 소문자로 적어야함 대문자 안돼
-  const [userCheck, setUserCheck] = useState<boolean>(false); // 타입 string, number같은 소문자로 적어야함 대문자 안돼
   const router = useRouter();
   const [inputValue, setInputValue] = useState("");
   const [language, setLanguage] = useState<Language>(Language.korean);
+  const { adminUserCheck } = useCheckAdmin();
   const [allBoardData, setAllBoardData] = useState<AllBoardData>({
     boardData : [],
     currentPage : 0,
@@ -34,7 +32,6 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
     prevPage : 1,
     totalPage : 1,
   });
-  const adminUserCheck = adminCheck || ((name === "review" || name === "faq") && userCheck);
 
   useEffect(() => {
     const savedLanguage = Cookies.get("language") as Language;
@@ -67,28 +64,7 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
       }
     };
     fetchBoard(allBoardData.currentPage);
-  }, [allBoardData.currentPage, language,name,customFetch]);
-
-  useEffect(() => {
-    // userCheck랑 adminCheck는 합치기 같은 로직이니까 (보류)
-    async function checkAdmin() {
-      const response = await customFetch("/users");
-      const data = await response.json();
-      if (data && data.result) {
-        setAdminCheck(true);
-      }
-    }
-    checkAdmin();
-  }, [customFetch]);
-
-  useEffect(() => {
-    async function checkUser() {
-      if (user) {
-        setUserCheck(true);
-      }
-    }
-    checkUser();
-  }, [user]);
+  }, [allBoardData.currentPage, language,name]);
 
   const onPageChange = (page: number) => {
     if (page > 0 && page <= allBoardData.totalPage) {
@@ -129,12 +105,11 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full px-12">
       <header
         className="w-full flex justify-center items-center font-bold text-3xl"
         style={{ height: "200px" }}
       >
-        {/* {boardMenu[language]?.[name]} */}
       </header>
       <section className="w-full flex sm:px-40 px-20">
         <div className="w-full flex flex-col sm:flex-row sm:justify-between justify-start">
@@ -173,7 +148,7 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
         </div>
       </section>
       <section className="w-full flex flex-col items-center mb-5">
-        <div className="w-4/5 h-16 border-x-0 border-y-2 border-t-[#4171b4] mt-12 flex sm:items-center items-center justify-between">
+        <div className="w-full h-16 border-x-0 border-y-2 border-t-[#4171b4] mt-12 flex sm:items-center items-center justify-between">
           <div className="w-2/5 font-bold flex justify-center">
             {boardPage[language]?.title}
           </div>
@@ -191,7 +166,7 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
           ? allBoardData.boardData.map((item) => (
             <div
               key={item.id}
-              className="w-4/5 h-12 border-b-2 border-[#e5e7eb] flex justify-between items-center sm:items-center"
+              className="w-full h-12 border-b-2 border-[#e5e7eb] flex justify-between items-center sm:items-center"
             >
               {name === "notice" ? (
                 <div className="w-20 border rounded-sm flex justify-center items-center text-white bg-[#0093EE] font-semibold">

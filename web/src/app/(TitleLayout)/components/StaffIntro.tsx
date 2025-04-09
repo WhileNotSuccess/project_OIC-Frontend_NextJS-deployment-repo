@@ -3,18 +3,14 @@
 import { Language, Teacher } from "@/app/common/types";
 import useCustomFetch from "@/app/lib/customFetch";
 import { useEffect, useState } from "react";
-import { staffPage, getError, smallMenu } from "@/app/menu";
+import { getError } from "@/app/menu";
 import Cookies from "js-cookie";
 import Image from "next/image";
 
-type StaffPageProps = {
-  name: keyof (typeof smallMenu)[Language];
-};
-
 // 넌 디자인 행이다다
 
-export default function StaffIntro({ name }: StaffPageProps) {
-  const [teacher, setTeacher] = useState<Teacher[]>([]);
+export default function StaffIntro() {
+  // const [teacher, setTeacher] = useState<Teacher[]>([]);
   const [staff, setStaff] = useState<Teacher[]>([]);
   const customFetch = useCustomFetch();
   const [language, setLanguage] = useState<Language>(Language.korean);
@@ -29,12 +25,13 @@ export default function StaffIntro({ name }: StaffPageProps) {
   useEffect(() => {
     const staffData = async () => {
       try {
-        const data = await customFetch("/staff", {
+        const response = await customFetch("/staff", {
           method: "GET",
         });
-        setTeacher(data.teacher);
+        const data = await response.json();
+        // setTeacher(data.teacher);
         setStaff(data.staff);
-      } catch (error) {
+      } catch  {
         alert(getError[language]?.staffError);
       }
     };
@@ -42,59 +39,36 @@ export default function StaffIntro({ name }: StaffPageProps) {
   }, []);
 
   return (
-    <div className="w-full">
-      <header className="h-12 border"></header>
+    <div className="w-full px-12">
       <section
         className="w-full flex justify-center items-center font-bold text-3xl"
         style={{ height: "200px" }}
       >
-        {smallMenu[language]?.[name]}
       </section>
 
       <section className="w-full">
         <div className="w-full h-24 flex items-center justify-center">
-          <div className=" h-14 text-2xl font-bold w-4/5 border-b-2  border-[#0072BA] text-[#0093EE]">
-            {staffPage[language]?.faculty}
+          <div className="w-full h-14 text-2xl font-bold text-[#000000]">
+            {/* {staffPage[language]?.faculty} */}
+            국제교류원
           </div>
         </div>
         <div className="w-full flex items-center justify-center">
-          <ul className="w-4/5 flex flex-wrap justify-evenly mt-4">
-            {teacher.map((item) => {
-              return (
-                <li
-                  key={item.id}
-                  className="w-64 h-24 border-2 border-[#A6CAEC] mb-4 text-[#0093EE]"
-                >
-                  <div className="font-bold border-b-2 border-[#0072BA] pl-2 h-8 flex flex-col justify-center">
-                    {item.name}
-                  </div>
-                  <div className="ml-2">강사</div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
-      <section className="w-full mt-6">
-        <div className="w-full h-24 flex items-center justify-center">
-          <div className=" h-14 text-2xl font-bold w-4/5 border-b-2  border-[#0072BA] text-[#0093EE]">
-            {staffPage[language]?.staff}
-          </div>
-        </div>
-        <div className="w-full flex items-center justify-center">
-          <ul className="w-4/5 flex flex-wrap justify-evenly mt-4">
+          <ul className="flex flex-wrap justify-between mt-4">
             {staff.map((item) => {
               return (
                 <li
                   key={item.id}
-                  className="w-52 h-40 border-2 border-[#A6CAEC] mb-4 text-[#0093EE]"
+                  className="w-76 h-40 border-t-2 border-[#0C588D] bg-[#F6F6F6] mb-4 text-[#000000] flex flex-col justify-between"
                 >
-                  <div className="border-b-2 border-[#0072BA] font-bold h-8 flex flex-col justify-center pl-2">
-                    {item.name}
-                  </div>
                   <div className=" flex flex-col justify-center">
-                    <div className="h-8 ml-2">{item.position}</div>
-                    <div className="h-8 ml-2 font-bold flex flex-row items-center">
+                    <div className="p-2 h-8 ml-2 font-semibold">{item.position}</div>
+                    <div className="p-4 text-xl font-semibold">
+                      {item.name}
+                    </div>
+                  </div>
+                  <div className="w-full border-t-2 border-[#0C588D] font-bold h-8 flex items-center pl-2">
+                    <div className="h-8 ml-2 font-bold flex flex-row items-center gap-2 text-sm text-[#909090] overflow-hidden whitespace-nowrap">
                       <Image
                         alt="전화기 아이콘"
                         src="/images/telephone.png"
@@ -103,8 +77,6 @@ export default function StaffIntro({ name }: StaffPageProps) {
                         className="mr-2"
                       />{" "}
                       {item.phone}
-                    </div>
-                    <div className="h-8 ml-2 font-bold flex flex-row items-center overflow-hidden">
                       <Image
                         alt="이메일 아이콘"
                         src="/images/mail.png"
@@ -113,8 +85,55 @@ export default function StaffIntro({ name }: StaffPageProps) {
                         height={15}
                       />
                       {item.email}
+                    </div>                                      
+                  </div>                  
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+      <section className="w-full mt-6">
+        <div className="w-full h-24 flex items-center justify-center">
+          <div className="w-full h-14 text-2xl font-bold text-[#000000]">
+            {/* {staffPage[language]?.staff} */}
+            한국어교육센터
+          </div>
+        </div>
+        <div className="w-full flex items-center justify-center">
+          <ul className="flex flex-wrap justify-between mt-4">
+            {staff.map((item) => {
+              return (
+                <li
+                  key={item.id}
+                  className="w-76 h-40 border-t-2 border-[#0C588D] bg-[#F6F6F6] mb-4 text-[#000000] flex flex-col justify-between"
+                >
+                  <div className=" flex flex-col justify-center">
+                    <div className="p-2 h-8 ml-2 font-semibold">{item.position}</div>
+                    <div className="p-4 text-xl font-semibold">
+                      {item.name}
                     </div>
                   </div>
+                  <div className="border-t-2 border-[#0C588D] font-bold h-8 flex items-center pl-2">
+                    <div className="h-8 ml-2 font-bold flex flex-row items-center gap-2 text-sm text-[#909090] overflow-hidden whitespace-nowrap">
+                      <Image
+                        alt="전화기 아이콘"
+                        src="/images/telephone.png"
+                        width={15}
+                        height={15}
+                        className="mr-2"
+                      />{" "}
+                      {item.phone}
+                      <Image
+                        alt="이메일 아이콘"
+                        src="/images/mail.png"
+                        className="mr-2"
+                        width={15}
+                        height={15}
+                      />
+                      {item.email}
+                    </div>                                      
+                  </div>                  
                 </li>
               );
             })}
