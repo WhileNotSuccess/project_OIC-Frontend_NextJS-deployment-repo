@@ -29,7 +29,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
   // 예시메뉴
   [Language.korean]: {
     introduction: "소개글",
-    staff: "교직원 소개",
+    "staff-intro": "교직원 소개",
     "international-agreements": "국제협약현황",
     directions : "연락처",
     // contact: "연락처",
@@ -50,7 +50,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
   },
   [Language.japanese]: {
     introduction: "紹介文",
-    staff: "教職員紹介",
+    "staff-intro": "教職員紹介",
     "international-agreements": "国際協定状況",
     directions : "連絡先",
     //contact: "連絡先",
@@ -71,7 +71,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
   },
   [Language.english]: {
     introduction: "introduction",
-    staff: "Faculty And Staff Introduction",
+    "staff-intro": "Faculty And Staff Introduction",
     "international-agreements": "International Agreements Status",
     //contact: "Contact Information",
     directions: "Contact Information",

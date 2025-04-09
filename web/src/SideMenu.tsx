@@ -80,9 +80,9 @@ export default function SideMenu(){
             {smallMenu[language].introduction}
           </Link>
           <Link
-            href={"/staff"} 
+            href={"/staff/staff-intro"} 
             className="h-1/4 flex items-center justify-center">
-            {smallMenu[language].staff}
+            {smallMenu[language]["staff-intro"]}
           </Link>
           <Link
             href={"/"}

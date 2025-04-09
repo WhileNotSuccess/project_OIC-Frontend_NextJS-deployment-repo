@@ -7,8 +7,8 @@ export default async function GuidancePage ({ params } : IdProps) {
 
   const { id } = resolvedParams;
   return(
-    <div className="ml-40">
-      <HtmlDocs category={id}/>
+    <div>
+      <HtmlDocs id={id}/>
     </div>
   );
 }
