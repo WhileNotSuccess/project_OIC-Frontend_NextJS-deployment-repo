@@ -28,11 +28,11 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
   const [inputValue, setInputValue] = useState("");
   const [language, setLanguage] = useState<Language>(Language.korean);
   const [allBoardData, setAllBoardData] = useState<AllBoardData>({
-    boardData : [],
-    currentPage : 0,
-    nextPage : 1,
-    prevPage : 1,
-    totalPage : 1,
+    boardData: [],
+    currentPage: 0,
+    nextPage: 1,
+    prevPage: 1,
+    totalPage: 1,
   });
   const adminUserCheck = adminCheck || ((name === "review" || name === "faq") && userCheck);
 
@@ -55,11 +55,11 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
         );
         const data = await response.json();
         setAllBoardData({
-          boardData : data.data,
-          currentPage : data.currentPage,
-          nextPage : data.nextPage,
-          prevPage : data.prevPage,
-          totalPage : data.totalPage,
+          boardData: data.data,
+          currentPage: data.currentPage,
+          nextPage: data.nextPage,
+          prevPage: data.prevPage,
+          totalPage: data.totalPage,
         });
       } catch {
         alert(getError[language]?.boardError);
@@ -67,7 +67,7 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
       }
     };
     fetchBoard(allBoardData.currentPage);
-  }, [allBoardData.currentPage, language,name,customFetch]);
+  }, [allBoardData.currentPage, language, name]);
 
   useEffect(() => {
     // userCheck랑 adminCheck는 합치기 같은 로직이니까 (보류)
@@ -92,9 +92,9 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
 
   const onPageChange = (page: number) => {
     if (page > 0 && page <= allBoardData.totalPage) {
-      setAllBoardData((prevData)=>({
+      setAllBoardData((prevData) => ({
         ...prevData,
-        currentPage:page,
+        currentPage: page,
       }));
     }
   };
@@ -104,7 +104,7 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
   };
 
   const onSearch = async (value: string) => {
-    if(!value){
+    if (!value) {
       alert(boardPage[language].writeSomething);
       window.location.reload();
     }
@@ -117,11 +117,11 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
       );
       const data = await response.json();
       setAllBoardData({
-        boardData : data.data,
-        currentPage : data.currentPage,
-        nextPage : data.nextPage,
-        prevPage : data.prevPage,
-        totalPage : data.totalPage,
+        boardData: data.data,
+        currentPage: data.currentPage,
+        nextPage: data.nextPage,
+        prevPage: data.prevPage,
+        totalPage: data.totalPage,
       });
     } catch {
       alert("테스트 실패");
