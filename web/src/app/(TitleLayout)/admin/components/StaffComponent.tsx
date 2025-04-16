@@ -10,7 +10,7 @@ export default function StaffComponent(item: Teacher) {
   const [modalDeleteOpen, setModalDeleteOpen] = useState<boolean>(false);
 
   return (
-    <section className="flex m-2">
+    <section className="flex mb-4">
       {modalUpdateOpen && (
         <StaffModal
           onClose={() => {
@@ -29,7 +29,7 @@ export default function StaffComponent(item: Teacher) {
           target="staff"
         />
       )}
-      <article className="w-72 p-4 bg-white shadow-lg rounded-lg border border-gray-200 ">
+      <article className="w-66 p-4 bg-white shadow-lg rounded-lg border border-gray-200 ">
         <header className="w-full relative">
           <h2 className="text-blue-500 font-bold text-lg inline-block">
             {item.name}
@@ -40,7 +40,7 @@ export default function StaffComponent(item: Teacher) {
             }}
             className="float-right cursor-pointer"
           >
-            ㅤㅤ⋮
+              ㅤㅤ⋮
           </span>
           {menuOpen && (
             <div className="absolute top-full right-0 mt-1 w-40 bg-white border rounded shadow-lg">
@@ -51,7 +51,7 @@ export default function StaffComponent(item: Teacher) {
                   }}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                 >
-                  삭제
+                    삭제
                 </li>
                 <li
                   onClick={() => {
@@ -59,7 +59,7 @@ export default function StaffComponent(item: Teacher) {
                   }}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                 >
-                  수정
+                    수정
                 </li>
               </ul>
             </div>
