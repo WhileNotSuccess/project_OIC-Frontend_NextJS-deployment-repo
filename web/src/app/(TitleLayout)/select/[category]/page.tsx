@@ -8,7 +8,7 @@ export default async function internationalAgreements({ params }: Props) {
   const { category } = resolvedParams;
 
   return (
-    <div className="ml-40">
+    <div>
       <Title category={category} />
       <InternationalAgreeCompo />
     </div>
