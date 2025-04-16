@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <div>
-      <SideMenu/>
+      <SideMenu />
       {children}
     </div>
   );

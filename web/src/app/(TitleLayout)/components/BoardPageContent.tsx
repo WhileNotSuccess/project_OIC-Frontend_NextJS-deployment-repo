@@ -7,10 +7,10 @@ import Link from "next/link";
 
 
 
-interface BoardPageContentProps{
-  language : Language,
-  boardData : BoardData[],
-  name : string,
+interface BoardPageContentProps {
+  language: Language,
+  boardData: BoardData[],
+  name: string,
 }
 
 
@@ -18,11 +18,17 @@ export default function BoardPageContent({
   language,
   boardData,
   name,
-} : BoardPageContentProps){
+}: BoardPageContentProps) {
 
-  return(
+  return (
     <section className="w-full flex flex-col items-center mb-5">
       <div className="w-full h-16 border-x-0 border-y-2 border-t-[#4171b4] mt-12 flex sm:items-center items-center justify-between">
+        {name === "notice" ?
+          <div className="w-20">
+          </div>
+          :
+          null
+        }
         <div className="w-2/5 font-bold flex justify-center ml-4">
           {boardPage[language]?.title}
         </div>

@@ -70,39 +70,38 @@ export default function HtmlDocs(props: HtmlDocsProps) {
     };
 
     fetchData();
-  }, [language, props.category, props.id]);
+  }, [props.category, props.id]);
 
 
   return (
     <main className="w-full px-12">
       <div className="h-12"></div>
 
-      {props.category ? 
+      {props.category ?
         null
-        : 
+        :
         <HtmlDocsIdProps
           title={allData.title}
-          author={allData.author} 
-          createdDate={allData.createdDate} 
-          documentFiles={allData.documentFiles} 
+          author={allData.author}
+          createdDate={allData.createdDate}
+          documentFiles={allData.documentFiles}
           guidanceId={allData.guidanceId}
-          language={language} 
-          canEditOrDelete={canEditOrDelete} 
+          language={language}
+          canEditOrDelete={canEditOrDelete}
         />
       }
 
       {props.category === "directions" && (
-        <HtmlDocsDirection language={language}/>
+        <HtmlDocsDirection language={language} />
       )}
-      {allData.content &&       
-      <section className="w-full flex justify-center">
-        <div className="min-h-dvh">
-          <div className="prose w-full break-words">
-            {parser(allData.content)}
+      {allData.content &&
+        <section className="w-full flex justify-center">
+          <div className="min-h-dvh">
+            <div className="prose w-full break-words">
+              {parser(allData.content)}
+            </div>
           </div>
-        </div>
-      </section>}
-    
+        </section>}
     </main>
   );
 }

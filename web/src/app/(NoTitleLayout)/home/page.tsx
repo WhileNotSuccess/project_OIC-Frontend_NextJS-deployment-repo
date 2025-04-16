@@ -1,11 +1,9 @@
-import SideMenu from "@/SideMenu";
+import HomeCompo from "./components/HomeCompo";
 
-export default function HomePage(){
-  
-  return(
+export default function HomePage() {
+  return (
     <div>
-      <SideMenu/>
-      home페이지입니다.
+      <HomeCompo />
     </div>
   );
 }
