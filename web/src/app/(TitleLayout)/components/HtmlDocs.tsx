@@ -74,7 +74,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
 
 
   return (
-    <main className="w-full">
+    <main className="w-full px-12">
       <div className="h-12"></div>
 
       {props.category ?
@@ -91,18 +91,17 @@ export default function HtmlDocs(props: HtmlDocsProps) {
         />
       }
 
-      {props.category === "contact" && (
+      {props.category === "directions" && (
         <HtmlDocsDirection language={language} />
       )}
       {allData.content &&
         <section className="w-full flex justify-center">
-          <div className="w-3/5 min-h-dvh">
+          <div className="min-h-dvh">
             <div className="prose w-full break-words">
               {parser(allData.content)}
             </div>
           </div>
         </section>}
-
     </main>
   );
 }

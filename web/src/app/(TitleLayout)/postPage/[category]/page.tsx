@@ -8,7 +8,7 @@ export default async function PostPage({ params } : Props){
 
   const { category } = resolvedParams;
   return(
-    <div className="ml-40">
+    <div>
       <Title category={category}/>
       <Editor/>
     </div>
