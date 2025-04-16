@@ -61,12 +61,12 @@ export default function HomeCompo() {
         <div
           className={`absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-left 
             ${isVisibleTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} 
-            transition-all duration-1000 ease-in-out z-50 w-full text-center`}
+            transition-all duration-1000 ease-in-out z-10 w-full text-center`}
         >
-          <h1 className="ml-20 text-4xl md:text-8xl text-shadow font-bold">
+          <h1 className="ml-10 text-4xl md:text-8xl text-shadow font-bold">
             Global Leader,<br /> Yeungjin University
           </h1>
-          <h1 className="ml-20 text-2xl md:text-4xl font-bold">
+          <h1 className="ml-10 text-2xl md:text-4xl font-bold">
             Office of International Cooperation
           </h1>
         </div>
@@ -74,25 +74,56 @@ export default function HomeCompo() {
 
       <div className="relative w-full ">
         <div className="relative w-full min-h-[60vh] flex items-center justify-center">
-          <div className="bg-gray-400 min-h-[50vh] w-full">
+          <div className="bg-gray-200 min-h-[50vh] w-full">
             <div
               ref={prideRef}
               className={`${isVisiblePride ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} transition-all duration-1000 ease-in-out w-full text-center`}
             >
-              <h1 className="text-4xl md:text-3xl font-bold text-amber-950">
+              <h1 className="text-4xl mt-5 md:text-5xl font-bold text-amber-950">
                 PRIDE OF YEUNGJIN
               </h1>
-              <div className="flex justify-between items-center mt-40">
-                <div className="w-1/3">1</div>
-                <div className="w-1/3">2</div>
-                <div className="w-1/3">3</div>
+              <div className="flex justify-between items-start mt-20 gap-8">
+                <div className="w-1/3 flex flex-col items-center mb-5">
+                  <Image
+                    src="/images/schoolarship.png"
+                    alt="Scholarship"
+                    width={200}
+                    height={200}
+                  />
+                  <p className="mt-4 text-2xl font-bold text-black text-center">
+                    전국 최다 장학금
+                  </p>
+                </div>
+                <div className="w-1/3 flex flex-col items-center mb-5">
+                  <Image
+                    src="/images/schoolarship.png"
+                    alt="Scholarship"
+                    width={200}
+                    height={200}
+                  />
+                  <p className="mt-4 text-2xl font-bold text-black text-center">
+                    전국 최다 장학금
+                  </p>
+                </div>
+                <div className="w-1/3 flex flex-col items-center mb-5">
+                  <Image
+                    src="/images/schoolarship.png"
+                    alt="Scholarship"
+                    width={200}
+                    height={200}
+                  />
+                  <p className="mt-4 text-2xl font-bold text-black text-center">
+                    전국 최다 장학금
+                  </p>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
 
-        <div className="w-full bg-white p-10">
-          <h2 className="text-3xl font-bold">공지사항</h2>
+        <div className="w-full bg-white p-10 ">
+          <h2 className="text-3xl font-bold mb-8">공지사항</h2>
           <NewsCarousel />
         </div>
 

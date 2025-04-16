@@ -85,7 +85,7 @@ export default function SideMenu() {
             {smallMenu[language].staff}
           </Link>
           <Link
-            href={"/"}
+            href={"/select/international-agreements"}
             // href={"/"} 
             className="h-1/4 flex items-center justify-center">
             {smallMenu[language]["international-agreements"]}

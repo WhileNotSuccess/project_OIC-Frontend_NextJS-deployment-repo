@@ -45,8 +45,8 @@ const NoticeCarousel = () => {
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   /*   const customFetch = useCustomFetch(); */
-  const cardWidth = 400;
-  const gap = 1;
+  const cardWidth = 540;
+  const gap = 20;
 
   const extendedItems = [...noticeItems, ...noticeItems, ...noticeItems]; // 항목을 3번 반복하여 무한 루프 효과
   const totalItems = extendedItems.length;
@@ -160,7 +160,7 @@ const NoticeCarousel = () => {
         {extendedItems.map((item, index) => (
           <div
             key={`${item.title}-${index}`}
-            className="flex-shrink-0 text-white p-4"
+            className="flex-shrink-0 text-white "
             style={{
               width: `${cardWidth}px`,
               marginRight: `${gap}px`,
@@ -169,7 +169,7 @@ const NoticeCarousel = () => {
 
 
               <div
-                className="h-[180px] flex flex-col justify-center items-center relative overflow-hidden"
+                className="h-[300px] flex flex-col justify-center items-center relative overflow-hidden"
               >
 
                 <div
@@ -179,7 +179,7 @@ const NoticeCarousel = () => {
 
 
                 <div className="relative z-10 text-white text-center select-none p-2 mt-20">
-                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <h3 className="text-2xl font-bold">{item.title}</h3>
                   <Link
                     href={`${item.url}`}
                     className="h-1/4 flex items-center justify-center underline">

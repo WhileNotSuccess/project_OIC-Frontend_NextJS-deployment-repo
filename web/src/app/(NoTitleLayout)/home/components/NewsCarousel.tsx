@@ -22,8 +22,8 @@ const NewsCarousel = () => {
   const [NewsItems, setNewsItems] = useState<NewsItem[]>([]);
   const customFetch = useCustomFetch();
 
-  const cardWidth = 300;
-  const gap = 16;
+  const cardWidth = 260;
+  const gap = 20;
 
   useEffect(() => {
     const GetNewsItems = async () => {
@@ -34,7 +34,7 @@ const NewsCarousel = () => {
         const data = await response.json();
         setNewsItems(data.data);
       } catch {
-        console.error("Error fetching news data:");
+        console.error("");
       }
     };
     GetNewsItems();
@@ -135,7 +135,7 @@ const NewsCarousel = () => {
           return (
             <div
               key={`${item.title}-${index}`}
-              className="flex-shrink-0 text-white p-4"
+              className="flex-shrink-0 text-white"
               style={{
                 width: `${cardWidth}px`,
                 marginRight: `${gap}px`,
@@ -145,7 +145,7 @@ const NewsCarousel = () => {
                 <div className="bg-gray-100 rounded-md overflow-hidden">
                   <div className="h-[220px] flex flex-col justify-start items-center relative">
                     <div className="relative z-10 text-black text-center select-none p-2">
-                      <h3 className="text-sm font-bold line-clamp-2">{item.title}</h3>
+                      <h3 className="text-xl font-bold line-clamp-2">{item.title}</h3>
                     </div>
 
                     <div className="relative z-10 text-black text-center select-none p-2 mt-2">
