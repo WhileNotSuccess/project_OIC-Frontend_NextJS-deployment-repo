@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SideMenu from "@/SideMenu";
+import HamburgerMenuCompo from "./components/HamburgerMenuCompo";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <div>
-      <SideMenu />
+      <div className="sm:block hidden">
+        <SideMenu />
+      </div>
+      <div className="block sm:hidden">
+        <HamburgerMenuCompo/>
+      </div>
       {children}
     </div>
   );
