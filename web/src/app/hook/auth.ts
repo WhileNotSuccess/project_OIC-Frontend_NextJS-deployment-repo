@@ -1,6 +1,6 @@
 "use client";
 import { default as useSWR } from "swr";
-import useCustomFetch from "../lib/customFetch";
+import useCustomFetch from "./customFetch";
 import { LoginBody } from "../common/types";
 import { useRouter } from "next/navigation";
 import { AuthMenu, serverError } from "../menu";

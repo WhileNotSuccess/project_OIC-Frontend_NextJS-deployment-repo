@@ -1,7 +1,7 @@
 "use client";
 
 import { Language, Teacher } from "@/app/common/types";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { useEffect, useState } from "react";
 import { getError } from "@/app/menu";
 import Cookies from "js-cookie";

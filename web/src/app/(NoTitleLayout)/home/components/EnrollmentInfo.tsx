@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import Image from "next/image";
 
 

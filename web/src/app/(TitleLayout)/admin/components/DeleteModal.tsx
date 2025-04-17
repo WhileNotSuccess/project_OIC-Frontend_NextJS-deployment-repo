@@ -1,4 +1,4 @@
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { createPortal } from "react-dom";
 
 type ModalProps = {

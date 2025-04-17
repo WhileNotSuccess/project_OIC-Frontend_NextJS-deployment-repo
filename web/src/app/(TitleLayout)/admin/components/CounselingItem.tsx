@@ -1,5 +1,5 @@
 import { Counseling } from "@/app/common/types";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { useState } from "react";
 import CounselingItemUpdateModal from "./CounselingItemUpdateModal";
 import { formatDateWithTime } from "@/app/common/formatDateWithTime";

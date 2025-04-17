@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { NameChangeModalMenu } from "@/app/menu";
 import { Language, NameChangeModalProps } from "@/app/common/types";
 import Cookies from "js-cookie";
@@ -29,15 +29,15 @@ export default function NameChangeModal({
         method: "PATCH",
         body: JSON.stringify({ name: newName }),
       });
-
-      if (response && response.message) {
+      const data = await response.json();
+      if (response && data.message) {
         alert(`${NameChangeModalMenu[language].successNameChange}`);
       } else {
         alert(`${NameChangeModalMenu[language].failNameChange}`);
       }
 
       onClose();
-    } catch (error) {
+    } catch {
       alert(NameChangeModalMenu[language].nameChangeError);
       onClose(); // 오류가 나도 모달은 닫아줌
     }

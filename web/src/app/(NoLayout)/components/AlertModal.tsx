@@ -15,7 +15,7 @@ interface AlertModalProps {
 // props를 받고 대충 어쩌고 저쩌고 생성할때 뭐 받고 어디로 요청보내는 거까지 받아서 하기
 
 export default function AlertModal(props: AlertModalProps) {
-  if (!props.isOpen) return null;
+  
 
   const [language, setLanguage] = useState<Language>(Language.korean);
 
@@ -24,8 +24,10 @@ export default function AlertModal(props: AlertModalProps) {
     if (savedLanguage) {
       setLanguage(savedLanguage);
     }
+  
   }, []);
-
+  
+  if (!props.isOpen) return null;
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-sm">

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { CheckAdminAlert } from "@/app/menu";
 import Cookies from "js-cookie";
 import { Language } from "@/app/common/types";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useCustomFetch from "../../lib/customFetch";
+import useCustomFetch from "../../hook/customFetch";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { RegisterCompoMenu, serverError } from "@/app/menu";
@@ -42,13 +42,13 @@ export default function RegisterCompo() {
           body: JSON.stringify({ name }),
         });
 
-        if (data.error) {
+        if (!data.ok) {
           setError(RegisterCompoMenu[language].nameChangeError);
         } else {
           setMessage(RegisterCompoMenu[language].nameChangeComplete);
           router.push("/");
         }
-      } catch (err) {
+      } catch {
         setError(serverError[language].server);
       }
     } else {
@@ -61,14 +61,14 @@ export default function RegisterCompo() {
           body: JSON.stringify(payload),
         });
 
-        if (data.error) {
+        if (!data.ok) {
           setError(RegisterCompoMenu[language].registerError);
         } else {
           window.location.href = "/";
           // setMessage(RegisterCompoMenu[language].registerComplete);
           // setIsOpen(true);
         }
-      } catch (err) {
+      } catch {
         setError(serverError[language].server);
       }
     }

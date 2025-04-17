@@ -1,7 +1,7 @@
 "use client";
 
 import { Language, ServerDocumentFile } from "@/app/common/types";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { deleteError, deleteSuccess, editorCompo, getError } from "@/app/menu";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import Cookies from "js-cookie";
 import parser from "html-react-parser";
 // import Image from "next/image";
@@ -16,7 +16,7 @@ import {
 } from "../../menu";
 import HtmlDocsIdProps from "./HtmlDocsIdProps";
 import HtmlDocsDirection from "./HtmlDocsDirection";
-import { useCheckAdmin } from "@/app/lib/canEditOrDelete";
+import { useCheckAdmin } from "@/app/hook/canEditOrDelete";
 
 // useEffect 에서는 함수 호출만 선언은 밖에서
 export default function HtmlDocs(props: HtmlDocsProps) {

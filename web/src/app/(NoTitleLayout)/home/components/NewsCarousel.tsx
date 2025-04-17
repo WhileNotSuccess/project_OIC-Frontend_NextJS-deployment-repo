@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import useCustomFetch from "@/app/lib/customFetch";
-import extractImagesAndText from "@/app/lib/extractContent";
+import useCustomFetch from "@/app/hook/customFetch";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,7 +18,7 @@ const NewsCarousel = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  const [NewsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const customFetch = useCustomFetch();
 
   const cardWidth = 260;
@@ -40,9 +39,9 @@ const NewsCarousel = () => {
     GetNewsItems();
   }, []);
 
-  const extendedItems = [...NewsItems, ...NewsItems, ...NewsItems];
+  const extendedItems = [...newsItems, ...newsItems, ...newsItems];
   const totalItems = extendedItems.length;
-  const middleIndex = NewsItems.length;
+  const middleIndex = newsItems.length;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +56,7 @@ const NewsCarousel = () => {
 
   const goToSlide = (index: number) => {
     if (index < 0) {
-      setCurrentIndex(totalItems - NewsItems.length);
+      setCurrentIndex(totalItems - newsItems.length);
     } else if (index >= totalItems) {
       setCurrentIndex(0);
     } else {
@@ -67,14 +66,14 @@ const NewsCarousel = () => {
   };
 
   useEffect(() => {
-    if (currentIndex === totalItems - NewsItems.length || currentIndex === 0) {
+    if (currentIndex === totalItems - newsItems.length || currentIndex === 0) {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
         setCurrentIndex(middleIndex);
       }, 500);
       return () => clearTimeout(timeout);
     }
-  }, [currentIndex, totalItems, NewsItems.length]);
+  }, [currentIndex, totalItems, newsItems.length]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -121,7 +120,7 @@ const NewsCarousel = () => {
         }}
       >
         {extendedItems.map((item, index) => {
-          const { text } = extractImagesAndText(item.content);
+          const text  = item.content;
 
           const formattedDate = new Date(item.updatedDate)
             .toLocaleDateString("ko-KR", {
