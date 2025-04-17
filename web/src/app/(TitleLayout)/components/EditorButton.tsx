@@ -7,22 +7,51 @@ import { editorCompo, postError, postSuccess, updateError, updateSuccess } from 
 
 type EditorButtonProps = {
   deleteFileNames : string[],
-  onCheckTitleContent : ()=>boolean,
-  onFormDataAppend : ()=> FormData,
   customFetch : (url : string, options? : RequestInit) => Promise<Response>,
   id? : string,
   language : Language,
+  title : string,
+  content : string,
+  category : string,
+  documentFiles : File[],
 }
 
 
 export default function EditorButton({
   id,
-  onCheckTitleContent,
-  onFormDataAppend,
   customFetch,
   language,
   deleteFileNames,
+  title,
+  content,
+  category,
+  documentFiles,
 }:EditorButtonProps){
+
+
+  const onFormDataAppend = ()=>{
+    const formData = new FormData();
+    formData.append("title",title);
+    formData.append("content",content);
+    formData.append("category", category);
+    formData.append("language", language);
+    documentFiles.forEach((file) => {
+      formData.append("files", file); // 문서 파일도 함께 전송
+    });
+    return formData;
+  };
+
+  const onCheckTitleContent = ()=>{
+    if(title===""){
+      alert(editorCompo[language].needInputTitle);
+      return false;
+    }
+    if(content===""){
+      alert(editorCompo[language].needInputContent);
+      return false;
+    }
+    return true;
+  };
 
   const onSubmit = async () =>{
     if(!onCheckTitleContent()) return;

@@ -6,7 +6,7 @@ import { deleteError, deleteSuccess, editorCompo, getError } from "@/app/menu";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-interface HtmlDocsIdProps {
+interface HtmlDocsHeaderProps {
   title : string;
   author : string;
   createdDate : string;
@@ -16,7 +16,7 @@ interface HtmlDocsIdProps {
   canEditOrDelete : boolean;
 }
 
-export default function HtmlDocsIdProps({
+export default function HtmlDocsHeaderProps({
   title,
   author,
   createdDate,
@@ -24,7 +24,7 @@ export default function HtmlDocsIdProps({
   guidanceId,
   language,
   canEditOrDelete,
-} : HtmlDocsIdProps){
+} : HtmlDocsHeaderProps){
   const router = useRouter();
   const customFetch = useCustomFetch();
 

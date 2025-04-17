@@ -4,15 +4,13 @@ import useCustomFetch from "@/app/hook/customFetch";
 import { boardMenu } from "../../menu";
 import { useEffect, useState } from "react";
 import Pagination from "./Pagination";
-import { boardPage, getError } from "../../menu";
+import { getError } from "../../menu";
 import Cookies from "js-cookie";
 import { Language, AllBoardData } from "@/app/common/types";
-import { useRouter } from "next/navigation";
 import { useCheckAdmin } from "@/app/hook/canEditOrDelete";
 import BoardPageSearch from "./BoardPageSearch";
 import BoardPageButton from "./BoardPageButton";
 import BoardPageContent from "./BoardPageContent";
-// import BoardPageContent from "./BoardPageContent";
 
 type BoardPageProps = {
   name: keyof (typeof boardMenu)[Language];
@@ -22,9 +20,6 @@ type BoardPageProps = {
 
 export default function BoardPageCompo({ name }: BoardPageProps) {
   const customFetch = useCustomFetch();
-  const [searchOption, setSearchOption] = useState<string>("title");
-  const router = useRouter();
-  const [inputValue, setInputValue] = useState("");
   const [language, setLanguage] = useState<Language>(Language.korean);
   const { adminUserCheck } = useCheckAdmin();
   const [allBoardData, setAllBoardData] = useState<AllBoardData>({
@@ -77,35 +72,6 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
     }
   };
 
-  const onWrite = (category: string) => {
-    router.push(`/post/${category}`);
-  };
-
-  const onSearch = async (value: string) => {
-    if (!value) {
-      alert(boardPage[language].writeSomething);
-      window.location.reload();
-    }
-    try {
-      const response = await customFetch(
-        `/posts/search?limit=10&page=1&category=${name}&${searchOption}=${value}`,
-        {
-          method: "GET",
-        },
-      );
-      const data = await response.json();
-      setAllBoardData({
-        boardData: data.data,
-        currentPage: data.currentPage,
-        nextPage: data.nextPage,
-        prevPage: data.prevPage,
-        totalPage: data.totalPage,
-      });
-    } catch {
-      alert("테스트 실패");
-    }
-  };
-
   return (
     <div className="w-full px-12">
       <header
@@ -116,16 +82,13 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
       <section className="w-full flex sm:px-40 px-20">
         <div className="w-full flex flex-col sm:flex-row sm:justify-between justify-start">
           <BoardPageSearch
-            searchOption={searchOption}
-            setSearchOption={setSearchOption}
             language={language}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            onSearch={onSearch}
+            customFetch={customFetch}
+            setAllBoardData={setAllBoardData}
+            name={name}
           />
           {adminUserCheck ? (
             <BoardPageButton
-              onWrite={onWrite}
               language={language}
               name={name}
             />

@@ -2,19 +2,24 @@
 
 import { Language } from "@/app/common/types";
 import { boardPage } from "@/app/menu";
+import { useRouter } from "next/navigation";
 
 
 interface BoardPageButtonProps{
-  onWrite : (name : string) => void,
   language : Language,
   name : string
 }
 
 export default function BoardPageButton({
-  onWrite,
   language,
   name,
 } : BoardPageButtonProps){
+
+  const router = useRouter();
+
+  const onWrite = (category: string) => {
+    router.push(`/postPage/${category}`);
+  };
 
   return(
     <div className="flex justify-center ml-2">

@@ -14,7 +14,7 @@ import {
   //editorCompo,
   //guidanceMenu,
 } from "../../menu";
-import HtmlDocsIdProps from "./HtmlDocsIdProps";
+import HtmlDocsHeaderProps from "./HtmlDocsHeaderProps";
 import HtmlDocsDirection from "./HtmlDocsDirection";
 import { useCheckAdmin } from "@/app/hook/canEditOrDelete";
 
@@ -80,7 +80,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
       {props.category ?
         null
         :
-        <HtmlDocsIdProps
+        <HtmlDocsHeaderProps
           title={allData.title}
           author={allData.author}
           createdDate={allData.createdDate}

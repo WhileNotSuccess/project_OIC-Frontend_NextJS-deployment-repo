@@ -1,23 +1,49 @@
 "use client";
 
+import { Language } from "@/app/common/types";
+import { postError } from "@/app/menu";
 import { Editor } from "@tinymce/tinymce-react";
+import { useRef } from "react";
 import { Editor as EditorType } from "tinymce";
 
 type EditorTinyMCEProps = {
   content : string,
   setContent : React.Dispatch<React.SetStateAction<string>>,
-  editorRef : React.MutableRefObject<EditorType | null>,
-  fileInputRef : React.RefObject<HTMLInputElement>,
-  handleFileSelect : (file : File)=> Promise<string|undefined>
+  customFormFetch : (url : string, options? : RequestInit) => Promise<Response>,
+  language : Language,
 }
 
 export default function EditorTinyMCE({
   content,
   setContent,
-  editorRef,
-  fileInputRef,
-  handleFileSelect,
+  customFormFetch,
+  language,
 }:EditorTinyMCEProps){
+
+  const editorRef = useRef<EditorType | null>(null); // tinymce를 직접 조작하는
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleFileSelect = async (file: File) => {
+    if (file) {
+      const formData = new FormData();
+      formData.append("image", file);
+  
+      try {
+        const data = await customFormFetch("/attachments", {
+          // 주소 바꿔야함, body랑 헤더를 커스텀 함수를 만들어서 보내는걸로로 변경해야함
+  
+          method: "POST",
+          body: formData,
+        });
+        const imageUrl = decodeURIComponent(data.url);
+        return imageUrl;
+      } catch {
+        alert(postError[language]?.imgError);
+      }
+    }
+  };
+
+
   return(
     <div>
       <section className="mt-1.5">
