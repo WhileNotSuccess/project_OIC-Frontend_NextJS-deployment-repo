@@ -19,7 +19,7 @@ export default function EditorTitle({
           htmlFor="search-dropdown"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
         >
-        Your Email
+        Title
         </label>
       </div>
       <div className="relative w-full">

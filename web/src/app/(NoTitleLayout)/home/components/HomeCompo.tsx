@@ -20,6 +20,7 @@ export default function HomeCompo() {
   }, []);
 
   useEffect(() => {
+    const node = prideRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -33,13 +34,13 @@ export default function HomeCompo() {
       },
     );
 
-    if (prideRef.current) {
-      observer.observe(prideRef.current);
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (prideRef.current) {
-        observer.unobserve(prideRef.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, []);

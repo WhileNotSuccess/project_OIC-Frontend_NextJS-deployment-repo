@@ -1,6 +1,6 @@
 "use client";
 
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { boardMenu } from "../../menu";
 import { useEffect, useState } from "react";
 import Pagination from "./Pagination";
@@ -8,7 +8,7 @@ import { boardPage, getError } from "../../menu";
 import Cookies from "js-cookie";
 import { Language, AllBoardData } from "@/app/common/types";
 import { useRouter } from "next/navigation";
-import { useCheckAdmin } from "@/app/lib/canEditOrDelete";
+import { useCheckAdmin } from "@/app/hook/canEditOrDelete";
 import BoardPageSearch from "./BoardPageSearch";
 import BoardPageButton from "./BoardPageButton";
 import BoardPageContent from "./BoardPageContent";

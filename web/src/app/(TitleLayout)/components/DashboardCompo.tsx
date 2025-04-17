@@ -4,7 +4,7 @@ import { useAuth } from "@/app/hook/auth";
 import { useEffect, useState } from "react";
 import NameChangeModal from "./NameChangeModal";
 import { useRouter } from "next/navigation";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { DashboardCompoMenu, getError } from "@/app/menu";
 import { Language } from "@/app/common/types";
 import Cookies from "js-cookie";

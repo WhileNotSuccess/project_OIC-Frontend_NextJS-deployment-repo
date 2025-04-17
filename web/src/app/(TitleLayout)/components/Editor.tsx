@@ -8,8 +8,8 @@ import EditorTitle from "./EditorTitle";
 import EditorCategoryLanguage from "./EditorCategoryLanguage";
 import EditorTinyMCE from "./EditorTinyMCE";
 import { editorCompo, postError } from "@/app/menu";
-import useCustomFormFetch from "@/app/lib/customFormFetch";
-import useCustomFetch from "@/app/lib/customFetch";
+import useCustomFormFetch from "@/app/hook/customFormFetch";
+import useCustomFetch from "@/app/hook/customFetch";
 import { Editor as EditorType } from "tinymce";
 import EditorButton from "./EditorButton";
 

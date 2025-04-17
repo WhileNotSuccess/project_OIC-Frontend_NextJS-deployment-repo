@@ -22,7 +22,7 @@ const Pagination: React.FC<Props> = ({
 }) => {
   const pageNumbers = Array.from(
     { length: totalPage },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
   const [language, setLanguage] = useState<Language>(Language.korean);
 
