@@ -55,8 +55,9 @@ export const useAuth = () => {
         body: JSON.stringify(payload),
       });
 
-      if (data.error) {
-        setError(data.message);
+      if (!data.ok) {
+        const json = await data.json();
+        setError(json.message);
       } else {
         router.push("/");
       }
