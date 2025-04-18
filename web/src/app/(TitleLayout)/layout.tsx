@@ -15,12 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <div>
-      <div className="sm:block hidden">
-        <SideMenu />
-      </div>
-      <div className="block sm:hidden">
-        <HamburgerMenuCompo/>
-      </div>
+      <SideMenu />
+      <HamburgerMenuCompo/>
       {children}
     </div>
   );

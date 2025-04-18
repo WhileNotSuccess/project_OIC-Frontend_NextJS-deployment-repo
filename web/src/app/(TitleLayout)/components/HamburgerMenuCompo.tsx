@@ -29,7 +29,7 @@ export default function HamburgerMenuCompo() {
   };
 
   return (
-    <nav className="sm:hidden">
+    <nav className="sm:hidden block">
       <div
         className="w-full flex justify-between px-4 bg-[#0C588D]"
         onClick={onMenuOpen}
@@ -45,13 +45,14 @@ export default function HamburgerMenuCompo() {
       </div>
 
       <aside
-        className={`fixed z-50 top-0 left-0 h-full w-[70%] bg-white shadow-md border-r overflow-y-scroll transition-transform duration-300 ease-in-out
+        className={`fixed z-50 top-0 left-0 h-full w-[70%] bg-[#0C588D] opacity-80 shadow-md
+           border-r overflow-y-scroll transition-transform duration-300 ease-in-out text-white
           ${menuOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         <div className="w-full flex justify-end p-4">
           <Image
-            src="/images/close.png"
+            src="/images/closeButton.png"
             alt="닫기"
             width={64}
             height={64}
@@ -80,7 +81,7 @@ export default function HamburgerMenuCompo() {
                   <Link
                     key={subIndex}
                     href={subItem.address}
-                    className="px-6 py-2 bg-gray-100 hover:bg-gray-200 transition"
+                    className="px-6 py-2 bg-[#06314B] hover:bg-[#0C588D] transition"
                   >
                     {subItem.name}
                   </Link>
