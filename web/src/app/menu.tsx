@@ -1102,51 +1102,50 @@ export const AuthMenu: Record<Language, Record<string, string>> = {
   },
 };
 
-export const Hamburger: Record<
+export const Hamburger: Record< // 국제교류원에 맞춰서 수정 된 상태
   Language,
   { topMenu: string; subMenu: { address: string; name: string }[] }[]
 > = {
   [Language.korean]: [
     {
-      topMenu: "센터소개",
+      topMenu: "소개",
       subMenu: [
-        { address: "/guidance/introduction", name: "한국어교육센터" },
-        { address: "/guidance/directions", name: "오시는길" },
+        { address: "/guidance/introduction", name: "소개글" },
         { address: "/staff/staff-intro", name: "교직원" },
+        { address: "/select/international-agreements", name: "국제협약현황" },
+        { address: "/guidance/directions", name: "오시는길" }, // contact로 바꿔야함
       ],
     },
     {
-      topMenu: "과정소개",
+      topMenu: "외국인 입학",
       subMenu: [
-        { address: "/select/korean-curriculum", name: "한국어교육과정" },
-        { address: "/select/open-campus", name: "오픈캠퍼스" },
-        { address: "/board/review", name: "유학생 후기" },
-      ],
-    },
-    {
-      topMenu: "신청",
-      subMenu: [
-        { address: "/select/applied-to", name: "입학 신청" },
-        { address: "/form/counseling", name: "상담 신청" },
-        { address: "/board/application-form", name: "신청 서류" },
-        { address: "/guidance/visa", name: "비자 안내" },
-      ],
-    },
-    {
-      topMenu: "학교생활",
-      subMenu: [
+        { address: "/guidance/procedure-guide", name: "입학 안내" },
+        { address: "https://ipsi.yju.ac.kr/ipsi/3828/subview.do", name: "학과 안내" },
+        { address: "/", name: "캠퍼스 생활" }, // 주소 추가 해야함
+        { address: "/guidance/student-support", name: "학생 지원 서비스" },
         { address: "/guidance/dormitory", name: "기숙사 안내" },
-        { address: "/guidance/facility", name: "학교 시설 안내" },
-        { address: "/board/learning-materials", name: "학습 자료 안내" },
-        { address: "/guidance/insurance", name: "건강 보험 안내" },
+        { address: "/board/faq", name: "FAQ" },
       ],
     },
     {
-      topMenu: "알림/공지",
+      topMenu: "글로벌 프로그램",
       subMenu: [
+        { address: "/global-programs", name: "글로벌 프로그램" },
+        { address: "/guidance/global-internships", name: "글로벌 현장학습" },
+        { address: "/guidance/overseas-careers", name: "해외취업지원센터" },
+      ],
+    },
+    {
+      topMenu: "알림 및 공지사항",
+      subMenu: [
+        { address: "/board/news", name: "알림" },
         { address: "/board/notice", name: "공지사항" },
-        { address: "/board/news", name: "한국어교육센터 알림" },
-        { address: "/board/faq", name: "FAQ" },
+      ],
+    },
+    {
+      topMenu: "한국어교육센터",
+      subMenu: [
+        { address: "https://kcenter.yju.ac.kr/home", name: "바로가기" },
       ],
     },
   ],
@@ -1158,11 +1157,9 @@ export const Hamburger: Record<
           address: "/guidance/introduction",
           name: "Korean Education Center",
         },
-        { address: "/guidance/directions", name: "Directions" },
-        {
-          address: "/staff/staff-intro",
-          name: "Faculty and Staff Introduction",
-        },
+        { address: "/staff/staff-intro", name: "Faculty and Staff Introduction" },
+        { address: "/select/international-agreements", name: "International Agreements Status" },
+        { address: "/guidance/directions", name: "Directions" }, // contact로 바꿔야 함
       ],
     },
     {

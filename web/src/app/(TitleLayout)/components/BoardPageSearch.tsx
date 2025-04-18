@@ -1,26 +1,51 @@
 "use client";
 
-import { Language } from "@/app/common/types";
+import { AllBoardData, Language } from "@/app/common/types";
 import { boardPage } from "@/app/menu";
+import { useState } from "react";
 
 
 interface BoardPageSearchProps {
-  searchOption : string,
-  setSearchOption : React.Dispatch<React.SetStateAction<string>>,
   language : Language,
-  inputValue : string,
-  setInputValue : React.Dispatch<React.SetStateAction<string>>,
-  onSearch : (name : string) => void,
+  customFetch : (endpoint : string, options? : RequestInit) => Promise<Response>,
+  setAllBoardData : React.Dispatch<React.SetStateAction<AllBoardData>>,
+  name : string,
 }
 
 export default function BoardPageSearch({
-  searchOption,
-  setSearchOption,
   language,
-  inputValue,
-  setInputValue,
-  onSearch,
+  customFetch,
+  setAllBoardData,
+  name,
 } : BoardPageSearchProps){
+  const [searchOption, setSearchOption] = useState<string>("title");
+  const [inputValue, setInputValue] = useState("");
+
+
+  const onSearch = async (value: string) => {
+    if (!value) {
+      alert(boardPage[language].writeSomething);
+      window.location.reload();
+    }
+    try {
+      const response = await customFetch(
+        `/posts/search?limit=10&page=1&category=${name}&${searchOption}=${value}`,
+        {
+          method: "GET",
+        },
+      );
+      const data = await response.json();
+      setAllBoardData({
+        boardData: data.data,
+        currentPage: data.currentPage,
+        nextPage: data.nextPage,
+        prevPage: data.prevPage,
+        totalPage: data.totalPage,
+      });
+    } catch {
+      alert("테스트 실패");
+    }
+  };
 
   return(
     <div className="flex sm:flex-row sm:justify-evenly flex-col justify-evenly">

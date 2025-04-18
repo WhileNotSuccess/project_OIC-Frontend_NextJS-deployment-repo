@@ -21,7 +21,7 @@ export default function SideMenu() {
 
 
   return (
-    <div className="group">
+    <div className="group sm:block hidden">
       <div className="fixed top-0 left-0 bg-[#0C588D] w-40 h-full flex flex-col items-center 
         py-4 text-white text-sm font-semibold text-center">
         <Link

@@ -6,6 +6,7 @@ import { Language } from "@/app/common/types";
 import { Hamburger } from "@/app/menu";
 import Link from "next/link";
 import Image from "next/image";
+import ManagementCookieCompo from "./ManagementCookieCompo";
 
 export default function HamburgerMenuCompo() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,64 +29,69 @@ export default function HamburgerMenuCompo() {
   };
 
   return (
-    <nav className="xl:hidden">
+    <nav className="sm:hidden block">
       <div
-        className="xl:hidden w-full flex justify-end px-4"
+        className="w-full flex justify-between px-4 bg-[#0C588D]"
         onClick={onMenuOpen}
       >
         <Image
-          src="/images/hamburger.png"
+          src="/images/hamburgerMenu.png"
           alt="햄버거 메뉴"
           className="size-8 cursor-pointer"
-          width={64}
-          height={64}
+          width={36}
+          height={36}
         />
+        <ManagementCookieCompo/>
       </div>
 
-      {menuOpen && (
-        <aside className="absolute z-50 bg-white flex flex-col top-0 right-0 overflow-y-scroll shadow-md border-2">
-          <div className="w-full flex justify-end p-4">
-            <Image
-              src="/images/close.png"
-              alt="닫기"
-              width={64}
-              height={64}
-              className="size-8 cursor-pointer"
-              onClick={onMenuOpen}
-            />
-          </div>
-          <ul>
-            {Hamburger[language].map((item, index) => (
-              <div key={index} className="border-b">
-                <div
-                  className="px-4 py-2 font-bold text-lg text-center flex justify-between items-center cursor-pointer"
-                  onClick={() => toggleSubMenu(index)}
-                >
-                  {item.topMenu}
-                  <span>{openSubMenu === index ? "▲" : "▼"}</span>
-                </div>
-                <div
-                  className={`flex flex-col transition-all overflow-hidden ${
-                    openSubMenu === index
-                      ? "max-h-40 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  {item.subMenu.map((subItem, subIndex) => (
-                    <Link
-                      key={subIndex}
-                      href={subItem.address}
-                      className="px-6 py-2 bg-gray-100 hover:bg-gray-200 transition"
-                    >
-                      {subItem.name}
-                    </Link>
-                  ))}
-                </div>
+      <aside
+        className={`fixed z-50 top-0 left-0 h-full w-[70%] bg-[#0C588D] opacity-80 shadow-md
+           border-r overflow-y-scroll transition-transform duration-300 ease-in-out text-white
+          ${menuOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        <div className="w-full flex justify-end p-4">
+          <Image
+            src="/images/closeButton.png"
+            alt="닫기"
+            width={64}
+            height={64}
+            className="size-8 cursor-pointer"
+            onClick={onMenuOpen}
+          />
+        </div>
+        <ul>
+          {Hamburger[language].map((item, index) => (
+            <div key={index} className="border-b">
+              <div
+                className="px-4 py-2 font-bold text-lg text-center flex justify-between items-center cursor-pointer"
+                onClick={() => toggleSubMenu(index)}
+              >
+                {item.topMenu}
+                <span>{openSubMenu === index ? "▲" : "▼"}</span>
               </div>
-            ))}
-          </ul>
-        </aside>
-      )}
+              <div
+                className={`flex flex-col transition-all overflow-hidden ${
+                  openSubMenu === index
+                    ? "max-h-40 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                {item.subMenu.map((subItem, subIndex) => (
+                  <Link
+                    key={subIndex}
+                    href={subItem.address}
+                    className="px-6 py-2 bg-[#06314B] hover:bg-[#0C588D] transition"
+                  >
+                    {subItem.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </ul>
+      </aside>
+
     </nav>
   );
 }

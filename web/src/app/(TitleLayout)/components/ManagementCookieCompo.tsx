@@ -52,20 +52,20 @@ export default function ManagementCookieCompo() {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-center">
       {language !== "japanese" ? (
         <Image
           alt="일본 국기"
-          src="/images/japan.png"
-          className="mr-4 cursor-pointer"
-          width={25}
+          src="/images/japan.svg"
+          className="w-6 h-4 mr-4 cursor-pointer"
+          width={10}
           height={10}
           onClick={() => SetChangeCookie(Language.japanese)}
         ></Image>
       ) : (
         <Image
           alt="한국 국기"
-          src="/images/korean.png"
+          src="/images/korea.svg"
           className="w-6 h-4 mr-4 cursor-pointer"
           width={10}
           height={10}
@@ -75,7 +75,7 @@ export default function ManagementCookieCompo() {
       {language !== "english" ? (
         <Image
           alt="미국 국기"
-          src="/images/usa.png"
+          src="/images/usa.svg"
           className="w-6 h-4 cursor-pointer"
           width={10}
           height={10}
@@ -84,7 +84,7 @@ export default function ManagementCookieCompo() {
       ) : (
         <Image
           alt="한국 국기"
-          src="/images/korean.png"
+          src="/images/korean.svg"
           className="w-6 h-4 cursor-pointer"
           width={10}
           height={10}
