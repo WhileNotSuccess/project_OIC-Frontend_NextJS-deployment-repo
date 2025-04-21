@@ -13,8 +13,8 @@ export default function InternationalAgreeCompo() {
   ];
 
   const locationCoords: { [key: string]: { x: number; y: number } } = {
-    usa: { x: 320, y: 340 },
-    japan: { x: 1200, y: 300 },
+    usa: { x: 350, y: 360 },
+    japan: { x: 1350, y: 370 },
     china: { x: 1170, y: 360 },
   };
 

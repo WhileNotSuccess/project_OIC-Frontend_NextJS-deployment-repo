@@ -110,7 +110,7 @@ export default function SideMenu() {
             {smallMenu[language].departmentInformation}
           </Link>
           <Link
-            href={"/"}
+            href={"/guidance/campus-life"}
             className="h-1/6 flex items-center justify-center">
             {smallMenu[language]["campus-life"]}
           </Link>
@@ -132,7 +132,7 @@ export default function SideMenu() {
         </div>
         <div className="h-24 border-b">
           <Link
-            href={"/global-programs"}
+            href={"/global/global-programs"}
             className="h-1/3 flex items-center justify-center">
             {smallMenu[language]["global-programs"]}
           </Link>
