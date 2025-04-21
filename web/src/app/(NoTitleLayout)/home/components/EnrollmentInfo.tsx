@@ -28,7 +28,7 @@ export default function EnrollmentInfo() {
       }
     };
     entranceApplicationData();
-  }, [customFetch]);
+  }, []);
 
   return (
     <div className="w-full flex justify-center items-center gap-12 mt-12">

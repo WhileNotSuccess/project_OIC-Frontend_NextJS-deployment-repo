@@ -57,10 +57,9 @@ export default function LoginForm() {
       className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
       style={{
         backgroundImage: "url('/images/background.jpg')",
-        height: "100vh",
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <section className="relative bg-transparent  rounded-lg shadow-lg w-full max-w-md">
         <header className=" mb-6">
           <h1 className="text-3xl font-extrabold text-blue-600">LOGIN</h1>
@@ -77,7 +76,7 @@ export default function LoginForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={handleKeydown}
-                className="w-full p-2 border border-blue-500 rounded-lg text-blue-800 focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full p-2 border border-blue-500 bg-white rounded-lg text-gray focus:outline-none focus:ring-2 focus:ring-white"
               />
               <input
                 type="password"
@@ -85,7 +84,7 @@ export default function LoginForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={handleKeydown}
-                className="w-full p-2 border border-blue-500 rounded-lg text-blue-800 focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full p-2 border border-blue-500 bg-white rounded-lg text-gray focus:outline-none focus:ring-2 focus:ring-white"
               />
             </div>
             <div
@@ -100,7 +99,7 @@ export default function LoginForm() {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full bg-[#F2F2F2] rounded-lg font-semibold mt-2 flex justify-center"
+            className="w-full bg-[#F2F2F2] rounded-lg font-semibold mt-2 flex justify-center cursor-pointer"
           >
             <Image
               src="/images/loginTab.png"
@@ -113,7 +112,7 @@ export default function LoginForm() {
           <button
             type="button"
             onClick={() => router.push("/agree-terms")}
-            className="w-full bg-blue-500 text-white p-2 rounded-lg font-semibold mt-2"
+            className="w-full bg-blue-500 text-white p-2 rounded-lg font-semibold mt-2 cursor-pointer"
           >
             {LoginCompoMenu[language].register}
           </button>

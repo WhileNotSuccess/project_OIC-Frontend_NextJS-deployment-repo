@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="sm:ml-40">
+      <body>
         {children}
       </body>
     </html>

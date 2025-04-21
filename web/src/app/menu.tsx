@@ -64,7 +64,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     faq: "FAQ",
     "global-programs": "グローバルプログラム",
     "global-internships": "グローバル現場学習",
-    "overseas-careers": "グローバル現場学習",
+    "overseas-careers": "海外就職支援センター",
     news: "お知らせ",
     notice: "通知",
     shortcut: "ショートカット",
@@ -1151,108 +1151,87 @@ export const Hamburger: Record< // 국제교류원에 맞춰서 수정 된 상�
   ],
   [Language.english]: [
     {
-      topMenu: "Center Introduction",
+      topMenu: "introduction",
       subMenu: [
-        {
-          address: "/guidance/introduction",
-          name: "Korean Education Center",
-        },
+        { address: "/guidance/introduction", name: "Introduction" },
         { address: "/staff/staff-intro", name: "Faculty and Staff Introduction" },
         { address: "/select/international-agreements", name: "International Agreements Status" },
         { address: "/guidance/directions", name: "Directions" }, // contact로 바꿔야 함
       ],
     },
     {
-      topMenu: "Course Introduction",
+      topMenu: "International Admissions",
       subMenu: [
-        {
-          address: "/select/korean-curriculum",
-          name: "Korean Language Curriculum",
-        },
-        { address: "/select/open-campus", name: "Open Campus" },
-        { address: "/board/review", name: "International Student Reviews" },
-      ],
-    },
-    {
-      topMenu: "Application",
-      subMenu: [
-        { address: "/select/applied-to", name: "Application for Admission" },
-        { address: "/form/counseling", name: "Counseling Application" },
-        { address: "/board/application-form", name: "Application Documents" },
-        { address: "/guidance/visa", name: "Visa Information" },
-      ],
-    },
-    {
-      topMenu: "School Life",
-      subMenu: [
+        { address: "/guidance/procedure-guide", name: "Admission Information" },
+        { address: "https://ipsi.yju.ac.kr/ipsi/3828/subview.do", name: "Department Information" },
+        { address: "/", name: "Campus Life" }, // 주소 추가 해야함
+        { address: "/guidance/student-support", name: "Student Support Services" },
         { address: "/guidance/dormitory", name: "Dormitory Information" },
-        {
-          address: "/guidance/facility",
-          name: "School Facilities Information",
-        },
-        {
-          address: "/board/learning-materials",
-          name: "Learning Materials Information",
-        },
-        {
-          address: "/guidance/insurance",
-          name: "Health Insurance Information",
-        },
+        { address: "/board/faq", name: "FAQ" },
       ],
     },
     {
-      topMenu: "Notification",
+      topMenu: "Global Program",
       subMenu: [
-        { address: "/board/notice", name: "Notices" },
-        {
-          address: "/board/news",
-          name: "Center News",
-        },
-        { address: "/board/faq", name: "FAQ" },
+        { address: "/global-programs", name: "Global Program" },
+        { address: "/guidance/global-internships", name: "Global Field Study" },
+        { address: "/guidance/overseas-careers", name: "Overseas Employment Supporting" },
+      ],
+    },
+    {
+      topMenu: "Notifications",
+      subMenu: [
+        { address: "/board/news", name: "Notifications" },
+        { address: "/board/notice", name: "Announcements" },
+      ],
+    },
+    {
+      topMenu: "Korean Language Education Center",
+      subMenu: [
+        { address: "https://kcenter.yju.ac.kr/home", name: "Shortcut" },
       ],
     },
   ],
   [Language.japanese]: [
     {
-      topMenu: "紹介",
+      topMenu: "introduction",
       subMenu: [
-        { address: "/guidance/introduction", name: "韓国語教育センター" },
-        { address: "/guidance/directions", name: "アクセス" },
-        { address: "/staff/staff-intro", name: "教職員" },
+        { address: "/guidance/introduction", name: "紹介文" },
+        { address: "/staff/staff-intro", name: "教職員紹介" },
+        { address: "/select/international-agreements", name: "国際協定状況" },
+        { address: "/guidance/directions", name: "連絡先" }, // contact로 바꿔야 함
       ],
     },
     {
-      topMenu: "コース紹介",
+      topMenu: "International Admissions",
       subMenu: [
-        { address: "/select/korean-curriculum", name: "韓国語教育課程" },
-        { address: "/select/open-campus", name: "オープンキャンパス" },
-        { address: "/board/review", name: "留学生の感想" },
-      ],
-    },
-    {
-      topMenu: "申請",
-      subMenu: [
-        { address: "/select/applied-to", name: "入学申請" },
-        { address: "/form/counseling", name: "カウンセリング申し込み" },
-        { address: "/board/application-form", name: "申請書類" },
-        { address: "/guidance/visa", name: "ビザ案内" },
-      ],
-    },
-    {
-      topMenu: "学校生活",
-      subMenu: [
-        { address: "/guidance/dormitory", name: "寮案内" },
-        { address: "/guidance/facility", name: "学校施設案内" },
-        { address: "/board/learning-materials", name: "学習資料案内" },
-        { address: "/guidance/insurance", name: "健康保険案内" },
-      ],
-    },
-    {
-      topMenu: "お知らせ/通知",
-      subMenu: [
-        { address: "/board/notice", name: "通知" },
-        { address: "/board/news", name: "お知らせ" },
+        { address: "/guidance/procedure-guide", name: "入学案内" },
+        { address: "https://ipsi.yju.ac.kr/ipsi/3828/subview.do", name: "学科案内" },
+        { address: "/", name: "キャンパスライフ" }, // 주소 추가 해야함
+        { address: "/guidance/student-support", name: "学生支援サービス" },
+        { address: "/guidance/dormitory", name: "寮情報" },
         { address: "/board/faq", name: "FAQ" },
+      ],
+    },
+    {
+      topMenu: "Global Program",
+      subMenu: [
+        { address: "/global-programs", name: "グローバルプログラム" },
+        { address: "/guidance/global-internships", name: "グローバル現場学習" },
+        { address: "/guidance/overseas-careers", name: "海外就職支援センター" },
+      ],
+    },
+    {
+      topMenu: "Notifications",
+      subMenu: [
+        { address: "/board/news", name: "お知らせ" },
+        { address: "/board/notice", name: "通知" },
+      ],
+    },
+    {
+      topMenu: "Korean Language Education Center",
+      subMenu: [
+        { address: "https://kcenter.yju.ac.kr/home", name: "ショートカット" },
       ],
     },
   ],
