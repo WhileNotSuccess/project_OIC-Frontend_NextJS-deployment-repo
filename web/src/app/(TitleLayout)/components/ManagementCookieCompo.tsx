@@ -84,7 +84,7 @@ export default function ManagementCookieCompo() {
       ) : (
         <Image
           alt="한국 국기"
-          src="/images/korean.svg"
+          src="/images/korea.svg"
           className="w-6 h-4 cursor-pointer"
           width={10}
           height={10}

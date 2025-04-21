@@ -62,8 +62,8 @@ export default function Editor(props: EditorProps){
   }, [props.id,customFetch]);
 
   return(
-    <main className="w-full flex justify-center">
-      <section style={{ width: "75%" }} className="mt-4">
+    <main className="w-full flex justify-center px-12">
+      <section style={{ width: "100%" }} className="mt-4">
         <EditorTitle
           title={title}
           setTitle={setTitle}/>
@@ -74,7 +74,7 @@ export default function Editor(props: EditorProps){
           language={language}
           setLanguage={setLanguage}
         />
-        <section style={{ width: "75%" }} className="mt-4">
+        <section style={{ width: "100%" }} className="mt-4">
           <EditorFileUploadCompo
             setDocumentFiles={setDocumentFiles}
             deleteFileNames={deleteFileNames}
