@@ -91,18 +91,16 @@ export default function SideMenu() {
             {smallMenu[language]["international-agreements"]}
           </Link>
           <Link
-            href={"/guidance/directions"}
-            // href={"/guidance/contact"} 
+            href={"/guidance/contact"} 
             className="h-1/4 flex items-center justify-center">
-            {/* {smallMenu[language].contact} */}
-            {smallMenu[language].directions}
+            {smallMenu[language].contact}
           </Link>
         </div>
         <div className="h-48 border-b">
           <Link
-            href={"/guidance/procedure-guide"}
+            href={"/guidance/admission-guide"}
             className="h-1/6 flex items-center justify-center">
-            {smallMenu[language]["procedure-guide"]}
+            {smallMenu[language]["admission-guide"]}
           </Link>
           <Link
             href={"https://ipsi.yju.ac.kr/ipsi/3828/subview.do"}
@@ -125,9 +123,9 @@ export default function SideMenu() {
             {smallMenu[language].dormitory}
           </Link>
           <Link
-            href={"/board/faq"}
+            href={"/board/qna"}
             className="h-1/6 flex items-center justify-center">
-            {smallMenu[language].faq}
+            {smallMenu[language].qna}
           </Link>
         </div>
         <div className="h-24 border-b">

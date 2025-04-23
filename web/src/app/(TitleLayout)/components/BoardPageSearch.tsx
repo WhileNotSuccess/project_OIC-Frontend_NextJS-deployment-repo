@@ -28,8 +28,9 @@ export default function BoardPageSearch({
       window.location.reload();
     }
     try {
+      console.log(`/post/search?limit=10&page=1&category=${name}&target=${searchOption}&word=${value}`);
       const response = await customFetch(
-        `/posts/search?limit=10&page=1&category=${name}&${searchOption}=${value}`,
+        `/post/search?limit=10&page=1&category=${name}&target=${searchOption}&word=${value}`,
         {
           method: "GET",
         },
@@ -55,7 +56,7 @@ export default function BoardPageSearch({
         onChange={(e) => setSearchOption(e.target.value)}
       >
         <option value="title">{boardPage[language]?.title}</option>
-        <option value="content">{boardPage[language]?.content}</option>
+        <option value="date">{boardPage[language]?.createDate}</option>
         <option value="author">{boardPage[language]?.author}</option>
       </select>
       <input

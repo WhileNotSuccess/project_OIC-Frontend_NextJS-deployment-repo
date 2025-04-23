@@ -80,6 +80,8 @@ export interface Teacher {
   position: string;
   phone: string | null;
   email: string | null;
+  team : string;
+  role : string;
 }
 
 export interface SubmittedDocument {
