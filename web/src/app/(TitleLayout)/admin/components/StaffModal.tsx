@@ -1,4 +1,4 @@
-import { Teacher } from "@/app/common/types";
+import { TeacherGlobal } from "@/app/common/types";
 import useCustomFetch from "@/app/hook/customFetch";
 import { useState } from "react";
 import { createPortal } from "react-dom";
@@ -6,11 +6,11 @@ import { createPortal } from "react-dom";
 type ModalProps = {
   onClose: () => void;
   method: string;
-  data?: Teacher;
+  data?: TeacherGlobal;
 };
 
 export default function StaffModal({ onClose, data, method }: ModalProps) {
-  const [inputs, setInputs] = useState<Teacher>(
+  const [inputs, setInputs] = useState<TeacherGlobal>(
     data
       ? data
       : {
@@ -19,14 +19,23 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
         position: "",
         phone: "",
         email: "",
+        team:"",
+        role : "",
+        team_jp : "",
+        role_jp : "",
+        position_jp : "",
+        team_en : "",
+        role_en : "",
+        position_en : "",
       },
   );
 
   const customFetch = useCustomFetch();
+  const { id, ...noIdInputs } = inputs;
 
   const onSubmit = async () => {
     const response = await customFetch(
-      method == "POST" ? "/staff" : `/staff/${inputs.id}`,
+      method == "POST" ? "/staff" : `/staff/${id}`,
       {
         method: method,
         body: JSON.stringify({
@@ -34,28 +43,59 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
           email: inputs.email,
           phone: inputs.phone,
           position: inputs.position,
+          team : inputs.team,
+          role : inputs.role,
+          team_jp : inputs.team_jp,
+          role_jp : inputs.role_jp,
+          position_jp : inputs.position_jp,
+          team_en : inputs.team_en,
+          role_en : inputs.role_en,
+          position_en : inputs.position_en,
         }),
       },
     );
 
     if (response) {
+      alert("교직원 수정에 성공했습니다.");
       window.location.href = location.href;
     }
   };
+
   return createPortal(
-    <dialog
+    <div
       id="popup-modal"
       tabIndex={-1}
-      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex justify-center items-center bg-black/50"
     >
-      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg">
+      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg h-96 overflow-auto">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
         >
           ✖
         </button>
-        <label
+        {
+          Object.entries(noIdInputs).map(([key,value])=>(
+            <div key={key}>
+              <label
+                htmlFor={key}
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                {key}
+              </label>
+              <input
+                value={value || ""}
+                onChange={(e) => {
+                  setInputs((prev) => ({ ...prev, [key]: e.target.value }));
+                }}
+                type="text"
+                id={key}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          ))
+        }
+        {/* <label
           htmlFor="email"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
@@ -119,7 +159,7 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
           type="text"
           id="position"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
+        /> */}
         <div className="p-4 text-center">
           <button
             onClick={onSubmit}
@@ -129,7 +169,7 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
           </button>
         </div>
       </div>
-    </dialog>,
+    </div>,
     document.body,
   );
 }

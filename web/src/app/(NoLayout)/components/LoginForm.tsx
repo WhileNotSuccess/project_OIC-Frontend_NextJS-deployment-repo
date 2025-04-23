@@ -59,7 +59,7 @@ export default function LoginForm() {
         backgroundImage: "url('/images/background.jpg')",
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
       <section className="relative bg-transparent  rounded-lg shadow-lg w-full max-w-md">
         <header className=" mb-6">
           <h1 className="text-3xl font-extrabold text-blue-600">LOGIN</h1>

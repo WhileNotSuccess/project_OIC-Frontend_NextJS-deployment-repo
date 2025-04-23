@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
+ 
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -9,8 +9,6 @@ declare global {
 }
 
 export default function MapCompo() {
-  const [map, setMap] = useState<any>();
-  const [marker, setMarker] = useState<any>();
 
   useEffect(() => {
     // Kakao API 스크립트 추가
@@ -25,7 +23,7 @@ export default function MapCompo() {
             35.89624247445099,
             128.62269497391293,
           ), // 기본 중심 좌표 설정
-          level: 3,
+          level: 3, // 지도 처음 마운트 될때 확대 축소 비율?
         };
         const mapInstance = new window.kakao.maps.Map(container, options);
 
@@ -41,8 +39,6 @@ export default function MapCompo() {
         // 마커를 지도에 추가
         markerInstance.setMap(mapInstance);
 
-        setMap(mapInstance);
-        setMarker(markerInstance);
       });
     };
     document.head.appendChild(script);
@@ -52,5 +48,5 @@ export default function MapCompo() {
     };
   }, []);
 
-  return <section id="map" style={{ width: "70%", height: "160%" }}></section>;
+  return <section id="map" style={{ width: "100%", height: "100%" }}></section>; // 지도 크기
 }

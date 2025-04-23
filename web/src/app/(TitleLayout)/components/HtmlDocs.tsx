@@ -48,8 +48,8 @@ export default function HtmlDocs(props: HtmlDocsProps) {
     const fetchData = async () => {
       try {
         const endpoint = props.id
-          ? `/posts?id=${props.id}`
-          : `/posts?category=${props.category}`;
+          ? `/post/one/id/${props.id}`
+          : `/post/one/category/${props.category}`;
         const response = await customFetch(endpoint, { method: "GET" });
         const data = await response.json();
         console.log(data);
@@ -91,7 +91,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
         />
       }
 
-      {props.category === "directions" && (
+      {props.category === "contact" && (
         <HtmlDocsDirection language={language} />
       )}
       {allData.content &&
