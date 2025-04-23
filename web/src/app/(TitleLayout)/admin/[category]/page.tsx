@@ -15,7 +15,7 @@ export default async function ApplicationPage({ params }: Props) {
   const { category } = resolvedParams;
   return (
     <div>
-      {/* <CheckAdmin /> */}
+      <CheckAdmin />
       <AdminComponent category={category} />
     </div>
   );
