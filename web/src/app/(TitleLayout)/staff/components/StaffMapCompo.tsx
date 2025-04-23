@@ -8,7 +8,6 @@ interface StaffMapCompoProps{
 }
 
 export default function StaffMapCompo({ staff } : StaffMapCompoProps){
-  console.log(staff);
   return(
     <div className="w-full flex items-center justify-center">
       <ul className="flex flex-wrap justify-between mt-4">

@@ -92,7 +92,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                     href="/admin/dormitory"
                     className="block hover:underline text-sm p-2"
                   >
-                    기숙사 안내
+                    기숙사 정보
                   </Link>
                 </li>
                 <li>
@@ -101,14 +101,6 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                     className="block hover:underline text-sm p-2"
                   >
                     학생 지원 서비스
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/admin/dormitory"
-                    className="block hover:underline text-sm p-2"
-                  >
-                    기숙사 안내
                   </Link>
                 </li>
                 <li>
