@@ -3,14 +3,36 @@
 import { useEffect, useState } from "react";
 import useCustomFetch from "@/app/hook/customFetch";
 import Image from "next/image";
-
+import { enrollmentInfoMessage } from "@/app/menu";
+import { Language } from "@/app/common/types";
+import Cookies from "js-cookie";
 
 export default function EnrollmentInfo() {
+  const [language, setLanguage] = useState<Language>(Language.korean);
+
+  useEffect(() => {
+    const savedLanguage = Cookies.get("language") as Language;
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
+
+
   const [entranceApplication, setEntranceApplication] = useState({
-    applicationFileName: "",
+    /* applicationFileName: "",
     applicationImageName: "",
     guidelinesForApplicantsFileName: "",
-    guidelinesForApplicantsImageName: "",
+    guidelinesForApplicantsImageName: "", */
+
+    applicants: {
+      fileUrl: "",
+      imageUrl: "",
+    },
+    entry: {
+      fileUrl: "",
+      imageUrl: "",
+    },
   });
 
   const customFetch = useCustomFetch();
@@ -18,13 +40,14 @@ export default function EnrollmentInfo() {
   useEffect(() => {
     const entranceApplicationData = async () => {
       try {
-        const response = await customFetch("/posts/main/applicants", {
+        const response = await customFetch("/post/main/applicants", {
           method: "GET",
         });
         const data = await response.json();
         setEntranceApplication(data);
-      } catch (err) {
-        console.error(err);
+        console.log(data);
+      } catch {
+        console.error(enrollmentInfoMessage[language].EnrollmentLoadingError);
       }
     };
     entranceApplicationData();
@@ -37,14 +60,14 @@ export default function EnrollmentInfo() {
           className="text-center bg-gray-100 hover:bg-gray-200 cursor-pointer p-2 text-lg rounded-lg"
           onClick={() => {
 
-            window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.applicationFileName}`;
+            window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.applicants.fileUrl}`;
           }}
         >
-          입학신청
+          {enrollmentInfoMessage[language].ApplicationForm}
         </div>
         <Image
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.applicationImageName}`}
-          alt="입학신청서 이미지"
+          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.applicants.imageUrl}`}
+          alt={enrollmentInfoMessage[language].ApplicationForm}
           width={2000}
           height={300}
           unoptimized={true}
@@ -55,14 +78,14 @@ export default function EnrollmentInfo() {
         <div
           className="text-center bg-gray-100 hover:bg-gray-200 cursor-pointer p-2 text-lg rounded-lg"
           onClick={() => {
-            window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.guidelinesForApplicantsFileName}`;
+            window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.entry.fileUrl}`;
           }}
         >
-          모집요강
+          {enrollmentInfoMessage[language].RecruitmentGuidelines}
         </div>
         <Image
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${entranceApplication.guidelinesForApplicantsImageName}`}
-          alt="모집요강 이미지"
+          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.entry.imageUrl}`}
+          alt={enrollmentInfoMessage[language].RecruitmentGuidelines}
           width={2000}
           height={300}
           unoptimized={true}

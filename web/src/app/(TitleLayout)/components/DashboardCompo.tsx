@@ -49,7 +49,7 @@ export default function DashboardCompo() {
 
       fetchSubmittedDocuments();
     }
-  }, [customFetch, user]); // user가 변경될 때마다 실행되도록
+  }, [user]); // user가 변경될 때마다 실행되도록
 
   const toggleMenu = (id: number) => {
     setMenuOpen((prev) => ({
@@ -68,7 +68,7 @@ export default function DashboardCompo() {
     }
   };
 
-  useEffect(() => {}, [submittedDocuments]);
+  useEffect(() => { }, [submittedDocuments]);
   if (!user) {
     return <div>{DashboardCompoMenu[language].loadingOrNotFoundUser}</div>;
   }

@@ -2,57 +2,65 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-/* import useCustomFetch from "@/app/lib/customFetch"; */
+import useCustomFetch from "@/app/hook/customFetch";
+import Image from "next/image";
+import { Language } from "@/app/common/types";
+import { NoticeMessage } from "@/app/menu";
+import Cookies from "js-cookie";
+
+interface NoticeItem {
+  title: string;
+  imageUrl: string;
+  postId: string;
+  date: string;
+}
+
 
 
 const NoticeCarousel = () => {
+  const [language, setLanguage] = useState<Language>(Language.korean);
 
-  const noticeItems = [
-    {
-      title: "2025년 신입생 모집 안내",
-      background: "bg-blue-500",
-      url: "/home",
-    },
-    {
-      title: "교환학생 지원 마감 임박",
-      background: "bg-green-500",
-      url: "/home",
 
-    },
-    {
-      title: "글로벌 캠프 참가자 모집",
-      background: "bg-purple-500",
-      url: "/home",
-
-    },
-    {
-      title: "글로벌 캠프 참가자 모집",
-      background: "bg-red-500",
-      url: "/home",
-
-    },
-    {
-      title: "글로벌 캠프 참가자 모집",
-      background: "bg-yellow-500",
-      url: "/home",
-
-    },
-  ];
 
   const [currentIndex, setCurrentIndex] = useState(0); // 초기값을 0으로 설정 (중앙에서 시작하도록 변경)
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  /*   const customFetch = useCustomFetch(); */
+  const customFetch = useCustomFetch();
   const cardWidth = 540;
   const gap = 20;
 
-  const extendedItems = [...noticeItems, ...noticeItems, ...noticeItems]; // 항목을 3번 반복하여 무한 루프 효과
-  const totalItems = extendedItems.length;
-  const middleIndex = noticeItems.length; // 초기 중앙 위치
-
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const [noticeItems, setNoticeItems] = useState<NoticeItem[]>([]);
+
+
+  useEffect(() => {
+
+    const savedLanguage = Cookies.get("language") as Language;
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+
+    const NewsItems = async () => {
+      try {
+        const response = await customFetch("/post/main/news", {
+          method: "GET",
+        });
+        const data = await response.json();
+        setNoticeItems(data.data);
+      } catch {
+        console.error(NoticeMessage[language].LoadingError);
+      }
+    };
+    NewsItems();
+  }, []);
+
+  const extendedItems = [...noticeItems, ...noticeItems, ...noticeItems];
+  const totalItems = extendedItems.length;
+  const middleIndex = noticeItems.length;
+
 
   // 자동 슬라이드 (드래그 중에는 일시 정지)
   useEffect(() => {
@@ -65,20 +73,6 @@ const NoticeCarousel = () => {
     return () => clearInterval(interval);
   }, [currentIndex, isDragging]);
 
-  /*  useEffect(() => {
-    const NewsItems = async () => {
-      try {
-        const response = await customFetch("/posts/news?limit=5&page=1", {
-          method: "GET",
-        });
-        const data = await response.json();
-        console.log(data.data);
-      } catch {
-        console.error("Error fetching news data:");
-      }
-    };
-    NewsItems();
-  }, []); */
 
   const goToSlide = (index: number) => {
     if (index < 0) {
@@ -172,16 +166,21 @@ const NoticeCarousel = () => {
                 className="h-[300px] flex flex-col justify-center items-center relative overflow-hidden"
               >
 
-                <div
-                  className={`absolute inset-0  ${item.background}`}
+                <Image
+                  width={540}
+                  height={300}
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files${item.imageUrl}`}
+                  alt={item.title}
+                  className={"absolute inset-0 w-full h-full object-cover"}
                   style={{ opacity: 0.5 }}
+                  unoptimized
                 />
 
 
-                <div className="relative z-10 text-white text-center select-none p-2 mt-20">
+                <div className="relative z-10 text-white select-none  mt-40 mr-80">
                   <h3 className="text-2xl font-bold">{item.title}</h3>
                   <Link
-                    href={`${item.url}`}
+                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.postId}`}
                     className="h-1/4 flex items-center justify-center underline">
                     View More
                   </Link>

@@ -4,11 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import useCustomFetch from "@/app/hook/customFetch";
 import Link from "next/link";
 import Image from "next/image";
+import { NewsMessage } from "@/app/menu";
+import { Language } from "@/app/common/types";
+import Cookies from "js-cookie";
 
 interface NewsItem {
   title: string;
   content: string;
-  updatedDate: string;
+  date: string;
   id: string;
 }
 
@@ -21,19 +24,26 @@ const NewsCarousel = () => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const customFetch = useCustomFetch();
 
+  const [language, setLanguage] = useState<Language>(Language.korean);
+
   const cardWidth = 260;
   const gap = 20;
 
   useEffect(() => {
+    const savedLanguage = Cookies.get("language") as Language;
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+
     const GetNewsItems = async () => {
       try {
-        const response = await customFetch("/posts/news?limit=5&page=1", {
+        const response = await customFetch("/post/main/notices", {
           method: "GET",
         });
         const data = await response.json();
         setNewsItems(data.data);
       } catch {
-        console.error("");
+        console.error(NewsMessage[language].error);
       }
     };
     GetNewsItems();
@@ -120,9 +130,9 @@ const NewsCarousel = () => {
         }}
       >
         {extendedItems.map((item, index) => {
-          const text  = item.content;
 
-          const formattedDate = new Date(item.updatedDate)
+
+          const formattedDate = new Date(item.date)
             .toLocaleDateString("ko-KR", {
               year: "numeric",
               month: "2-digit",
@@ -148,7 +158,7 @@ const NewsCarousel = () => {
                     </div>
 
                     <div className="relative z-10 text-black text-center select-none p-2 mt-2">
-                      <p className="text-xs line-clamp-3">{text}</p>
+                      <p className="text-xs line-clamp-3">{item.content}</p>
                     </div>
 
                     <div

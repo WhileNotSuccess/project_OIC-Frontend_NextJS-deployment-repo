@@ -6,12 +6,26 @@ import Image from "next/image";
 import NoticeCarousel from "./NoticeCarousel";
 import NewsCarousel from "./NewsCarousel";
 import EnrollmentInfo from "./EnrollmentInfo";
+import Pride from "./Pride";
+import { MainComponent } from "@/app/menu";
+import { Language } from "@/app/common/types";
+import Cookies from "js-cookie";
+
 
 export default function HomeCompo() {
   const [isVisibleTitle, setIsVisibleTitle] = useState(false);
   const [isVisiblePride, setIsVisiblePride] = useState(false);
   const prideRef = useRef(null);
   /* const customFetch = useCustomFetch(); */
+  const [language, setLanguage] = useState<Language>(Language.korean);
+
+  useEffect(() => {
+    const savedLanguage = Cookies.get("language") as Language;
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -54,7 +68,7 @@ export default function HomeCompo() {
       <div className="relative w-full min-h-screen bg-[#000000]">
         <Image
           src="/images/yeungjinTitlePicture.jpg"
-          alt="영진전문대 국제교류원 제목 사진"
+          alt="yeungjinTitlePicture"
           layout="fill"
           objectFit="cover"
           className="opacity-50"
@@ -83,61 +97,27 @@ export default function HomeCompo() {
               <h1 className="text-4xl mt-5 md:text-5xl font-bold text-amber-950">
                 PRIDE OF YEUNGJIN
               </h1>
-              <div className="flex justify-between items-start mt-20 gap-8">
-                <div className="w-1/3 flex flex-col items-center mb-5">
-                  <Image
-                    src="/images/schoolarship.png"
-                    alt="Scholarship"
-                    width={200}
-                    height={200}
-                  />
-                  <p className="mt-4 text-2xl font-bold text-black text-center">
-                    전국 최다 장학금
-                  </p>
-                </div>
-                <div className="w-1/3 flex flex-col items-center mb-5">
-                  <Image
-                    src="/images/schoolarship.png"
-                    alt="Scholarship"
-                    width={200}
-                    height={200}
-                  />
-                  <p className="mt-4 text-2xl font-bold text-black text-center">
-                    전국 최다 장학금
-                  </p>
-                </div>
-                <div className="w-1/3 flex flex-col items-center mb-5">
-                  <Image
-                    src="/images/schoolarship.png"
-                    alt="Scholarship"
-                    width={200}
-                    height={200}
-                  />
-                  <p className="mt-4 text-2xl font-bold text-black text-center">
-                    전국 최다 장학금
-                  </p>
-                </div>
-              </div>
+              <Pride />
 
             </div>
           </div>
         </div>
 
         <div className="w-full bg-white p-10 ">
-          <h2 className="text-3xl font-bold mb-8">공지사항</h2>
+          <h2 className="text-3xl font-bold mb-8">{MainComponent[language].News}</h2>
           <NewsCarousel />
         </div>
 
         <div className="w-full min-h-[60vh] p-10">
-          <h2 className="text-3xl font-bold mb-8">알림</h2>
+          <h2 className="text-3xl font-bold mb-8">{MainComponent[language].Notice}</h2>
           <NoticeCarousel />
         </div>
 
         <div className="w-full p-10">
-          <h2 className="text-3xl font-bold mb-5">입학문의</h2>
+          <h2 className="text-3xl font-bold mb-5">{MainComponent[language].Admissions}</h2>
           <div className="w-full p-10 relative h-[400px]">
             <Image
-              src="/images/yeungjinBackgroudImage.png"
+              src="/images/yeungjinBackgroundImage.png"
               alt="yeungjinBackground"
               layout="fill"
               objectFit="cover"

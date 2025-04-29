@@ -244,7 +244,7 @@ export const updateSuccess: Record<Language, Record<string, string>> = {
   },
 };
 
-export const koreancurriculumList: Record<
+export const koreanCurriculumList: Record<
   Language,
   { key: string; value: string }[]
 > = {
@@ -669,7 +669,7 @@ export const categoryMap: Record<
   string,
   Record<Language, { key: string; value: string }[]>
 > = {
-  "korean-curriculum": koreancurriculumList,
+  "korean-curriculum": koreanCurriculumList,
   "open-campus": opencampusList,
   "applied-to": applicationList,
 };
@@ -1333,5 +1333,109 @@ export const YoutubeMessage: Record<Language, Record<string, string>> = {
   },
   [Language.japanese]: {
     invalidLink: "正しいリンクではありません。",
+  },
+};
+
+export const PrideMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "PrideOfYeungjin 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load PrideOfYeungjin data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "PrideOfYeungjinデータの読み込みに失敗しました。",
+  },
+
+
+};
+export const NewsMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "News 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load News data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "Newsデータの読み込みに失敗しました。",
+  },
+};
+
+export const NoticeMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "Notice 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load Notice data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "Noticeデータの読み込みに失敗しました。",
+  },
+};
+
+export const GlobalCarouselMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "GlobalCarousel 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load GlobalCarousel data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "GlobalCarouselデータの読み込みに失敗しました。",
+  },
+};
+
+
+export const internationalAgreeMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    CountryLoadingError: "국가목록 데이터를 불러오는데 실패했습니다.",
+    PartnerLoadingError: "협약기관 데이터를 불러오는데 실패했습니다.",
+    CountrySelect: "국가 선택",
+  },
+  [Language.english]: {
+    CountryLoadingError: "Failed to load country list data.",
+    PartnerLoadingError: "Failed to load partner data.",
+    CountrySelect: "Select Country",
+  },
+  [Language.japanese]: {
+    CountryLoadingError: "国名リストデータの読み込みに失敗しました。",
+    PartnerLoadingError: "協定機関データの読み込みに失敗しました。",
+    CountrySelect: "国を選択",
+  },
+};
+
+export const enrollmentInfoMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    EnrollmentLoadingError: "입학신청서 및 모집요강 데이터를 불러오는데 실패했습니다.",
+    ApplicationForm: "입학신청서",
+    RecruitmentGuidelines: "모집요강",
+  },
+  [Language.english]: {
+    EnrollmentLoadingError: "Failed to load enrollment application and recruitment guidelines data.",
+    ApplicationForm: "Enrollment Application",
+    RecruitmentGuidelines: "Recruitment Guidelines",
+  },
+  [Language.japanese]: {
+    EnrollmentLoadingError: "入学申請書と募集要項データの読み込みに失敗しました。",
+    ApplicationForm: "入学申請書",
+    RecruitmentGuidelines: "募集要項",
+  },
+};
+
+export const MainComponent: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    News: "공지사항",
+    Notice: "알림",
+    Admissions: "입학문의",
+  },
+  [Language.english]: {
+    News: "News",
+    Notice: "Notice",
+    Admissions: "Admissions",
+  },
+  [Language.japanese]: {
+    News: "お知らせ",
+    Notice: "通知",
+    Admissions: "入学案内",
   },
 };
