@@ -57,11 +57,16 @@ export default function EditorButton({
     if(!onCheckTitleContent()) return;
     try{
       const formData = onFormDataAppend();
-      await customFetch("/posts",{
+      const response = await customFetch("/post",{
         method : "POST",
         body : formData,
       });
-      alert(postSuccess[language]?.contentPost);
+      if(response.ok){
+        alert(postSuccess[language]?.contentPost);
+      }
+      else{
+        alert(postError[language]?.subError);        
+      }
     }catch{
       alert(postError[language]?.subError);
     }

@@ -5,7 +5,7 @@ import {
   Banner,
   Counseling,
   Course,
-  Teacher,
+  TeacherGlobal,
 } from "@/app/common/types";
 import useCustomFetch from "@/app/hook/customFetch";
 import { useEffect, useState } from "react";
@@ -19,6 +19,7 @@ import StaffModal from "./StaffModal";
 import Pagination from "../../components/Pagination"; // 페이지네이션 컴포넌트
 import CourseModal from "./CourseModal";
 import CourseComponent from "./CourseComponent";
+import Title from "../../components/Title";
 
 type AdminComponentProps = {
   category: string;
@@ -30,8 +31,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
   const [applications, setApplications] = useState<ApplicationFormItemProp[]>([]);
   const [bannerPostModal, setBannerPostModal] = useState<boolean>(false);
   const [banners, setBanners] = useState<Banner[]>([]);
-  const [teacher, setTeacher] = useState<Teacher[]>([]);
-  const [staff, setStaff] = useState<Teacher[]>([]);
+  const [allStaff, setAllStaff] = useState<Record<string,TeacherGlobal[]>>({});
   const [staffPostModal, setStaffPostModal] = useState<boolean>(false);
   const [course, setCourse] = useState<Course[]>([]);
   const [coursePostModal, setCoursePostModal] = useState<boolean>(false);
@@ -100,10 +100,9 @@ export default function AdminComponent({ category }: AdminComponentProps) {
   useEffect(() => {
     if (category === "staff") {
       async function getStaff() {
-        const response = await customFetch("/staff");
+        const response = await customFetch("/staff/admin");
         const data = await response.json();
-        setTeacher(data.teacher);
-        setStaff(data.staff);
+        setAllStaff(data.data);
       }
       getStaff();
     }
@@ -208,7 +207,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
         )}
         <div className="flex flex-wrap justify-between px-12">
           <h1 className="text-3xl mb-4 font-bold text-center w-full">
-            강사진 및 교직원 소개
+            교직원 소개
             <span className="p-4 text-right">
               <button
                 onClick={() => {
@@ -220,13 +219,17 @@ export default function AdminComponent({ category }: AdminComponentProps) {
               </button>
             </span>
           </h1>
-
-          {teacher.map((item) => {
-            return <StaffComponent key={item.name} {...item} />;
-          })}
-          {staff.map((item) => {
-            return <StaffComponent key={item.name} {...item} />;
-          })}
+          {
+            Object.entries(allStaff).map(([key,value])=>(  // 구조분해 할당으로 새로운 배열 반환
+              <div key={key}>
+                <div className="text-2xl font-bold mb-2">
+                  {key}
+                </div>
+                <StaffComponent item={value}/>
+              </div>
+            ),
+            )
+          }
         </div>
       </>
     );
@@ -264,9 +267,13 @@ export default function AdminComponent({ category }: AdminComponentProps) {
     );
   }else{
     return (
-      <div className="w-full flex justify-center items-center">
-        <BoardPageCompo name={category} />
+      <div className="w-full flex flex-col">
+        <Title category={category}/>
+        <div className="w-full flex justify-center items-center">
+          <BoardPageCompo name={category} />
+        </div>
       </div>
+
     );
   }
 }

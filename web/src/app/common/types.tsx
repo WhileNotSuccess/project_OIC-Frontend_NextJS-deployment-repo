@@ -80,6 +80,23 @@ export interface Teacher {
   position: string;
   phone: string | null;
   email: string | null;
+  team : string;
+  role : string;
+}
+export interface TeacherGlobal {
+  id: number;
+  name: string;
+  position: string;
+  phone: string | null;
+  email: string | null;
+  team : string;
+  role : string;
+  team_jp : string;
+  role_jp : string;
+  position_jp : string;
+  team_en : string;
+  role_en : string;
+  position_en : string;
 }
 
 export interface SubmittedDocument {

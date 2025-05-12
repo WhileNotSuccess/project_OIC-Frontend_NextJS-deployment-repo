@@ -24,9 +24,9 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
   const { adminUserCheck } = useCheckAdmin();
   const [allBoardData, setAllBoardData] = useState<AllBoardData>({
     boardData: [],
-    currentPage: 0,
+    currentPage: 1,
     nextPage: 1,
-    prevPage: 1,
+    prevPage: 0,
     totalPage: 1,
   });
 
@@ -42,7 +42,7 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
     const fetchBoard = async (currentPage: number) => {
       try {
         const response = await customFetch(
-          `/posts/${name}?limit=10&page=${currentPage}`,
+          `/post/${name}?limit=10&page=${currentPage}`,
           {
             method: "GET",
           },

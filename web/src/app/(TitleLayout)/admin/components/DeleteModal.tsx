@@ -16,14 +16,15 @@ export default function DeleteModal({ onClose, id, target }: ModalProps) {
     });
 
     if (response) {
+      alert("교직원 삭제에 성공했습니다");
       window.location.href = location.href;
     }
   };
   return createPortal(
-    <dialog
+    <div
       id="popup-modal"
       tabIndex={-1}
-      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex justify-center items-center bg-black/50"
     >
       <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg">
         <button
@@ -45,7 +46,7 @@ export default function DeleteModal({ onClose, id, target }: ModalProps) {
           </button>
         </div>
       </div>
-    </dialog>,
+    </div>,
     document.body,
   );
 }
