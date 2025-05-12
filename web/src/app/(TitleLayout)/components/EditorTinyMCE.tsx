@@ -1,37 +1,33 @@
 "use client";
 
 import { Language } from "@/app/common/types";
-import { postError } from "@/app/menu";
+import { postError, YoutubeMessage } from "@/app/menu";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRef } from "react";
 import { Editor as EditorType } from "tinymce";
 
 type EditorTinyMCEProps = {
-  content : string,
-  setContent : React.Dispatch<React.SetStateAction<string>>,
-  customFormFetch : (url : string, options? : RequestInit) => Promise<Response>,
-  language : Language,
-}
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+  customFormFetch: (url: string, options?: RequestInit) => Promise<Response>;
+  language: Language;
+};
 
 export default function EditorTinyMCE({
   content,
   setContent,
   customFormFetch,
   language,
-}:EditorTinyMCEProps){
-
-  const editorRef = useRef<EditorType | null>(null); // tinymce를 직접 조작하는
+}: EditorTinyMCEProps) {
+  const editorRef = useRef<EditorType | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileSelect = async (file: File) => {
     if (file) {
       const formData = new FormData();
       formData.append("image", file);
-  
       try {
         const data = await customFormFetch("/attachments", {
-          // 주소 바꿔야함, body랑 헤더를 커스텀 함수를 만들어서 보내는걸로로 변경해야함
-  
           method: "POST",
           body: formData,
         });
@@ -43,15 +39,21 @@ export default function EditorTinyMCE({
     }
   };
 
+  const getYouTubeVideoId = (url: string) => {
+    const regExp =
+      /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]{11}).*/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  };
 
-  return(
+  return (
     <div>
       <section className="mt-1.5">
         <Editor
           tinymceScriptSrc={"/tinymce/tinymce.min.js"}
           id="tinymce-editor"
           value={content}
-          onInit={( _, editor) => {
+          onInit={(_, editor) => {
             editorRef.current = editor;
           }}
           init={{
@@ -64,11 +66,11 @@ export default function EditorTinyMCE({
             ),
             language_url: "/tinymce/langs/ko_KR.js",
             height: 500,
-            plugins: ["lists", "link", "image", "table"],
+            plugins: ["lists", "link", "image", "table", "code"],
             content_style: "p {margin:0} img{display:inline}",
             toolbar:
-                "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | forecolor backcolor | table",
-            file_picker_types: "image", // 파일 선택기에서 다룰 파일 형식
+              "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | forecolor backcolor | table | youtubeButton | code",
+            file_picker_types: "image",
             file_picker_callback: (cb) => {
               const input = fileInputRef.current;
               input?.addEventListener("change", async (e) => {
@@ -84,6 +86,53 @@ export default function EditorTinyMCE({
                 }
               });
               input?.click();
+            },
+            setup: (editor) => {
+              editor.ui.registry.addButton("youtubeButton", {
+                text: "YouTube",
+                icon: "embed",
+                onAction: () => {
+                  editor.windowManager.open({
+                    title: "Insert YouTube Video",
+                    body: {
+                      type: "panel",
+                      items: [
+                        {
+                          type: "input",
+                          name: "youtubeUrl",
+                          label: "YouTube URL",
+                        },
+                      ],
+                    },
+                    buttons: [
+                      {
+                        type: "cancel",
+                        text: "Cancel",
+                      },
+                      {
+                        type: "submit",
+                        text: "Insert",
+                        primary: true,
+                      },
+                    ],
+                    onSubmit: (api) => {
+                      const data = api.getData();
+                      const videoId = getYouTubeVideoId(data.youtubeUrl);
+                      if (videoId) {
+                        const iframeHtml = `<iframe src="https://www.youtube.com/embed/${videoId}" 
+                                                    frameborder="0" allowfullscreen
+                                                    style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%); width:90%;height:90%;"
+                                            >
+                                            </iframe>`;
+                        editor.insertContent(iframeHtml);
+                      } else {
+                        alert(YoutubeMessage[language]?.invalidLink);
+                      }
+                      api.close();
+                    },
+                  });
+                },
+              });
             },
           }}
           onEditorChange={(item) => setContent(item)}

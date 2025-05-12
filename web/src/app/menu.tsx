@@ -238,7 +238,7 @@ export const updateSuccess: Record<Language, Record<string, string>> = {
   },
 };
 
-export const koreancurriculumList: Record<
+export const koreanCurriculumList: Record<
   Language,
   { key: string; value: string }[]
 > = {
@@ -333,71 +333,71 @@ export const boardMenu: Record<Language, Record<string, string>> = {
 };
 
 export const categoryList: Record<Language, { key: string; value: string }[]> =
-  {
-    [Language.korean]: [
-      { key: "introduction", value: "한국어교육센터" },
-      { key: "directions", value: "오시는 길" },
-      { key: "visa", value: "비자 안내" },
-      { key: "dormitory", value: "기숙사 안내" },
-      { key: "facility", value: "학교 시설 안내" },
-      { key: "insurance", value: "건강 보험 안내" },
-      { key: "review", value: "유학생 후기" },
-      { key: "application-form", value: "신청 서류" },
-      { key: "learning-materials", value: "학습 자료 안내" },
-      { key: "notice", value: "공지사항" },
-      { key: "news", value: "한국어교육센터 알림" },
-      { key: "faq", value: "FAQ" },
-      { key: "korean-outline", value: "개요" },
-      { key: "korean-sample", value: "프로그램 샘플" },
-      { key: "applied-to", value: "입학 신청" },
-      { key: "opencampus-purpose", value: "목적" },
-      { key: "opencampus-content", value: "일정 및 내용" },
-      { key: "opencampus-schedule", value: "스케쥴" },
-      { key: "procedure-guide", value: "절차 안내" },
-    ],
-    [Language.japanese]: [
-      { key: "introduction", value: "韓国語教育センター" },
-      { key: "directions", value: "アクセス" },
-      { key: "visa", value: "ビザ案内" },
-      { key: "dormitory", value: "寮案内" },
-      { key: "facility", value: "学校施設案内" },
-      { key: "insurance", value: "健康保険案内" },
-      { key: "review", value: "留学生の感想" },
-      { key: "application-form", value: "申請書類" },
-      { key: "learning-materials", value: "学習資料案内" },
-      { key: "notice", value: "通知" },
-      { key: "news", value: "お知らせ" },
-      { key: "faq", value: "FAQ" },
-      { key: "korean-outline", value: "概要" },
-      { key: "korean-sample", value: "プログラムサンプル" },
-      { key: "applied-to", value: "入学申請" },
-      { key: "opencampus-purpose", value: "目的" },
-      { key: "opencampus-content", value: "日程と内容" },
-      { key: "opencampus-schedule", value: "スケジュール" },
-      { key: "procedure-guide", value: "入学申請" },
-    ],
-    [Language.english]: [
-      { key: "introduction", value: "Korean Education Center" },
-      { key: "directions", value: "Directions" },
-      { key: "visa", value: "Visa Information" },
-      { key: "dormitory", value: "Dormitory Information" },
-      { key: "facility", value: "School Facilities Guide" },
-      { key: "insurance", value: "Health Insurance Information" },
-      { key: "review", value: "International Student Reviews" },
-      { key: "application-form", value: "Application Form" },
-      { key: "learning-materials", value: "Learning Materials Guide" },
-      { key: "notice", value: "Notice" },
-      { key: "news", value: "Korean Education Center News" },
-      { key: "faq", value: "FAQ" },
-      { key: "korean-outline", value: "Overview" },
-      { key: "korean-sample", value: "Program Sample" },
-      { key: "applied-to", value: "Application for Admission" },
-      { key: "opencampus-purpose", value: "Purpose" },
-      { key: "opencampus-content", value: "Schedule and Content" },
-      { key: "opencampus-schedule", value: "Schedule" },
-      { key: "procedure-guide", value: "Procedure Guide" },
-    ],
-  };
+{
+  [Language.korean]: [
+    { key: "introduction", value: "한국어교육센터" },
+    { key: "directions", value: "오시는 길" },
+    { key: "visa", value: "비자 안내" },
+    { key: "dormitory", value: "기숙사 안내" },
+    { key: "facility", value: "학교 시설 안내" },
+    { key: "insurance", value: "건강 보험 안내" },
+    { key: "review", value: "유학생 후기" },
+    { key: "application-form", value: "신청 서류" },
+    { key: "learning-materials", value: "학습 자료 안내" },
+    { key: "notice", value: "공지사항" },
+    { key: "news", value: "한국어교육센터 알림" },
+    { key: "faq", value: "FAQ" },
+    { key: "korean-outline", value: "개요" },
+    { key: "korean-sample", value: "프로그램 샘플" },
+    { key: "applied-to", value: "입학 신청" },
+    { key: "opencampus-purpose", value: "목적" },
+    { key: "opencampus-content", value: "일정 및 내용" },
+    { key: "opencampus-schedule", value: "스케쥴" },
+    { key: "procedure-guide", value: "절차 안내" },
+  ],
+  [Language.japanese]: [
+    { key: "introduction", value: "韓国語教育センター" },
+    { key: "directions", value: "アクセス" },
+    { key: "visa", value: "ビザ案内" },
+    { key: "dormitory", value: "寮案内" },
+    { key: "facility", value: "学校施設案内" },
+    { key: "insurance", value: "健康保険案内" },
+    { key: "review", value: "留学生の感想" },
+    { key: "application-form", value: "申請書類" },
+    { key: "learning-materials", value: "学習資料案内" },
+    { key: "notice", value: "通知" },
+    { key: "news", value: "お知らせ" },
+    { key: "faq", value: "FAQ" },
+    { key: "korean-outline", value: "概要" },
+    { key: "korean-sample", value: "プログラムサンプル" },
+    { key: "applied-to", value: "入学申請" },
+    { key: "opencampus-purpose", value: "目的" },
+    { key: "opencampus-content", value: "日程と内容" },
+    { key: "opencampus-schedule", value: "スケジュール" },
+    { key: "procedure-guide", value: "入学申請" },
+  ],
+  [Language.english]: [
+    { key: "introduction", value: "Korean Education Center" },
+    { key: "directions", value: "Directions" },
+    { key: "visa", value: "Visa Information" },
+    { key: "dormitory", value: "Dormitory Information" },
+    { key: "facility", value: "School Facilities Guide" },
+    { key: "insurance", value: "Health Insurance Information" },
+    { key: "review", value: "International Student Reviews" },
+    { key: "application-form", value: "Application Form" },
+    { key: "learning-materials", value: "Learning Materials Guide" },
+    { key: "notice", value: "Notice" },
+    { key: "news", value: "Korean Education Center News" },
+    { key: "faq", value: "FAQ" },
+    { key: "korean-outline", value: "Overview" },
+    { key: "korean-sample", value: "Program Sample" },
+    { key: "applied-to", value: "Application for Admission" },
+    { key: "opencampus-purpose", value: "Purpose" },
+    { key: "opencampus-content", value: "Schedule and Content" },
+    { key: "opencampus-schedule", value: "Schedule" },
+    { key: "procedure-guide", value: "Procedure Guide" },
+  ],
+};
 
 export const paginationPage: Record<Language, Record<string, string>> = {
   // 페이지네이션 기능이 보여지는 페이지에 쓰일 메뉴
@@ -492,7 +492,7 @@ export const boardPage: Record<Language, Record<string, string>> = {
     number: "순번",
     author: "작성자",
     writeTitle: "제목을 입력하세요",
-    writeSomething : "검색어를 입력하세요",
+    writeSomething: "검색어를 입력하세요",
   },
   [Language.japanese]: {
     notice: "通知",
@@ -505,7 +505,7 @@ export const boardPage: Record<Language, Record<string, string>> = {
     number: "番号",
     author: "作成者",
     writeTitle: "タイトルを入力してください",
-    writeSomething : "検索語を入力してください",
+    writeSomething: "検索語を入力してください",
   },
   [Language.english]: {
     notice: "Notice",
@@ -518,7 +518,7 @@ export const boardPage: Record<Language, Record<string, string>> = {
     number: "Number",
     author: "Author",
     writeTitle: "Enter a title",
-    writeSomething : "Please enter a search term",
+    writeSomething: "Please enter a search term",
   },
 };
 
@@ -663,7 +663,7 @@ export const categoryMap: Record<
   string,
   Record<Language, { key: string; value: string }[]>
 > = {
-  "korean-curriculum": koreancurriculumList,
+  "korean-curriculum": koreanCurriculumList,
   "open-campus": opencampusList,
   "applied-to": applicationList,
 };
@@ -1315,5 +1315,121 @@ export const CheckUserAlert: Record<Language, Record<string, string>> = {
   },
   [Language.japanese]: {
     noPermission: "不正なアクセスです",
+  },
+};
+
+export const YoutubeMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    invalidLink: "올바른 링크가 아닙니다.",
+  },
+  [Language.english]: {
+    invalidLink: "This is not a valid link.",
+  },
+  [Language.japanese]: {
+    invalidLink: "正しいリンクではありません。",
+  },
+};
+
+export const PrideMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "PrideOfYeungjin 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load PrideOfYeungjin data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "PrideOfYeungjinデータの読み込みに失敗しました。",
+  },
+
+
+};
+export const NewsMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "News 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load News data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "Newsデータの読み込みに失敗しました。",
+  },
+};
+
+export const NoticeMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "Notice 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load Notice data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "Noticeデータの読み込みに失敗しました。",
+  },
+};
+
+export const GlobalCarouselMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    LoadingError: "GlobalCarousel 데이터를 불러오는데 실패했습니다.",
+  },
+  [Language.english]: {
+    LoadingError: "Failed to load GlobalCarousel data.",
+  },
+  [Language.japanese]: {
+    LoadingError: "GlobalCarouselデータの読み込みに失敗しました。",
+  },
+};
+
+
+export const internationalAgreeMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    CountryLoadingError: "국가목록 데이터를 불러오는데 실패했습니다.",
+    PartnerLoadingError: "협약기관 데이터를 불러오는데 실패했습니다.",
+    CountrySelect: "국가 선택",
+  },
+  [Language.english]: {
+    CountryLoadingError: "Failed to load country list data.",
+    PartnerLoadingError: "Failed to load partner data.",
+    CountrySelect: "Select Country",
+  },
+  [Language.japanese]: {
+    CountryLoadingError: "国名リストデータの読み込みに失敗しました。",
+    PartnerLoadingError: "協定機関データの読み込みに失敗しました。",
+    CountrySelect: "国を選択",
+  },
+};
+
+export const enrollmentInfoMessage: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    EnrollmentLoadingError: "입학신청서 및 모집요강 데이터를 불러오는데 실패했습니다.",
+    ApplicationForm: "입학신청서",
+    RecruitmentGuidelines: "모집요강",
+  },
+  [Language.english]: {
+    EnrollmentLoadingError: "Failed to load enrollment application and recruitment guidelines data.",
+    ApplicationForm: "Enrollment Application",
+    RecruitmentGuidelines: "Recruitment Guidelines",
+  },
+  [Language.japanese]: {
+    EnrollmentLoadingError: "入学申請書と募集要項データの読み込みに失敗しました。",
+    ApplicationForm: "入学申請書",
+    RecruitmentGuidelines: "募集要項",
+  },
+};
+
+export const MainComponent: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    News: "공지사항",
+    Notice: "알림",
+    Admissions: "입학문의",
+  },
+  [Language.english]: {
+    News: "News",
+    Notice: "Notice",
+    Admissions: "Admissions",
+  },
+  [Language.japanese]: {
+    News: "お知らせ",
+    Notice: "通知",
+    Admissions: "入学案内",
   },
 };
