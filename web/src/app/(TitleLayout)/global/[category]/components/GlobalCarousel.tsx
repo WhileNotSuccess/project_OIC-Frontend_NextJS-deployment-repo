@@ -29,12 +29,9 @@ const GlobalCarousel = () => {
 
     const fetchNoticeItems = async () => {
       try {
-        const response = await customFetch("/carousel", {
-          method: "GET",
-        });
+        const response = await customFetch("/carousel", { method: "GET" });
         const data = await response.json();
         setNoticeItems(data.data);
-        console.log(data.data);
       } catch {
         console.error(GlobalCarouselMessage[language].LoadingError);
       }
@@ -43,14 +40,8 @@ const GlobalCarousel = () => {
     fetchNoticeItems();
   }, []);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
-
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const gap = 1;
+  const gap = 16; // px
   const cardPerView = 1.5;
   const [cardWidth, setCardWidth] = useState(0);
 
@@ -58,10 +49,17 @@ const GlobalCarousel = () => {
   const totalItems = extendedItems.length;
   const middleIndex = noticeItems.length;
 
+  const [currentIndex, setCurrentIndex] = useState(middleIndex);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+
   useEffect(() => {
     if (wrapperRef.current) {
       const totalWidth = wrapperRef.current.offsetWidth;
-      setCardWidth((totalWidth - gap * (cardPerView - 1)) / cardPerView);
+      const newCardWidth = (totalWidth - gap * (cardPerView - 1)) / cardPerView;
+      setCardWidth(newCardWidth);
       setCurrentIndex(middleIndex);
     }
   }, [noticeItems.length]);
@@ -127,15 +125,18 @@ const GlobalCarousel = () => {
 
   const [springs] = useSprings(extendedItems.length, (index) => {
     const relativeIndex = index - currentIndex;
+    const isCenter = relativeIndex === 0;
     return {
-      transform:
-        relativeIndex === 0
-          ? "scale(1.1) rotateY(0deg) translateZ(50px)"
-          : `scale(0.9) rotateY(${relativeIndex < 0 ? 40 : -40}deg) translateZ(-50px)`,
-      zIndex: relativeIndex === 0 ? 10 : 1,
-      config: { tension: 250, friction: 22 },
+      transform: isCenter
+        ? "scale(1.1) rotateY(0deg)"
+        : `scale(0.9) rotateY(${relativeIndex < 0 ? 30 : -30}deg)`,
+      zIndex: isCenter ? 10 : 1,
+      config: { tension: 250, friction: 25 },
     };
   });
+
+
+  const offsetX = ((cardPerView - 1) / 2) * (cardWidth + gap);
 
   return (
     <div
@@ -150,7 +151,7 @@ const GlobalCarousel = () => {
       <div
         className="flex"
         style={{
-          transform: `translateX(calc(${-currentIndex * (cardWidth + gap) - ((-cardPerView + 1) / 2) * (cardWidth + gap)}px + ${translateX}px))`,
+          transform: `translateX(${-currentIndex * (cardWidth + gap) + offsetX + translateX}px)`,
           transition: isTransitioning ? "transform 0.5s ease-in-out" : "none",
         }}
       >
@@ -163,6 +164,7 @@ const GlobalCarousel = () => {
                 ...springStyle,
                 width: `${cardWidth}px`,
                 marginRight: `${gap}px`,
+                transformStyle: "preserve-3d",
                 boxShadow:
                   index - currentIndex === 0
                     ? "0 15px 30px rgba(0,0,0,0.3)"
@@ -190,7 +192,6 @@ const GlobalCarousel = () => {
                 </div>
               </div>
             </animated.div>
-
           );
         })}
       </div>

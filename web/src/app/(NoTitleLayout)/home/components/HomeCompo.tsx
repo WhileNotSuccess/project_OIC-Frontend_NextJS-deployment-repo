@@ -124,9 +124,9 @@ export default function HomeCompo() {
               className="absolute inset-0 z-0"
             />
 
-            <div className="absolute inset-0 bg-black opacity-50 z-10" />
+            <div className="absolute inset-0 bg-black/  50 z-10" />
 
-            <div className="relative z-20 flex flex-col justify-center mt-20 h-full text-white ">
+            <div className="relative z-10 flex flex-col justify-center mt-20 h-full text-white ">
               <h2 className="text-2xl font-bold mb-4">영진전문대학교 학위과정 입학에 관한 문의가 있으시다면,<br />
                 아래의 이메일이나 전화번호로 언제든지 연락 주시기 바랍니다.</h2>
               <p className="text-xl">+82-123-456(영어),+82-123-456(일본어)  yju.intl@yju.ac.kr</p>
