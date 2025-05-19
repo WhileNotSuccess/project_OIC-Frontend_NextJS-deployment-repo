@@ -150,7 +150,7 @@ const NewsCarousel = () => {
                 marginRight: `${gap}px`,
               }}
             >
-              <Link href={`/news/${item.postId}`}>
+              <Link href={`board/notice/${item.postId}`}>
                 <div className="bg-gray-100 rounded-md overflow-hidden">
                   <div className="h-[220px] flex flex-col justify-start items-center relative">
                     <div className="relative z-10 text-black text-center select-none p-2">
