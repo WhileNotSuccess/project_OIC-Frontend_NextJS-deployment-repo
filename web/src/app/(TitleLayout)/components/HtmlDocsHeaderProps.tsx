@@ -35,7 +35,7 @@ export default function HtmlDocsHeaderProps({
 
   const onDelete = async (guidanceId?: string) => {
     try {
-      const response = await customFetch(`/posts/${guidanceId}`, {
+      const response = await customFetch(`/post/${guidanceId}`, {
         method: "DELETE",
       });
       if(response.ok){

@@ -25,7 +25,7 @@ export default function NameChangeModal({
 
   const handleNameChange = async () => {
     try {
-      const response = await customFetch("/users/name", {
+      const response = await customFetch("/users", {
         method: "PATCH",
         body: JSON.stringify({ name: newName }),
       });

@@ -37,7 +37,7 @@ export default function RegisterCompo() {
 
     if (newUser) {
       try {
-        const data = await customFetch("/users/name", {
+        const data = await customFetch("/users", {
           method: "PATCH",
           body: JSON.stringify({ name }),
         });

@@ -77,7 +77,7 @@ export default function EditorButton({
     try{
       const formData = onFormDataAppend();
       formData.append("deleteFilePath", JSON.stringify(deleteFileNames));
-      await customFetch(`/posts/${id}`,{
+      await customFetch(`/post/${id}`,{
         method : "PATCH",
         body : formData,
       });

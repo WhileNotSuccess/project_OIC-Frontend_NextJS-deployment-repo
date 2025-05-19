@@ -15,7 +15,13 @@ const CheckAdmin = () => {
     const savedLanguage = Cookies.get("language") as Language;
 
     async function check() {
-      const response = await fetch("/users");
+      const response = await fetch("/users/admin", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json" },
+        credentials: "include",
+      }, 
+      );
       const data = await response.json();
       if (data && !data.result) {
         alert(CheckAdminAlert[savedLanguage].noPermission);
