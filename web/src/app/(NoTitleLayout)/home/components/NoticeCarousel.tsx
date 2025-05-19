@@ -180,7 +180,7 @@ const NoticeCarousel = () => {
                 <div className="relative z-10 text-white select-none  mt-40 mr-80">
                   <h3 className="text-2xl font-bold">{item.title}</h3>
                   <Link
-                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.postId}`}
+                    href={`news/${item.postId}`}
                     className="h-1/4 flex items-center justify-center underline">
                     View More
                   </Link>
