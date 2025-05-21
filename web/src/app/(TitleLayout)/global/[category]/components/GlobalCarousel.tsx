@@ -38,6 +38,7 @@ const GlobalCarousel = () => {
     };
 
     fetchNoticeItems();
+    console.log(noticeItems);
   }, []);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -55,13 +56,20 @@ const GlobalCarousel = () => {
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
 
-  useEffect(() => {
+  const updateCardWidth = () => {
     if (wrapperRef.current) {
       const totalWidth = wrapperRef.current.offsetWidth;
       const newCardWidth = (totalWidth - gap * (cardPerView - 1)) / cardPerView;
       setCardWidth(newCardWidth);
-      setCurrentIndex(middleIndex);
     }
+  };
+
+  useEffect(() => {
+    updateCardWidth();
+    setCurrentIndex(middleIndex);
+
+    window.addEventListener("resize", updateCardWidth);
+    return () => window.removeEventListener("resize", updateCardWidth);
   }, [noticeItems.length]);
 
   useEffect(() => {
@@ -85,10 +93,7 @@ const GlobalCarousel = () => {
   };
 
   useEffect(() => {
-    if (
-      currentIndex === totalItems - noticeItems.length ||
-      currentIndex === 0
-    ) {
+    if (currentIndex === totalItems - noticeItems.length || currentIndex === 0) {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
         setCurrentIndex(middleIndex);
@@ -135,7 +140,6 @@ const GlobalCarousel = () => {
     };
   });
 
-
   const offsetX = ((cardPerView - 1) / 2) * (cardWidth + gap);
 
   return (
@@ -175,12 +179,12 @@ const GlobalCarousel = () => {
               <div
                 className="relative h-[450px] flex flex-col justify-center items-center overflow-hidden"
                 style={{
-                  backgroundImage: `url(${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image})`,
+                  backgroundImage: `url(${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${item.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                <div className="absolute inset-0 opacity-30 bg-black backdrop-blur-sm" />
+                <div className="absolute inset-0 opacity-50 bg-black backdrop-blur-sm" />
                 <div className="relative z-10 text-white text-center select-none p-4">
                   <h3 className="text-2xl font-bold">{item.title}</h3>
                   <Link
