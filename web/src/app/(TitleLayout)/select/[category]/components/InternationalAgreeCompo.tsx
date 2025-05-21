@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import useCustomFetch from "@/app/hook/customFetch";
 import { internationalAgreeMessage } from "@/app/menu";
 import { Language } from "@/app/common/types";
@@ -95,12 +96,14 @@ export default function InternationalAgreeCompo() {
               y={coords.y - 40}
               width="40"
               height="40"
-              className="overflow-visible"
-            >
-              <img
+              className="overflow-visible">
+              <Image
                 src="/images/locationIcon.png"
                 alt="location"
+                width={40}
+                height={40}
                 className="w-full h-full animate-bounce"
+                unoptimized={true}
               />
             </foreignObject>
 
@@ -121,6 +124,36 @@ export default function InternationalAgreeCompo() {
           </>
         )}
       </svg>
+      {selectedCountry && schools.length > 0 && (
+        <div className="max-w-[1000px] mx-auto mt-8 overflow-x-auto">
+          <h2 className="text-xl font-semibold mb-3">
+            {`${selectedCountry} 협약 현황 리스트 : ${schools.length}`}
+          </h2>
+          <table className="w-full table-auto border border-gray-300 text-left text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="border border-gray-300 px-4 py-2"></th>
+                <th className="border border-gray-300 px-4 py-2">
+                  {"학교명"}
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  {"기관 형태"}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {schools.map((school, index) => (
+                <tr key={school.id} className="hover:bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                  <td className="border border-gray-300 px-4 py-2">{school.name}</td>
+                  <td className="border border-gray-300 px-4 py-2">{school.corporationType}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
     </div>
   );
 }

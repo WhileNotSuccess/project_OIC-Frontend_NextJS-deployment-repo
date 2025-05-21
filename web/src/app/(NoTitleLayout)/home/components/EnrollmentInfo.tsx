@@ -45,7 +45,6 @@ export default function EnrollmentInfo() {
         });
         const data = await response.json();
         setEntranceApplication(data);
-        console.log(data);
       } catch {
         console.error(enrollmentInfoMessage[language].EnrollmentLoadingError);
       }
@@ -63,11 +62,11 @@ export default function EnrollmentInfo() {
             window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.applicants.fileUrl}`;
           }}
         >
-          {enrollmentInfoMessage[language].ApplicationForm}
+          {enrollmentInfoMessage[language].RecruitmentGuidelines}
         </div>
         <Image
           src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.applicants.imageUrl}`}
-          alt={enrollmentInfoMessage[language].ApplicationForm}
+          alt={enrollmentInfoMessage[language].RecruitmentGuidelines}
           width={2000}
           height={300}
           unoptimized={true}
@@ -81,11 +80,11 @@ export default function EnrollmentInfo() {
             window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.entry.fileUrl}`;
           }}
         >
-          {enrollmentInfoMessage[language].RecruitmentGuidelines}
+          {enrollmentInfoMessage[language].ApplicationForm}
         </div>
         <Image
           src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.entry.imageUrl}`}
-          alt={enrollmentInfoMessage[language].RecruitmentGuidelines}
+          alt={enrollmentInfoMessage[language].ApplicationForm}
           width={2000}
           height={300}
           unoptimized={true}

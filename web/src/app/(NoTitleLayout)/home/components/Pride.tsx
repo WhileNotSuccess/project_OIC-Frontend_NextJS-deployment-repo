@@ -36,7 +36,6 @@ const Pride = () => {
         });
         const data = await response.json();
         setPrideItems(data.data);
-        console.log(data.data);
       } catch {
         console.error(PrideMessage[language].LoadError);
       }

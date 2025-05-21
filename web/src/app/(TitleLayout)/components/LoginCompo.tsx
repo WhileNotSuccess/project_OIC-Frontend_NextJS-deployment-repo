@@ -15,6 +15,7 @@ export default function LoginCompo() {
     const savedLanguage = Cookies.get("language") as Language;
     if (savedLanguage) {
       setLanguage(savedLanguage);
+      console.log(user);
     }
   }, []);
 
