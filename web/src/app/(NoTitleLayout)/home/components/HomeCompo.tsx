@@ -61,8 +61,8 @@ export default function HomeCompo() {
         <Image
           src="/images/yeungjinTitlePicture.jpg"
           alt="yeungjinTitlePicture"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           className="opacity-50"
         />
         <div
@@ -125,15 +125,16 @@ export default function HomeCompo() {
 
             <div className="absolute inset-0 bg-black/50 z-10" />
 
-            <div className="relative z-10 flex flex-col justify-center mt-10 h-full text-white px-2 md:px-10 text-center">
+            <div className="relative z-10 flex flex-col justify-center items-start mt-10 h-full text-white px-2 md:px-10 text-left">
               <h2 className="text-xl md:text-2xl font-bold mb-4">
                 영진전문대학교 학위과정 입학에 관한 문의가 있으시다면,<br />
                 아래의 이메일이나 전화번호로 언제든지 연락 주시기 바랍니다.
               </h2>
               <p className="text-base md:text-xl">
-                +82-123-456(영어),+82-123-456(일본어) yju.intl@yju.ac.kr
+                +82-123-456(영어), +82-123-456(일본어) yju.intl@yju.ac.kr
               </p>
             </div>
+
           </div>
         </div>
 
