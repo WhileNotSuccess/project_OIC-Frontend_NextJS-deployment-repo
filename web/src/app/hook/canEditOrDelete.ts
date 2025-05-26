@@ -18,7 +18,7 @@ export const useCheckAdmin = (userId? : number, category? : string) => {
     data: user,
     isLoading,
   } = useSWR(
-    "/users/info",
+    "/users",
     async (endpoint) => {
       const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
       const response = await fetch(`${baseURL}${endpoint}`, {
@@ -44,7 +44,7 @@ export const useCheckAdmin = (userId? : number, category? : string) => {
     data: isAdmin,
     isLoading : isAdminLoading,
   } = useSWR(
-    "/users",
+    "/users/admin",
     async (endpoint) => {
       const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
       const response = await fetch(`${baseURL}${endpoint}`, {

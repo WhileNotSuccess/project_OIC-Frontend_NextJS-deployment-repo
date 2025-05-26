@@ -28,9 +28,8 @@ export default function HtmlDocsHeaderProps({
   const router = useRouter();
   const customFetch = useCustomFetch();
 
-
   const onUpdate = (guidanceId?: string) => {
-    router.push(`/post-update/${guidanceId}`);
+    router.push(`/postUpdate/${guidanceId}`);
   };
 
   const onDelete = async (guidanceId?: string) => {

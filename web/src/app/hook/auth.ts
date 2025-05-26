@@ -14,7 +14,7 @@ export const useAuth = () => {
     error,
     isLoading,
   } = useSWR(
-    "/users/info",
+    "/users",
     async (endpoint) => {
       const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
       const response = await fetch(`${baseURL}${endpoint}`, {
@@ -24,7 +24,6 @@ export const useAuth = () => {
         },
         credentials: "include",
       });
-
       if (!response.ok) {
         throw new Error(AuthMenu[language].LoadError);
       }
@@ -62,7 +61,6 @@ export const useAuth = () => {
         router.push("/");
       }
     } catch {
-      console.log("123");
       setError(serverError[language].server);
     }
   };

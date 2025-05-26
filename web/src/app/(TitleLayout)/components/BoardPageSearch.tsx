@@ -49,9 +49,9 @@ export default function BoardPageSearch({
   };
 
   return(
-    <div className="flex sm:flex-row sm:justify-evenly flex-col justify-evenly">
+    <div className="w-full xl:w-full flex flex-wrap sm:flex-nowrap gap-2 border-2 border-black p-2">
       <select
-        className="w-28 h-8 border-2 border-black rounded"
+        className="rounded w-full sm:w-auto"
         value={searchOption}
         onChange={(e) => setSearchOption(e.target.value)}
       >
@@ -61,12 +61,12 @@ export default function BoardPageSearch({
       </select>
       <input
         onChange={(e) => setInputValue(e.target.value)}
-        className="w-60 h-8 border-2 border-black rounded pl-2 sm:ml-2"
+        className="rounded w-full flex-1"
         placeholder={`${boardPage[language]?.writeTitle}`}
       ></input>
       <button
         onClick={() => onSearch(inputValue)}
-        className=" px-2 bg-[#0093EE] text-white sm:ml-2 max-w-20"
+        className="bg-[#0093EE] text-white whitespace-nowrap px-2 w-full sm:w-auto"
       >
         {boardPage[language]?.search}
       </button>

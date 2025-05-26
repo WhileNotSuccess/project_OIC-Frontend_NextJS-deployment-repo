@@ -52,12 +52,11 @@ export default function HtmlDocs(props: HtmlDocsProps) {
           : `/post/one/category/${props.category}`;
         const response = await customFetch(endpoint, { method: "GET" });
         const data = await response.json();
-        console.log(data);
         setAllData({
           content: data.data.content,
           title: data.data.title,
           documentFiles: data.files,
-          guidanceId: data.data.Id,
+          guidanceId: data.data.id,
           author: data.data.author,
           createdDate: data.data.createdDate,
           userId: data.data.userId,

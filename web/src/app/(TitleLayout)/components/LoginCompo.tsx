@@ -15,7 +15,6 @@ export default function LoginCompo() {
     const savedLanguage = Cookies.get("language") as Language;
     if (savedLanguage) {
       setLanguage(savedLanguage);
-      console.log(user);
     }
   }, []);
 
@@ -30,7 +29,7 @@ export default function LoginCompo() {
           href={"/dashboard"}
           className="text-white font-bold hover:underline"
         >
-          &nbsp;&nbsp; {user.name}
+          &nbsp;&nbsp; {user.userInfo.name}
         </Link>
       )}
     </section>
