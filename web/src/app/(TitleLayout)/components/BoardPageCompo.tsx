@@ -79,8 +79,8 @@ export default function BoardPageCompo({ name }: BoardPageProps) {
         style={{ height: "200px" }}
       >
       </header>
-      <section className="w-full flex sm:px-40 px-20">
-        <div className="w-full flex flex-col sm:flex-row sm:justify-between justify-start">
+      <section className="w-full flex xl:px-40 sm:px-20">
+        <div className="w-full flex flex-col sm:flex-row sm:justify-between justify-start sm:items-center">
           <BoardPageSearch
             language={language}
             customFetch={customFetch}

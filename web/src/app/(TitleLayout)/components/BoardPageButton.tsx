@@ -22,9 +22,9 @@ export default function BoardPageButton({
   };
 
   return(
-    <div className="flex justify-center ml-2">
+    <div className="sm:w-16 flex justify-center items-center ml-2">
       <button
-        className=" px-2 bg-[#0093EE] text-white"
+        className=" px-2 bg-[#0093EE] text-white cursor-pointer"
         onClick={() => onWrite(name)}
       >
         {boardPage[language]?.write}

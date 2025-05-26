@@ -10,7 +10,7 @@ export default async function PostPage({ params } : Props){
   return(
     <div>
       <Title category={category}/>
-      <Editor/>
+      <Editor categoryName={category}/>
     </div>
   );
 }

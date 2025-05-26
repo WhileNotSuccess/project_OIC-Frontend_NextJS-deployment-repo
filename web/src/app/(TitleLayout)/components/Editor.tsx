@@ -59,7 +59,7 @@ export default function Editor(props: EditorProps){
       }
     };
     oldPost();
-  }, [props.id,customFetch]);
+  }, [props.id]);
 
   return(
     <main className="w-full flex justify-center px-12">
@@ -92,7 +92,7 @@ export default function Editor(props: EditorProps){
         />
         <EditorButton
           deleteFileNames={deleteFileNames}
-          customFetch={customFetch}
+          customFormFetch={customFormFetch}
           id={props.id}
           language={language}
           title={title}

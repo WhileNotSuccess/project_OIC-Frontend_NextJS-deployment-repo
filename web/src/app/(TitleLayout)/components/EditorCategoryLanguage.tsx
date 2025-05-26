@@ -16,7 +16,6 @@ export default function EditorCategoryLanguage({
   language,
   setLanguage,
 }:EditorCategoryLanguageProps){
-
   return(
     <div className="w-full flex flex-col sm:flex-row justify-between  border mb-1">
       <select

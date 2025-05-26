@@ -7,6 +7,7 @@ import { Hamburger } from "@/app/menu";
 import Link from "next/link";
 import Image from "next/image";
 import ManagementCookieCompo from "./ManagementCookieCompo";
+import LoginCompo from "./LoginCompo";
 
 export default function HamburgerMenuCompo() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,7 +42,10 @@ export default function HamburgerMenuCompo() {
           width={36}
           height={36}
         />
-        <ManagementCookieCompo/>
+        <div className="flex justify-center items-center gap-4">
+          <LoginCompo/>
+          <ManagementCookieCompo/>
+        </div>
       </div>
 
       <aside

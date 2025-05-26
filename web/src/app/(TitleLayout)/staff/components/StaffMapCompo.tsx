@@ -9,18 +9,21 @@ interface StaffMapCompoProps{
 
 export default function StaffMapCompo({ staff } : StaffMapCompoProps){
   return(
-    <div className="w-full flex items-center justify-center">
-      <ul className="flex flex-wrap justify-between mt-4">
+    <div className="w-full flex items-center">
+      <ul className="w-full flex flex-wrap mt-4 gap-6">
         {staff.map((item) => {
           return (
             <li
               key={item.id}
-              className="w-76 h-40 border-t-2 border-[#0C588D] bg-[#F6F6F6] mb-4 text-[#000000] flex flex-col justify-between"
+              className="w-70 xl:w-74 h-40 border-t-2 border-[#0C588D] bg-[#F6F6F6] mb-4 text-[#000000] flex flex-col justify-between"
             >
               <div className=" flex flex-col justify-center">
                 <div className="p-2 h-8 ml-2 font-semibold">{item.position}</div>
                 <div className="p-4 text-xl font-semibold">
                   {item.name}
+                </div>
+                <div className="p-2 ml-2 font-semibold">
+                  {item.role}
                 </div>
               </div>
               <div className="w-full border-t-2 border-[#0C588D] font-bold h-8 flex items-center pl-2">

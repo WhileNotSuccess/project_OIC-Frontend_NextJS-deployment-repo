@@ -7,7 +7,7 @@ import { editorCompo, postError, postSuccess, updateError, updateSuccess } from 
 
 type EditorButtonProps = {
   deleteFileNames : string[],
-  customFetch : (url : string, options? : RequestInit) => Promise<Response>,
+  customFormFetch: (url: string, options?: RequestInit) => Promise<Response>;
   id? : string,
   language : Language,
   title : string,
@@ -19,7 +19,7 @@ type EditorButtonProps = {
 
 export default function EditorButton({
   id,
-  customFetch,
+  customFormFetch,
   language,
   deleteFileNames,
   title,
@@ -57,7 +57,7 @@ export default function EditorButton({
     if(!onCheckTitleContent()) return;
     try{
       const formData = onFormDataAppend();
-      const response = await customFetch("/post",{
+      const response = await customFormFetch("/post",{
         method : "POST",
         body : formData,
       });
@@ -77,7 +77,7 @@ export default function EditorButton({
     try{
       const formData = onFormDataAppend();
       formData.append("deleteFilePath", JSON.stringify(deleteFileNames));
-      await customFetch(`/post/${id}`,{
+      await customFormFetch(`/post/${id}`,{
         method : "PATCH",
         body : formData,
       });

@@ -68,7 +68,7 @@ export default function BoardPageContent({
             <div className="sm:w-1/5 sm:flex sm:justify-center sm:ml-0 ml-2 sm:overflow-hidden sm:text-ellipsis sm:whitespace-nowrap hidden sm:block">
               {formatDate(item.createdDate)}
             </div>
-            <div className="w-1/5 flex justify-center sm:ml-0 ml-2 overflow-hidden text-ellipsis whitespace-nowrap">
+            <div className="w-1/5 flex sm:justify-center sm:ml-0 ml-2 overflow-hidden text-ellipsis whitespace-nowrap">
               {formatDate(item.updatedDate)}
             </div>
           </div>
