@@ -100,7 +100,7 @@ export default function GlobalProgramsModal({ onClose, data, method }: ModalProp
           (prev) => ({ ...prev, [postTarget]: id }),
         ); 
       }}/>}
-      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg h-200 overflow-auto">
+      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg h-200 overflow-auto dark:bg-white">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
@@ -147,7 +147,7 @@ export default function GlobalProgramsModal({ onClose, data, method }: ModalProp
                   >
                   게시글 선택하기
                   </button>
-                  <div>선택된 게시글 아이디: {inputs[key]}</div>
+                  <div className="dark:text-black">선택된 게시글 아이디: {inputs[key]}</div>
                 </div>
                 
               
@@ -157,7 +157,7 @@ export default function GlobalProgramsModal({ onClose, data, method }: ModalProp
               <div key={key}>
                 <label
                   htmlFor={key}
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
                 >
                   {keyMapping[key] || key}
                 </label>

@@ -9,7 +9,7 @@ export default async function BoardPage({ params } : Props) {
 
   const { category } = resolvedParams;
   return (
-    <div>
+    <div className="dark:bg-white dark:text-black">
       <Title category={category}/>
       <BoardPageCompo name={category} />
     </div>

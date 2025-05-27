@@ -2,6 +2,7 @@
 
 import { Language } from "@/app/common/types";
 import { editorCompo, postError, postSuccess, updateError, updateSuccess } from "@/app/menu";
+import { useRouter } from "next/navigation";
 
 
 
@@ -28,6 +29,7 @@ export default function EditorButton({
   documentFiles,
 }:EditorButtonProps){
 
+  const router = useRouter();
 
   const onFormDataAppend = ()=>{
     const formData = new FormData();
@@ -63,7 +65,8 @@ export default function EditorButton({
       });
       if(response.ok){
         alert(postSuccess[language]?.contentPost);
-        window.location.href = `/admin/${category}`;
+        //window.location.href = `/admin/${category}`;
+        router.back();
       }
       else{
         alert(postError[language]?.subError);        
@@ -83,6 +86,7 @@ export default function EditorButton({
         body : formData,
       });
       alert(updateSuccess[language]?.updatePost);
+      router.back();
     }catch{
       alert(updateError[language]?.update);
     }

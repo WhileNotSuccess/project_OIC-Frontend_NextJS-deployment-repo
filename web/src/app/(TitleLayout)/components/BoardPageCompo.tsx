@@ -21,7 +21,7 @@ type BoardPageProps = {
 export default function BoardPageCompo({ name }: BoardPageProps) {
   const customFetch = useCustomFetch();
   const [language, setLanguage] = useState<Language>(Language.korean);
-  const { adminUserCheck } = useCheckAdmin();
+  const { adminUserCheck } = useCheckAdmin(undefined,name);
   const [allBoardData, setAllBoardData] = useState<AllBoardData>({
     boardData: [],
     currentPage: 1,

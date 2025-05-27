@@ -8,7 +8,7 @@ export default async function StaffPage({ params } : Props){
 
   const { category } = resolvedParams;
   return(
-    <div className="dark:bg-gray-400 dark:text-black">
+    <div className="dark:bg-white dark:text-black">
       <Title category={category}/>
       <StaffIntro/>
     </div>

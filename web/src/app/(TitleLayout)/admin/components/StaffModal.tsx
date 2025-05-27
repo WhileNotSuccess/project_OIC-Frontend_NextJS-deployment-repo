@@ -88,7 +88,7 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
       tabIndex={-1}
       className="fixed inset-0 z-50 flex justify-center items-center bg-black/50"
     >
-      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg h-200 overflow-auto">
+      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg h-200 overflow-auto dark:bg-white">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
@@ -100,7 +100,7 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
             <div key={key}>
               <label
                 htmlFor={key}
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
               >
                 {keyMapping[key] || key}
               </label>

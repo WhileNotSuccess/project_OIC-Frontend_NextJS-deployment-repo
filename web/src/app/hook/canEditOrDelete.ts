@@ -67,7 +67,7 @@ export const useCheckAdmin = (userId? : number, category? : string) => {
   );
 
   return {
-    adminUserCheck : isAdmin?.result || (category==="faq" || category==="review") && user,
+    adminUserCheck : isAdmin?.result || category==="qna" && user,
     canEditOrDelete : isAdmin?.result || userId === user?.id,
     isAdminLoading,
     isLoading,

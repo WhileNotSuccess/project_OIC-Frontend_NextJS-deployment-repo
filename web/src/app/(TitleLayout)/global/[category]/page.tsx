@@ -7,7 +7,7 @@ export default async function GuidancePage({ params }: Props) {
   const { category } = resolvedParams;
 
   return (
-    <div>
+    <div className="dark:bg-white dark:text-black">
       <Title category={category} />
       <div className="h-[500px] flex items-center justify-center px-4">
         <GlobalCarousel />
