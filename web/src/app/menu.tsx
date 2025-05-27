@@ -1370,16 +1370,19 @@ export const internationalAgreeMessage: Record<Language, Record<string, string>>
     CountryLoadingError: "국가목록 데이터를 불러오는데 실패했습니다.",
     PartnerLoadingError: "협약기관 데이터를 불러오는데 실패했습니다.",
     CountrySelect: "국가 선택",
+    CountryAndPartnerLoadingError: "국가와 협약기관 데이터를 불러오는데 실패했습니다.",
   },
   [Language.english]: {
     CountryLoadingError: "Failed to load country list data.",
     PartnerLoadingError: "Failed to load partner data.",
     CountrySelect: "Select Country",
+    CountryAndPartnerLoadingError: "Failed to load country and partner data.",
   },
   [Language.japanese]: {
     CountryLoadingError: "国名リストデータの読み込みに失敗しました。",
     PartnerLoadingError: "協定機関データの読み込みに失敗しました。",
     CountrySelect: "国を選択",
+    CountryAndPartnerLoadingError: "国と協定機関データの読み込みに失敗しました。",
   },
 };
 

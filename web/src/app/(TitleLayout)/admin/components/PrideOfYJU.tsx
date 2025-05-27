@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import DeleteModal from "./DeleteModal";
 import PrideModal from "./PrideModal";
 type Pride = {
-    id: number;
-    image: string;
-    korean: string;
-    english: string;
-    japanese: string;
+  id: number;
+  image: string;
+  korean: string;
+  english: string;
+  japanese: string;
 }
 export default function PrideOfYJU() {
   const customFetch = useCustomFetch();
@@ -16,18 +16,18 @@ export default function PrideOfYJU() {
   const [deleteModalId, setDeleteModalId] = useState<number | null>(null);
   const [prides, setPrides] = useState<Pride[]>([]);
   const [pridePostModal, setPridePostModal] = useState<boolean>(false);
-  useEffect(()=>{
+  useEffect(() => {
     async function fetchPrides() {
       const response = await customFetch("/pride");
       const data = await response.json();
       setPrides(data.data);
     }
     fetchPrides();
-  },[]);
+  }, []);
 
 
   return <>{
-    
+
     prides.length > 0 ? (
 
       <div className="flex flex-wrap justify-center">
@@ -42,20 +42,20 @@ export default function PrideOfYJU() {
           )
         }
         <h1 className="text-3xl mb-4 font-bold text-center w-full">
-            교직원 소개
+          Pride Of YJU
           <span className="p-4 text-right">
             <button
-              onClick={()=>{
+              onClick={() => {
                 setPridePostModal(true);
               }}
               className="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
             >
-          
-          추가하기
+
+              추가하기
             </button>
           </span>
         </h1>
-        
+
 
         {prides.map((pride) => (
           <div key={pride.id} className="m-4 w-1/4 p-4 border rounded-lg shadow-lg flex flex-col">
@@ -73,7 +73,7 @@ export default function PrideOfYJU() {
                 target="pride"
               />
             )}
-            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${pride.image}`} alt={pride.korean} className="w-64 h-64 object-cover rounded-lg"/>
+            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${pride.image}`} alt={pride.korean} className="w-64 h-64 object-cover rounded-lg" />
             <div>
               한국어 설명
               <div
@@ -92,13 +92,13 @@ export default function PrideOfYJU() {
                         onClick={() => setDeleteModalId(pride.id)}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
-                      삭제
+                        삭제
                       </li>
                       <li
                         onClick={() => setUpdateModalId(pride.id)}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
-                      수정
+                        수정
                       </li>
                     </ul>
                   </div>

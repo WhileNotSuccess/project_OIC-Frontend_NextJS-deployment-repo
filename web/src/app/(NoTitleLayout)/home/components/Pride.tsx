@@ -45,9 +45,13 @@ const Pride = () => {
 
 
   return (
-    <div className="flex justify-between items-start mt-20 gap-8">
+    <div className="flex flex-wrap gap-8 justify-start">
       {prideItems.map((item, index) => (
-        <div key={index} className="w-1/3 flex flex-col items-center mb-5">
+        <div
+          key={index}
+          className="flex flex-col items-center mb-5"
+          style={{ width: "calc((100% - 2rem * 2) / 3)" }}
+        >
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files${item.image}`}
             alt={item[language]}
@@ -60,8 +64,9 @@ const Pride = () => {
           </p>
         </div>
       ))}
-
     </div>
+
+
   );
 };
 

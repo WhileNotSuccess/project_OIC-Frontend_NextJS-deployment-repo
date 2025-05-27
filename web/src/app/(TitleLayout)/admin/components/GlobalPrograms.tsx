@@ -4,17 +4,17 @@ import GlobalProgramsModal from "./GlobalProgramsModal";
 import DeleteModal from "./DeleteModal";
 
 type Carousel = {
-  id:number,
-  image:string,
-  koreanPostId:number,
-  englishPostId:number,
-  japanesePostId:number,
-  koreanTitle:string,
-  englishTitle:string,
-  japaneseTitle:string,
-  koreanDescription:string,
-  englishDescription:string,
-  japaneseDescription:string,
+  id: number,
+  image: string,
+  koreanPostId: number,
+  englishPostId: number,
+  japanesePostId: number,
+  koreanTitle: string,
+  englishTitle: string,
+  japaneseTitle: string,
+  koreanDescription: string,
+  englishDescription: string,
+  japaneseDescription: string,
 }
 
 export default function GlobalPrograms() {
@@ -36,7 +36,7 @@ export default function GlobalPrograms() {
   const [activeMenuId, setActiveMenuId] = useState<number | null>(null);
   const [updateModalId, setUpdateModalId] = useState<number | null>(null);
   const [deleteModalId, setDeleteModalId] = useState<number | null>(null);
-  useEffect(()=>{
+  useEffect(() => {
     const fetchCarousel = async () => {
       try {
         const response = await customFetch("/carousel/raw");
@@ -51,10 +51,10 @@ export default function GlobalPrograms() {
     };
 
     fetchCarousel();
-  },[]);
+  }, []);
 
   return <div className="flex flex-wrap gap-4 p-4">
-    
+
     {
       carouselPostModal && (
         <GlobalProgramsModal
@@ -66,16 +66,16 @@ export default function GlobalPrograms() {
       )
     }
     <h1 className="text-3xl mb-4 font-bold text-center w-full">
-                교직원 소개
+      글로벌 프로그램 (캐러셀)
       <span className="p-4 text-right">
         <button
-          onClick={()=>{
+          onClick={() => {
             setCarouselPostModal(true);
           }}
           className="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
         >
-              
-              추가하기
+
+          추가하기
         </button>
       </span>
     </h1>
@@ -105,7 +105,7 @@ export default function GlobalPrograms() {
             }
             className="float-right cursor-pointer relative"
           >
-                ㅤㅤ⋮
+            ㅤㅤ⋮
 
             {activeMenuId === item.id && (
               <div className="absolute top-full right-0 mt-1 w-40 bg-white border rounded shadow-lg z-10">
@@ -114,19 +114,19 @@ export default function GlobalPrograms() {
                     onClick={() => setDeleteModalId(item.id)}
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   >
-                      삭제
+                    삭제
                   </li>
                   <li
                     onClick={() => setUpdateModalId(item.id)}
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   >
-                      수정
+                    수정
                   </li>
                 </ul>
               </div>
             )}
           </span>
-         
+
           {
             Object.entries(item).map(([key, value]) => {
               if (key === "id" || key === "image") return null; // id와 image는 제외
@@ -136,7 +136,7 @@ export default function GlobalPrograms() {
                     <h3 className="text-blue-500 font-bold">{keyMapping[key]}</h3>
                     <p>
                       <a href={`/board/globalPrograms/${value}`} className="text-blue-600 hover:underline">
-                      게시글로 이동
+                        게시글로 이동
                       </a>
                     </p>
                   </div>

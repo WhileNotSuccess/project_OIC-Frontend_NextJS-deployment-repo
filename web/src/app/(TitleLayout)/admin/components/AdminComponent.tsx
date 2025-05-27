@@ -12,6 +12,7 @@ import Title from "../../components/Title";
 import PrideOfYJU from "./PrideOfYJU";
 import GlobalPrograms from "./GlobalPrograms";
 import Countries from "./Countries";
+import Institutions from "./Institutions";
 
 type AdminComponentProps = {
   category: string;
@@ -19,9 +20,9 @@ type AdminComponentProps = {
 
 export default function AdminComponent({ category }: AdminComponentProps) {
   const customFetch = useCustomFetch();
-  const [allStaff, setAllStaff] = useState<Record<string,TeacherGlobal[]>>({});
+  const [allStaff, setAllStaff] = useState<Record<string, TeacherGlobal[]>>({});
   const [staffPostModal, setStaffPostModal] = useState<boolean>(false);
-  
+
   useEffect(() => {
     if (category === "staff") {
       async function getStaff() {
@@ -33,7 +34,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
     }
   }, [category]);
 
-  if(category==="staff"){
+  if (category === "staff") {
     return (
       <>
         {staffPostModal && (
@@ -59,12 +60,12 @@ export default function AdminComponent({ category }: AdminComponentProps) {
             </span>
           </h1>
           {
-            Object.entries(allStaff).map(([key,value])=>(  // 구조분해 할당으로 새로운 배열 반환
+            Object.entries(allStaff).map(([key, value]) => (  // 구조분해 할당으로 새로운 배열 반환
               <div key={key} className="mb-8">
                 <div className="text-2xl font-bold mb-2">
                   {key}
                 </div>
-                <StaffComponent item={value}/>
+                <StaffComponent item={value} />
               </div>
             ),
             )
@@ -72,22 +73,26 @@ export default function AdminComponent({ category }: AdminComponentProps) {
         </div>
       </>
     );
-  }else if(category=="PrideOfYJU"){
+  } else if (category == "PrideOfYJU") {
     return (
-      <PrideOfYJU/>
+      <PrideOfYJU />
     );
-  }else if(category=="global-programs"){
+  } else if (category == "global-programs") {
     return (
-      <GlobalPrograms/>
+      <GlobalPrograms />
     );
-  }else if(category=="countries"){
+  } else if (category == "countries") {
     return (
-      <Countries/>
+      <Countries />
     );
-  }else{
+  } else if (category == "institutions") {
+    return (
+      <Institutions />
+    );
+  } else {
     return (
       <div className="w-full flex flex-col">
-        <Title category={category}/>
+        <Title category={category} />
         <div className="w-full flex justify-center items-center">
           <BoardPageCompo name={category} />
         </div>
