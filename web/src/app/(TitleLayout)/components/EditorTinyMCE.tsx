@@ -27,12 +27,13 @@ export default function EditorTinyMCE({
       const formData = new FormData();
       formData.append("image", file);
       try {
-        const data = await customFormFetch("/attachments", {
+        const data = await customFormFetch("/post/image", {
           method: "POST",
           body: formData,
         });
-        const imageUrl = decodeURIComponent(data.url);
-        return imageUrl;
+        const res = await data.json();
+
+        return `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${res.url}`;
       } catch {
         alert(postError[language]?.imgError);
       }
@@ -79,9 +80,7 @@ export default function EditorTinyMCE({
                 if (imageFile) {
                   const url = await handleFileSelect(imageFile);
                   if (url) {
-                    cb(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${url}`, {
-                      title: imageFile.name,
-                    });
+                    cb(url);
                   }
                 }
               });

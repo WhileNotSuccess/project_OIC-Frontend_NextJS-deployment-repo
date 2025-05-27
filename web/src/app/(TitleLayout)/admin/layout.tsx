@@ -191,12 +191,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               </ul>
             </div>
           </li>
-          <li className="group/staff relative flex justify-center items-center w-44 h-12">
+          <li className="group/program relative flex justify-center items-center w-44 h-12">
             <div className="text-center text-lg text-[#0093EE]">
               글로벌 프로그램
             </div>
             <div className="absolute top-0 w-44 bg-gray-200 text-[#0093EE] text-center opacity-0 translate-y-[-100%] 
-              group-hover/staff:translate-y-[125%] group-hover/staff:opacity-100 transition-transform 
+              group-hover/program:translate-y-[125%] group-hover/program:opacity-100 transition-transform 
               duration-300 ease-in-out z-4">
               <ul>
                 <li>
@@ -210,12 +210,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               </ul>
             </div>
           </li>
-          <li className="group/staff relative flex justify-center items-center w-44 h-12">
+          <li className="group/country relative flex justify-center items-center w-44 h-12">
             <div className="text-center text-lg text-[#0093EE]">
               국가, 협약기관 수정
             </div>
             <div className="absolute top-0 w-44 bg-gray-200 text-[#0093EE] text-center opacity-0 translate-y-[-100%] 
-              group-hover/staff:translate-y-[125%] group-hover/staff:opacity-100 transition-transform 
+              group-hover/country:translate-y-[125%] group-hover/country:opacity-100 transition-transform 
               duration-300 ease-in-out z-4">
               <ul>
                 <li>
