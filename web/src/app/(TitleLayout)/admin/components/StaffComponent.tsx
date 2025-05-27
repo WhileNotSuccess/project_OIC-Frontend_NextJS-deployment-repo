@@ -43,7 +43,7 @@ export default function StaffComponent({ item }: StaffComponentProps) {
                     prev === teacher.id ? null : teacher.id,
                   )
                 }
-                className="float-right cursor-pointer"
+                className="float-right cursor-pointer relative"
               >
                 ㅤㅤ⋮
               </span>

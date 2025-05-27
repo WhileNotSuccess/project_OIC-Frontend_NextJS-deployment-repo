@@ -97,6 +97,19 @@ export interface TeacherGlobal {
   position_en : string;
 }
 
+export interface Carousel {
+  id: number;
+  image: string;
+  koreanPostId: number;
+  englishPostId: number;
+  japanesePostId: number;
+  koreanTitle: string;
+  englishTitle: string;
+  japaneseTitle: string;
+  koreanDescription: string;
+  englishDescription: string;
+  japaneseDescription: string;
+}
 export interface PrideGlobal{
   id: number;
   image: string
