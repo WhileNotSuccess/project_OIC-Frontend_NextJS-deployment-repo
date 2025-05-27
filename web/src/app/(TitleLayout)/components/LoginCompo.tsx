@@ -25,12 +25,11 @@ export default function LoginCompo() {
           {LoginCompoMenu[language].Login}
         </Link>
       ) : (
-        <Link
-          href={"/dashboard"}
-          className="text-white font-bold hover:underline"
+        <div
+          className="text-white font-bold"
         >
           &nbsp;&nbsp; {user.userInfo.name}
-        </Link>
+        </div>
       )}
     </section>
   );

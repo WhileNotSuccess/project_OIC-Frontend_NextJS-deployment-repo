@@ -10,7 +10,7 @@ interface StaffMapCompoProps{
 export default function StaffMapCompo({ staff } : StaffMapCompoProps){
   return(
     <div className="w-full flex items-center">
-      <ul className="w-full flex flex-wrap mt-4 gap-6">
+      <ul className="w-full flex flex-wrap mt-4 gap-6 ">
         {staff.map((item) => {
           return (
             <li
@@ -19,27 +19,27 @@ export default function StaffMapCompo({ staff } : StaffMapCompoProps){
             >
               <div className=" flex flex-col justify-center">
                 <div className="p-2 h-8 ml-2 font-semibold">{item.position}</div>
-                <div className="p-4 text-xl font-semibold">
+                <div className="pl-4 pr-4 pt-4 text-xl font-semibold">
                   {item.name}
                 </div>
                 <div className="p-2 ml-2 font-semibold">
                   {item.role}
                 </div>
               </div>
-              <div className="w-full border-t-2 border-[#0C588D] font-bold h-8 flex items-center pl-2">
-                <div className="h-8 ml-2 font-bold flex flex-row items-center gap-2 text-sm text-[#909090] overflow-hidden whitespace-nowrap">
+              <div className="w-full border-t-2 border-[#0C588D] font-bold h-8 flex items-center">
+                <div className="h-8 ml-2 font-bold flex flex-row items-center gap-1 text-sm text-[#909090] overflow-hidden whitespace-nowrap">
                   <Image
                     alt="전화기 아이콘"
                     src="/images/telephone.png"
                     width={15}
                     height={15}
-                    className="mr-2"
+                    // className="mr-2"
                   />{" "}
                   {item.phone}
                   <Image
                     alt="이메일 아이콘"
                     src="/images/mail.png"
-                    className="mr-2"
+                    // className="mr-2"
                     width={15}
                     height={15}
                   />
