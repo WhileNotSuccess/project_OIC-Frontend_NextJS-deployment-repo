@@ -87,8 +87,8 @@ export default function PrideModal({ onClose, data, method }: ModalProps) {
         <div>
           {image && preview ? (
             <Image src={preview} alt="프리뷰" width={200} height={200} unoptimized />
-          ) : data ? <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${data.image}`} alt="프리뷰" width={200} height={200} unoptimized/> : null}
-          
+          ) : data ? <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${data.image}`} alt="프리뷰" width={200} height={200} unoptimized /> : null}
+
           <input
             onChange={(e) => {
               if (e.target.files && e.target.files[0]) {

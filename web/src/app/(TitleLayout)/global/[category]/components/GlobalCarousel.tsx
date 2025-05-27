@@ -64,6 +64,19 @@ const GlobalCarousel = () => {
     }
   };
 
+  const [springs, api] = useSprings(extendedItems.length, (index) => {
+    const relativeIndex = index - currentIndex;
+    const isCenter = relativeIndex === 0;
+    return {
+      transform: isCenter
+        ? "scale(1.1) rotateY(0deg)"
+        : `scale(0.9) rotateY(${relativeIndex < 0 ? 30 : -30}deg)`,
+      zIndex: isCenter ? 10 : 1,
+      config: { tension: 250, friction: 25 },
+    };
+  });
+
+
   useEffect(() => {
     updateCardWidth();
     setCurrentIndex(middleIndex);
@@ -91,6 +104,22 @@ const GlobalCarousel = () => {
     }
     setIsTransitioning(true);
   };
+
+
+  useEffect(() => {
+    api.start((index) => {
+      const relativeIndex = index - currentIndex;
+      const isCenter = relativeIndex === 0;
+      return {
+        transform: isCenter
+          ? "scale(1.1) rotateY(0deg)"
+          : `scale(0.9) rotateY(${relativeIndex < 0 ? 30 : -30}deg)`,
+        zIndex: isCenter ? 10 : 1,
+        config: { tension: 250, friction: 25 },
+      };
+    },
+    );
+  }, [currentIndex, api, totalItems, noticeItems.length]);
 
   useEffect(() => {
     if (currentIndex === totalItems - noticeItems.length || currentIndex === 0) {
@@ -128,17 +157,7 @@ const GlobalCarousel = () => {
     if (isDragging) handleMouseUp();
   };
 
-  const [springs] = useSprings(extendedItems.length, (index) => {
-    const relativeIndex = index - currentIndex;
-    const isCenter = relativeIndex === 0;
-    return {
-      transform: isCenter
-        ? "scale(1.1) rotateY(0deg)"
-        : `scale(0.9) rotateY(${relativeIndex < 0 ? 30 : -30}deg)`,
-      zIndex: isCenter ? 10 : 1,
-      config: { tension: 250, friction: 25 },
-    };
-  });
+
 
   const offsetX = ((cardPerView - 1) / 2) * (cardWidth + gap);
 
@@ -177,24 +196,27 @@ const GlobalCarousel = () => {
               className="flex-shrink-0"
             >
               <div
-                className="relative h-[450px] flex flex-col justify-center items-center overflow-hidden"
+                className="relative h-[450px] flex flex-col justify-end items-start overflow-hidden p-6"
                 style={{
                   backgroundImage: `url(${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${item.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                <div className="absolute inset-0 opacity-50 bg-black backdrop-blur-sm" />
-                <div className="relative z-10 text-white text-center select-none p-4">
-                  <h3 className="text-2xl font-bold">{item.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-0" />
+
+                <div className="relative z-10 text-white max-w-full">
+                  <h3 className="text-3xl font-extrabold mb-2 drop-shadow-md">{item.title}</h3>
+                  <p className="text-lg mb-4 leading-snug drop-shadow-sm">{item.description}</p>
                   <Link
                     href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${item.postId}`}
-                    className="inline-block mt-4 underline"
+                    className="inline-block bg-white text-black font-semibold px-4 py-2 mb-4 rounded-md shadow-md hover:bg-gray-100 transition"
                   >
-                    View More
+                    Learn More
                   </Link>
                 </div>
               </div>
+
             </animated.div>
           );
         })}

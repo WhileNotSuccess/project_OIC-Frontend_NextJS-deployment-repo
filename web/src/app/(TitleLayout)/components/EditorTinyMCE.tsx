@@ -70,7 +70,7 @@ export default function EditorTinyMCE({
             plugins: ["lists", "link", "image", "table", "code"],
             content_style: "p {margin:0} img{display:inline}",
             toolbar:
-              "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | forecolor backcolor | table | youtubeButton | code",
+              "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | forecolor backcolor | table | youtubeButton ",
             file_picker_types: "image",
             file_picker_callback: (cb) => {
               const input = fileInputRef.current;
@@ -118,11 +118,19 @@ export default function EditorTinyMCE({
                       const data = api.getData();
                       const videoId = getYouTubeVideoId(data.youtubeUrl);
                       if (videoId) {
-                        const iframeHtml = `<iframe src="https://www.youtube.com/embed/${videoId}" 
-                                                    frameborder="0" allowfullscreen
-                                                    style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%); width:90%;height:90%;"
-                                            >
-                                            </iframe>`;
+                        const iframeHtml = `
+                        <div class="mceTemp mceNonEditable" contenteditable="false">
+                          <iframe 
+                            src="https://www.youtube.com/embed/${videoId}" 
+                            frameborder="0" 
+                            allowfullscreen
+                            width="560" 
+                            height="315"
+                            class="mce-object iframe"
+                          ></iframe>
+                        </div>
+                      `;
+
                         editor.insertContent(iframeHtml);
                       } else {
                         alert(YoutubeMessage[language]?.invalidLink);

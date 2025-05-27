@@ -7,11 +7,14 @@ import { Language } from "@/app/common/types";
 import Cookies from "js-cookie";
 
 export default function InternationalAgreeCompo() {
-
   const [countries, setCountries] = useState<
     { id: number; name: string; x: number; y: number }[]
   >([]);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const [countryAndCorporationCount, setCountryAndCorporationCount] = useState<{
+    corporationCount: number;
+    countryCount: number;
+  }>({ corporationCount: 0, countryCount: 0 });
   const [coords, setCoords] = useState<{ x: number; y: number } | null>(null);
   const [schools, setSchools] = useState<
     { id: number; name: string; corporationType: string }[]
@@ -21,6 +24,19 @@ export default function InternationalAgreeCompo() {
   const customFetch = useCustomFetch();
 
   useEffect(() => {
+    const fetchCorporationsAndCountries = async () => {
+      try {
+        const res = await customFetch("/corporation/count", { method: "GET" });
+        const data = await res.json();
+        setCountryAndCorporationCount(data.data);
+      } catch {
+        console.error(internationalAgreeMessage[language].CountryAndPartnerLoadingError);
+      }
+    };
+    fetchCorporationsAndCountries();
+  }, []);
+
+  useEffect(() => {
     const savedLanguage = Cookies.get("language") as Language;
     if (savedLanguage) {
       setLanguage(savedLanguage);
@@ -28,9 +44,7 @@ export default function InternationalAgreeCompo() {
 
     const fetchCountries = async () => {
       try {
-        const res = await customFetch("/corporation/countries", {
-          method: "GET",
-        });
+        const res = await customFetch("/corporation/countries", { method: "GET" });
         const data = await res.json();
         setCountries(data.data);
       } catch {
@@ -66,7 +80,20 @@ export default function InternationalAgreeCompo() {
 
   return (
     <div className="w-full px-4">
-      <div className="flex justify-center mt-4">
+      {/* 깔끔한 카드형 통계 정보 */}
+      <div className="flex justify-center gap-6 mt-6 mb-8">
+        <div className="bg-white border border-gray-200 shadow-md rounded-lg px-6 py-4 text-center w-40">
+          <p className="text-sm text-gray-600">협약국가 수</p>
+          <p className="text-xl font-semibold text-blue-600">{countryAndCorporationCount.countryCount}</p>
+        </div>
+        <div className="bg-white border border-gray-200 shadow-md rounded-lg px-6 py-4 text-center w-40">
+          <p className="text-sm text-gray-600">협약기관 수</p>
+          <p className="text-xl font-semibold text-green-600">{countryAndCorporationCount.corporationCount}</p>
+        </div>
+      </div>
+
+      {/* 국가 선택 */}
+      <div className="flex justify-center mb-6">
         <select
           id="countrySelect"
           value={selectedCountry ?? ""}
@@ -82,6 +109,7 @@ export default function InternationalAgreeCompo() {
         </select>
       </div>
 
+      {/* SVG 지도 + 툴팁 */}
       <svg
         viewBox="0 0 1600 900"
         className="w-full h-auto max-w-[1000px] mx-auto mt-5"
@@ -96,14 +124,15 @@ export default function InternationalAgreeCompo() {
               y={coords.y - 40}
               width="40"
               height="40"
-              className="overflow-visible">
+              className="overflow-visible"
+            >
               <Image
                 src="/images/locationIcon.png"
                 alt="location"
                 width={40}
                 height={40}
                 className="w-full h-full animate-bounce"
-                unoptimized={true}
+                unoptimized
               />
             </foreignObject>
 
@@ -124,21 +153,19 @@ export default function InternationalAgreeCompo() {
           </>
         )}
       </svg>
+
+
       {selectedCountry && schools.length > 0 && (
         <div className="max-w-[1000px] mx-auto mt-8 overflow-x-auto">
           <h2 className="text-xl font-semibold mb-3">
-            {`${selectedCountry} 협약 현황 리스트 : ${schools.length}`}
+            {`${selectedCountry} 협약 현황 : ${schools.length}`}
           </h2>
           <table className="w-full table-auto border border-gray-300 text-left text-sm">
             <thead className="bg-gray-100">
               <tr>
-                <th className="border border-gray-300 px-4 py-2"></th>
-                <th className="border border-gray-300 px-4 py-2">
-                  {"학교명"}
-                </th>
-                <th className="border border-gray-300 px-4 py-2">
-                  {"기관 형태"}
-                </th>
+                <th className="border border-gray-300 px-4 py-2">#</th>
+                <th className="border border-gray-300 px-4 py-2">학교명</th>
+                <th className="border border-gray-300 px-4 py-2">기관 형태</th>
               </tr>
             </thead>
             <tbody>
@@ -153,7 +180,6 @@ export default function InternationalAgreeCompo() {
           </table>
         </div>
       )}
-
     </div>
   );
 }
