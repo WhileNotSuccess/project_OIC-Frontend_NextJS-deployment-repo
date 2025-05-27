@@ -7,7 +7,7 @@ export default async function GuidancePage ({ params } : Props) {
 
   const { category } = resolvedParams;
   return(
-    <div className="dark:bg-gray-400 dark:text-black">
+    <div className="dark:bg-white dark:text-black">
       <Title category={category}/>
       <HtmlDocs category={category}/>
     </div>

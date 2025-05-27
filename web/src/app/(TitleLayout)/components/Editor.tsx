@@ -10,6 +10,7 @@ import EditorTinyMCE from "./EditorTinyMCE";
 import useCustomFormFetch from "@/app/hook/customFormFetch";
 import useCustomFetch from "@/app/hook/customFetch";
 import EditorButton from "./EditorButton";
+import { useCheckAdmin } from "@/app/hook/canEditOrDelete";
 
 type EditorProps = {
   id?: string;
@@ -28,9 +29,8 @@ export default function Editor(props: EditorProps){
   const customFormFetch = useCustomFormFetch();
   const customFetch = useCustomFetch();
   const [category, setCategory] = useState<string>(props.categoryName || "");
-  // const router = useRouter();
-  // const [isAdmin, setIsAdmin] = useState(false);
   const [language, setLanguage] = useState<Language>(Language.korean);
+  const { adminUserCheck } = useCheckAdmin();
 
   useEffect(() => {
     const savedLanguage = Cookies.get("language") as Language;
@@ -67,13 +67,14 @@ export default function Editor(props: EditorProps){
         <EditorTitle
           title={title}
           setTitle={setTitle}/>
-        {/* EditorCategoryLanguage는 추후에 관리자인지 확인하는 3항이나 조건문이 필요함 */}
+        {adminUserCheck &&         
         <EditorCategoryLanguage
           category={category} // oldPost에서도 상태관리가 있어서 안뺌
           setCategory={setCategory}
           language={language}
           setLanguage={setLanguage}
-        />
+        />}
+
         <section style={{ width: "100%" }} className="mt-4">
           <EditorFileUploadCompo
             setDocumentFiles={setDocumentFiles}

@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useCustomFetch from "../../hook/customFetch";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { RegisterCompoMenu, serverError } from "@/app/menu";
 import { Language } from "@/app/common/types";
 import AlertModal from "./AlertModal";
 import Image from "next/image";
+import useCustomFetch from "@/app/hook/customFetch";
 
 export default function RegisterCompo() {
   const [email, setEmail] = useState<string>("");
@@ -37,18 +37,17 @@ export default function RegisterCompo() {
 
     if (newUser) {
       try {
-        const data = await customFetch("/users", {
+        const response = await customFetch("/users/name", {
           method: "PATCH",
           body: JSON.stringify({ name }),
         });
-
-        if (!data.ok) {
-          setError(RegisterCompoMenu[language].nameChangeError);
-        } else {
+        if (response.ok) {
           setMessage(RegisterCompoMenu[language].nameChangeComplete);
           router.push("/");
+        } else {
+          setError(RegisterCompoMenu[language].nameChangeError);
         }
-      } catch {
+      } catch{
         setError(serverError[language].server);
       }
     } else {
@@ -56,19 +55,18 @@ export default function RegisterCompo() {
       const payload = { email, password, name };
 
       try {
-        const data = await customFetch("/auth/register", {
+        const response = await customFetch("/auth/register", {
           method: "POST",
           body: JSON.stringify(payload),
         });
-
-        if (!data.ok) {
-          setError(RegisterCompoMenu[language].registerError);
+        if (response.ok) {
+          window.location.href = "/";          
         } else {
-          window.location.href = "/";
+          setError(RegisterCompoMenu[language].registerError);          
           // setMessage(RegisterCompoMenu[language].registerComplete);
           // setIsOpen(true);
         }
-      } catch {
+      } catch{
         setError(serverError[language].server);
       }
     }
@@ -82,7 +80,7 @@ export default function RegisterCompo() {
         height: "100vh",
       }}
     >
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <section className="relative bg-transparent rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-3xl font-extrabold mb-6 text-white text-center">
           {newUser
@@ -133,26 +131,26 @@ export default function RegisterCompo() {
                 placeholder={RegisterCompoMenu[language].emailPlaceHolder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-3 border border-blue-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full p-3 border border-blue-500 rounded-lg text-blue-800 focus:outline-none focus:ring-2 focus:ring-white"
               />
               <input
                 type="password"
                 placeholder={RegisterCompoMenu[language].passWordPlaceHolder}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-3 border border-blue-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full p-3 border border-blue-500 rounded-lg text-blue-800 focus:outline-none focus:ring-2 focus:ring-white"
               />
               <input
                 type="text"
                 placeholder={RegisterCompoMenu[language].namePlaceHolder}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full p-3 border border-blue-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full p-3 border border-blue-500 rounded-lg text-blue-800 focus:outline-none focus:ring-2 focus:ring-white"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold mt-4 cursor-pointer"
+              className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold mt-4"
             >
               {RegisterCompoMenu[language].register}
             </button>
@@ -160,15 +158,14 @@ export default function RegisterCompo() {
             <button
               type="button"
               onClick={handleGoogleRegister}
-              className="w-full bg-[#F2F2F2] rounded-lg font-semibold mt-2 flex justify-center cursor-pointer"
+              className="w-full bg-[#F2F2F2] rounded-lg font-semibold mt-2 flex justify-center"
             >
-              <Image
-                src="/images/signup.png"
+              <Image 
+                src="/images/signup.png" 
                 alt="구글로그인 회원가입 버튼"
                 width={200}
-                height={40}
-                className="border-none"
-              />
+                height={40} 
+                className="border-none" />
             </button>
           </form>
         )}
