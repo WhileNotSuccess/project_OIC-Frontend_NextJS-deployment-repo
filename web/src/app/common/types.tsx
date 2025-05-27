@@ -45,10 +45,8 @@ export type ServerDocumentFile = {
   // 서버에서 받는 파일 타입
   id: number;
   postId: number;
-  filename: string;
-  filetype: string;
-  filesize: number;
-  createdDate: string;
+  originalName: string;
+  url: string;
 };
 
 export type BoardData = {
@@ -99,6 +97,26 @@ export interface TeacherGlobal {
   position_en : string;
 }
 
+export interface Carousel {
+  id: number;
+  image: string;
+  koreanPostId: number;
+  englishPostId: number;
+  japanesePostId: number;
+  koreanTitle: string;
+  englishTitle: string;
+  japaneseTitle: string;
+  koreanDescription: string;
+  englishDescription: string;
+  japaneseDescription: string;
+}
+export interface PrideGlobal{
+  id: number;
+  image: string
+  korean: string;
+  english: string;
+  japanese: string;
+}
 export interface SubmittedDocument {
   Id: number;
   korean: string;

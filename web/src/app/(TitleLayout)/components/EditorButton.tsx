@@ -63,6 +63,7 @@ export default function EditorButton({
       });
       if(response.ok){
         alert(postSuccess[language]?.contentPost);
+        window.location.href = `/admin/${category}`;
       }
       else{
         alert(postError[language]?.subError);        

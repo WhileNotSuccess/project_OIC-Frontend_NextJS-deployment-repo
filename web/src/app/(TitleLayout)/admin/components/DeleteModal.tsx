@@ -16,7 +16,7 @@ export default function DeleteModal({ onClose, id, target }: ModalProps) {
     });
 
     if (response) {
-      alert("교직원 삭제에 성공했습니다");
+      alert("삭제에 성공했습니다");
       window.location.href = location.href;
     }
   };

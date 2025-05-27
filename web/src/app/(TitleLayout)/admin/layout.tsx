@@ -127,7 +127,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <div
               className="text-center text-lg text-[#0093EE]"
             >
-              신청/파일 확인
+              모집요강/입학신청서
             </div>
             <div className="absolute top-0 w-44 bg-gray-200 text-[#0093EE] text-center opacity-0 translate-y-[-100%] 
               group-hover/application:translate-y-[65%] group-hover/application:opacity-100 transition-transform 
@@ -135,18 +135,18 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               <ul>
                 <li>
                   <Link
-                    href="/admin/counseling"
+                    href="/admin/guidelinesForApplicants"
                     className="block hover:underline text-sm p-2"
                   >
-                      상담 신청 확인
+                      모집요강
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/admin/applications"
+                    href="/admin/applicants"
                     className="block hover:underline text-sm p-2"
                   >
-                      서류확인
+                      입학신청서
                   </Link>
                 </li>
               </ul>
@@ -155,7 +155,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
           <li className="group/banner relative flex justify-center items-center w-44 h-12">
             <div className="text-center text-lg text-[#0093EE]">
-                배너
+                Pride Of YJU
             </div>
             <div className="absolute top-0 w-44 bg-gray-200 text-[#0093EE] text-center opacity-0 translate-y-[-100%] 
               group-hover/banner:translate-y-[125%] group-hover/banner:opacity-100 transition-transform 
@@ -163,7 +163,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               <ul>
                 <li>
                   <Link
-                    href="/admin/banner"
+                    href="/admin/PrideOfYJU"
                     className="block hover:underline text-sm p-2"
                   >
                       바로가기
@@ -191,6 +191,67 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               </ul>
             </div>
           </li>
+          <li className="group/program relative flex justify-center items-center w-44 h-12">
+            <div
+              className="text-center text-lg text-[#0093EE]"
+            >
+             글로벌 프로그램
+            </div>
+            <div className="absolute top-0 w-44 bg-gray-200 text-[#0093EE] text-center opacity-0 translate-y-[-100%] 
+              group-hover/program:translate-y-[65%] group-hover/program:opacity-100 transition-transform 
+              duration-300 ease-in-out z-4">
+              <ul>
+                <li>
+                  <Link
+                    href="/admin/global-programs"
+                    className="block hover:underline text-sm p-2"
+                  >
+                      캐러샐
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/admin/globalPrograms"
+                    className="block hover:underline text-sm p-2"
+                  >
+                      설명글
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          
+          <li className="group/country relative flex justify-center items-center w-44 h-12">
+            <div
+              className="text-center text-lg text-[#0093EE]"
+            >
+             국가, 협약기관 수정
+            </div>
+            <div className="absolute top-0 w-44 bg-gray-200 text-[#0093EE] text-center opacity-0 translate-y-[-100%] 
+              group-hover/country:translate-y-[65%] group-hover/country:opacity-100 transition-transform 
+              duration-300 ease-in-out z-4">
+              <ul>
+                <li>
+                  <Link
+                    href="/admin/countries"
+                    className="block hover:underline text-sm p-2"
+                  >
+                      국가 
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/admin/institutions"
+                    className="block hover:underline text-sm p-2"
+                  >
+                      협약기관 
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
         </ul>
       </aside>
       <main className="w-full">{children}</main>

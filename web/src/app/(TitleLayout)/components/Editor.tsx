@@ -52,7 +52,7 @@ export default function Editor(props: EditorProps){
         setTitle(data.data.title);
         setCategory(data.data.category);
         setDocumentFileNames(
-          data.files.map((file: ServerDocumentFile) => file.filename),
+          data.files.map((file: ServerDocumentFile) => file.originalName),
         );
       } catch (error) {
         console.error(error);

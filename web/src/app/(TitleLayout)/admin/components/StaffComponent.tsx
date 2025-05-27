@@ -32,7 +32,7 @@ export default function StaffComponent({ item }: StaffComponentProps) {
               target="staff"
             />
           )}
-          <article className="w-66 p-4 bg-white shadow-lg rounded-lg border border-gray-200">
+          <article className="w-120 h-120 p-4 bg-white shadow-lg rounded-lg border border-gray-200">
             <header className="w-full relative">
               <h2 className="text-blue-500 font-bold text-lg inline-block">
                 {teacher.name}
@@ -43,7 +43,7 @@ export default function StaffComponent({ item }: StaffComponentProps) {
                     prev === teacher.id ? null : teacher.id,
                   )
                 }
-                className="float-right cursor-pointer"
+                className="float-right cursor-pointer relative"
               >
                 ㅤㅤ⋮
               </span>
@@ -68,24 +68,29 @@ export default function StaffComponent({ item }: StaffComponentProps) {
             </header>
 
             <hr className="my-2 border-gray-300" />
-            <section className="space-y-2 h-30 overflow-y-auto">
+            <section className="space-y-2 h-100 overflow-y-auto">
               {[
-                { icon : "📧", value : teacher.email },
-                { icon : "📞", value : teacher.phone },
-                { icon : "⛪", value : teacher.team },
-                { icon : "💻", value : teacher.role },
-                { icon : "💼", value : teacher.position },
-                { icon : "⛪", value : teacher.team_en },
-                { icon : "💻", value : teacher.role_en },
-                { icon : "💼", value : teacher.position_en },
-                { icon : "⛪", value : teacher.team_jp },
-                { icon : "💻", value : teacher.role_jp },
-                { icon : "💼", value : teacher.position_jp },
+                { label: "이메일", icon: "📧", value: teacher.email },
+                { label: "전화번호", icon: "📞", value: teacher.phone },
+
+                { label: "팀 (한)", icon: "⛪", value: teacher.team },
+                { label: "팀 (영)", icon: "⛪", value: teacher.team_en },
+                { label: "팀 (일)", icon: "⛪", value: teacher.team_jp },
+
+                { label: "역할 (한)", icon: "💻", value: teacher.role },
+                { label: "역할 (영)", icon: "💻", value: teacher.role_en },
+                { label: "역할 (일)", icon: "💻", value: teacher.role_jp },
+
+                { label: "직책 (한)", icon: "💼", value: teacher.position },
+                { label: "직책 (영)", icon: "💼", value: teacher.position_en },
+                { label: "직책 (일)", icon: "💼", value: teacher.position_jp },
               ].map((item, index)=>(
-                <div key={index} className="flex items-center text-gray-700">
+                <div key={index} className="flex items-center text-gray-700 mb-2">
+                  <div className="w-24">{item.label}</div>
                   <span className="mr-2">{item.icon}</span>
                   <span className="font-medium">{item.value}</span>
                 </div>
+
               ))}
             </section>
           </article>

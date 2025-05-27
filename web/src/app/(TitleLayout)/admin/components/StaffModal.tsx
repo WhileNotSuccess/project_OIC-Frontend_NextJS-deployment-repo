@@ -9,7 +9,28 @@ type ModalProps = {
   data?: TeacherGlobal;
 };
 
+type Mapping ={
+  [key: string]: string;
+}
+
 export default function StaffModal({ onClose, data, method }: ModalProps) {
+  const keyMapping:Mapping = {
+    name: "이름 👤",
+    email: "이메일 📧",
+    phone: "전화번호 📞",
+
+    team: "팀 (한) ⛪",
+    team_en: "팀 (영) ⛪",
+    team_jp: "팀 (일) ⛪",
+
+    role: "역할 (한) 💻",
+    role_en: "역할 (영) 💻",
+    role_jp: "역할 (일) 💻",
+
+    position: "직책 (한) 💼",
+    position_en: "직책 (영) 💼",
+    position_jp: "직책 (일) 💼",
+  };
   const [inputs, setInputs] = useState<TeacherGlobal>(
     data
       ? data
@@ -67,7 +88,7 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
       tabIndex={-1}
       className="fixed inset-0 z-50 flex justify-center items-center bg-black/50"
     >
-      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg h-96 overflow-auto">
+      <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-lg h-200 overflow-auto">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
@@ -81,7 +102,7 @@ export default function StaffModal({ onClose, data, method }: ModalProps) {
                 htmlFor={key}
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                {key}
+                {keyMapping[key] || key}
               </label>
               <input
                 value={value || ""}

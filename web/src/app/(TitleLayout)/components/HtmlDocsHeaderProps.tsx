@@ -88,12 +88,12 @@ export default function HtmlDocsHeaderProps({
                 <button
                   onClick={() =>
                     router.push(
-                      `${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.filename}`,
+                      `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${item.url}`,
                     )
                   }
                   className="text-blue-600 hover:underline"
                 >
-                  {item.filename}
+                  {item.originalName}
                 </button>
               </div>
                   
