@@ -81,12 +81,12 @@ export default function HomeCompo() {
 
       <div className="relative w-full">
         <div className="relative w-full min-h-[60vh] flex items-center justify-center px-4 md:px-0">
-          <div className="bg-gray-200 min-h-[50vh] w-full">
+          <div className="bg-gray-200 min-h-[50vh] w-full justify-center items-center flex flex-col">
             <div
               ref={prideRef}
-              className={`${isVisiblePride ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} transition-all duration-1000 ease-in-out w-full text-center px-4 md:px-0`}
+              className={`${isVisiblePride ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}  transition-all duration-1000 ease-in-out w-full text-center px-4 md:px-0`}
             >
-              <h1 className="text-4xl mt-5 md:text-5xl font-bold text-amber-950">
+              <h1 className="mb-10 text-4xl md:text-5xl font-bold text-amber-950">
                 PRIDE OF YEUNGJIN
               </h1>
               <Pride />
