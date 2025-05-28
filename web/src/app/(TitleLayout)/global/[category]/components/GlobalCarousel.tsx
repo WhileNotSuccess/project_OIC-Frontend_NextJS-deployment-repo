@@ -209,7 +209,7 @@ const GlobalCarousel = () => {
                   <h3 className="text-3xl font-extrabold mb-2 drop-shadow-md">{item.title}</h3>
                   <p className="text-lg mb-4 leading-snug drop-shadow-sm">{item.description}</p>
                   <Link
-                    href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${item.postId}`}
+                    href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/board/globalPrograms/${item.postId}`}
                     className="inline-block bg-white text-black font-semibold px-4 py-2 mb-4 rounded-md shadow-md hover:bg-gray-100 transition"
                   >
                     Learn More
