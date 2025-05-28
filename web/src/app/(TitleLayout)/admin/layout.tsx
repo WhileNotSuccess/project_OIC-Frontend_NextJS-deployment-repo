@@ -89,6 +89,14 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 </li>
                 <li>
                   <Link
+                    href="/admin/campus-life"
+                    className="block hover:underline text-sm p-2"
+                  >
+                    캠퍼스 생활
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/admin/dormitory"
                     className="block hover:underline text-sm p-2"
                   >
