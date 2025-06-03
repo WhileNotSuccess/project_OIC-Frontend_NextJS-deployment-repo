@@ -22,7 +22,7 @@ export default function AdminComponent({ category }: AdminComponentProps) {
   const customFetch = useCustomFetch();
   const [allStaff, setAllStaff] = useState<Record<string, TeacherGlobal[]>>({});
   const [staffPostModal, setStaffPostModal] = useState<boolean>(false);
-
+  console.log(allStaff);
   useEffect(() => {
     if (category === "staff") {
       async function getStaff() {
@@ -31,8 +31,36 @@ export default function AdminComponent({ category }: AdminComponentProps) {
         setAllStaff(data.data);
       }
       getStaff();
+      
     }
   }, [category]);
+
+  const saveOrder = async () => {
+    const sortedStaff: Record<string, { id: number; order: number }[]> = {};
+    Object.entries(allStaff).map(([key, value]) => {
+      sortedStaff[key] = value.map((item, index) => {
+        return {
+          id: item.id,
+          order: index,
+        };
+      });
+    } );
+    console.log(sortedStaff);
+    try {
+      const response = await customFetch("/staff/order", {
+        method: "POST",
+        body: JSON.stringify({ orders:sortedStaff }),
+      });
+      await response.json();
+      
+      alert("순서가 저장되었습니다.");
+      
+      
+    } catch (error) {
+      console.error("Error saving order:", error);
+      alert("순서 저장 중 오류가 발생했습니다.");
+    }
+  };
 
   if (category === "staff") {
     return (
@@ -58,6 +86,16 @@ export default function AdminComponent({ category }: AdminComponentProps) {
                 추가하기
               </button>
             </span>
+            <span className="p-4 text-right">
+              <button
+                onClick={() => {
+                  saveOrder();
+                }}
+                className="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                순서 저장하기
+              </button>
+            </span>
           </h1>
           {
             Object.entries(allStaff).map(([key, value]) => (  // 구조분해 할당으로 새로운 배열 반환
@@ -65,7 +103,11 @@ export default function AdminComponent({ category }: AdminComponentProps) {
                 <div className="text-2xl font-bold mb-2">
                   {key}
                 </div>
-                <StaffComponent item={value} />
+                <StaffComponent item={value} onOrderChange={(newStaff)=>{
+                  setAllStaff((prev)=>({
+                    ...prev,[key]: newStaff,
+                  }));
+                }}/>
               </div>
             ),
             )
