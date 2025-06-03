@@ -4,7 +4,7 @@ import { Language } from "./app/common/types";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { HomePageTitle, menu, smallMenu } from "./app/menu";
-import LoginCompo from "./app/(TitleLayout)/components/LoginCompo";
+// import LoginCompo from "./app/(TitleLayout)/components/LoginCompo";
 import ManagementCookieCompo from "./app/(TitleLayout)/components/ManagementCookieCompo";
 import Link from "next/link";
 
@@ -62,9 +62,9 @@ export default function SideMenu() {
           <div className="h-8 flex justify-center items-center">
             {menu[language].koreanLanguageEducationCenter}
           </div>
-          <div className="w-40 fixed bottom-0">
+          <div className="w-40 fixed bottom-5">
             <ManagementCookieCompo />
-            <LoginCompo />
+            {/* <LoginCompo /> */}
           </div>
         </div>
       </div>

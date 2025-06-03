@@ -13,18 +13,18 @@ export default function LoginForm() {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const router = useRouter();
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const { login } = useAuth();
   const [language, setLanguage] = useState<Language>(Language.korean);
 
   useEffect(() => {
-    async function userCheck() {
-      if (user) {
-        router.push("/");
-        return null;
-      }
-    }
-    userCheck();
+    // async function userCheck() { // 유저가 로그인한지 안한지는 필요 없는 코드인거 같음 어짜피 로그인은 관리자만 하니까
+    //   if (user) {
+    //     router.push("/");
+    //     return null;
+    //   }
+    // }
+    // userCheck();
 
     const savedLanguage = Cookies.get("language") as Language;
     if (savedLanguage) {

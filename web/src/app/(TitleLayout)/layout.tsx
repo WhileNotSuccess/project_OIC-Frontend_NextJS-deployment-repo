@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="sm:ml-40">
+    <div className="sm:ml-40 dark:bg-white dark:text-black">
       <SideMenu />
       <HamburgerMenuCompo/>
       {children}

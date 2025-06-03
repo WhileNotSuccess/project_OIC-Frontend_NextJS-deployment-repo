@@ -25,7 +25,7 @@ const CheckAdmin = () => {
       const data = await response.json();
       if (data && !data.result) {
         alert(CheckAdminAlert[savedLanguage].noPermission);
-        router.push("/");
+        router.push("/login");
       }
     }
     check();
