@@ -44,7 +44,7 @@ export default function TermsAgreement() {
       }}
     >
       {/* Transparent overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+      <div className="absolute inset-0 bg-black/50 z-10"></div>
 
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md z-20">
         <h1 className="text-2xl font-bold mb-4">

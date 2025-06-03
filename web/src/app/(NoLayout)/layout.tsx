@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="dark:bg-white dark:text-black">
       {children}
     </div>
   );

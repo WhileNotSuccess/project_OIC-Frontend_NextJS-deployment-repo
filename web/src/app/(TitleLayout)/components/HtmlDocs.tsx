@@ -95,7 +95,7 @@ export default function HtmlDocs(props: HtmlDocsProps) {
       )}
       {allData.content &&
         <section className="w-full flex justify-center">
-          <div className="min-h-dvh">
+          <div className="w-full min-h-dvh">
             <div className="prose w-full break-words">
               {parser(allData.content)}
             </div>

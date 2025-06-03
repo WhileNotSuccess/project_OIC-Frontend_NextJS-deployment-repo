@@ -58,7 +58,7 @@ export const useAuth = () => {
         const json = await data.json();
         setError(json.message);
       } else {
-        router.push("/");
+        router.push("/admin");
       }
     } catch {
       setError(serverError[language].server);
