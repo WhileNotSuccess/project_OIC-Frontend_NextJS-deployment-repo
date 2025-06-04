@@ -163,9 +163,8 @@ const NoticeCarousel = () => {
 
 
               <div
-                className="h-[300px] flex flex-col justify-center items-center relative overflow-hidden"
+                className="h-[300px] flex flex-col justify-end items-start relative overflow-hidden p-4"
               >
-
                 <Image
                   width={540}
                   height={300}
@@ -176,16 +175,22 @@ const NoticeCarousel = () => {
                   unoptimized
                 />
 
-
-                <div className="relative z-10 text-white select-none  mt-40 mr-80">
-                  <h3 className="text-2xl font-bold">{item.title}</h3>
+                <div className="relative z-10 text-white select-none w-full">
+                  <h3
+                    className="text-lg font-bold truncate max-w-[70%]"
+                    title={item.title}
+                  >
+                    {item.title}
+                  </h3>
                   <Link
                     href={`board/news/${item.postId}`}
-                    className="h-1/4 flex items-center justify-center underline">
+                    className="underline text-sm"
+                  >
                     View More
                   </Link>
                 </div>
               </div>
+
 
 
             </div>
