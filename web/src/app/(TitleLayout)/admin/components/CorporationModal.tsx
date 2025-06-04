@@ -24,7 +24,7 @@ export default function CorporationModal({ data, countries, onClose }: Props) {
   const onSubmit = async () => {
     try {
       const url =
-        data.id === 0 ? "/corporation/corporation" : `/corporation/${data.id}`;
+        data.id === 0 ? "/corporation/corporation" : `/corporation/corporation/${data.id}`;
       const method = data.id === 0 ? "POST" : "PATCH";
 
       // POST/PATCH 요청 시 필요한 필드만 보내기
