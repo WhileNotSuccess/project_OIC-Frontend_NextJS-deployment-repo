@@ -49,7 +49,7 @@ const NoticeCarousel = () => {
           method: "GET",
         });
         const data = await response.json();
-        setNoticeItems(data.data);
+        setNoticeItems(data.data.filter((item: NoticeItem|null) => item !== null && item.imageUrl !== ""));
       } catch {
         console.error(NoticeMessage[language].LoadingError);
       }
@@ -60,7 +60,6 @@ const NoticeCarousel = () => {
   const extendedItems = [...noticeItems, ...noticeItems, ...noticeItems];
   const totalItems = extendedItems.length;
   const middleIndex = noticeItems.length;
-
 
   // 자동 슬라이드 (드래그 중에는 일시 정지)
   useEffect(() => {
