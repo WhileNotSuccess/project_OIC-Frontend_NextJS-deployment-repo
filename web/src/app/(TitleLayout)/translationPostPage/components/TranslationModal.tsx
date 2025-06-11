@@ -43,17 +43,11 @@ export default function TranslationModal({ onClose,enUpdate,jaUpdate, htmlEn, ht
         categoryOnSubmit,
         languageOnSubmit,
       );
-      const response = await customFormFetch("/post",{
+      await customFormFetch("/post",{
         method : "POST",
         body : formData,
       });
-      if(response.ok){
-        alert(postSuccess["korean"]?.contentPost);
-        window.location.href = `/admin/${category}`;
-      }
-      else{
-        alert(postError["korean"]?.subError);        
-      }
+      
     }catch{
       alert(postError["korean"]?.subError);
     }
