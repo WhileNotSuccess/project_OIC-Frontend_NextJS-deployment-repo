@@ -123,9 +123,9 @@ export default function SideMenu() {
             {smallMenu[language].dormitory}
           </Link>
           <Link
-            href={"/board/qna"}
+            href={"/board/resources"}
             className="h-1/6 flex items-center justify-center">
-            {smallMenu[language].qna}
+            {smallMenu[language].resources}
           </Link>
         </div>
         <div className="h-24 border-b">

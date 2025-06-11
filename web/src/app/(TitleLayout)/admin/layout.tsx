@@ -42,10 +42,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 </li>
                 <li>
                   <Link
-                    href="/admin/qna"
+                    href="/admin/resources"
                     className="block hover:underline text-sm p-2"
                   >
-                    QNA
+                    자료실
                   </Link>
                 </li>
               </ul>
