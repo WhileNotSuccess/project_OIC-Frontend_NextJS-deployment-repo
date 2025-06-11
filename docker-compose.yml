@@ -11,3 +11,4 @@ services:
       - NODE_ENV=development
       - NEXT_PUBLIC_BACKEND_URL=https://localhost.com/api
       - NEXT_PUBLIC_COOKIE_DOMAIN=localhost.com
+      - NEXT_PUBLIC_TRANSLATION_URL=https://localhost.com/fastapi

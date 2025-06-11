@@ -8,9 +8,10 @@ import { Editor as EditorType } from "tinymce";
 
 type EditorTinyMCEProps = {
   content: string;
-  setContent: React.Dispatch<React.SetStateAction<string>>;
+  setContent: (item: string) => void;
   customFormFetch: (url: string, options?: RequestInit) => Promise<Response>;
   language: Language;
+  id?: string;
 };
 
 export default function EditorTinyMCE({
@@ -18,6 +19,7 @@ export default function EditorTinyMCE({
   setContent,
   customFormFetch,
   language,
+  id = "tinymce-editor",
 }: EditorTinyMCEProps) {
   const editorRef = useRef<EditorType | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -52,7 +54,7 @@ export default function EditorTinyMCE({
       <section className="mt-1.5">
         <Editor
           tinymceScriptSrc={"/tinymce/tinymce.min.js"}
-          id="tinymce-editor"
+          id={id}
           value={content}
           onInit={(_, editor) => {
             editorRef.current = editor;
