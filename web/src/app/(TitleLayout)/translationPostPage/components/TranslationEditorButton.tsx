@@ -1,7 +1,6 @@
 "use client";
 
 import { Language } from "@/app/common/types";
-import useCustomFetch from "@/app/hook/customFetch";
 import { editorCompo, postError } from "@/app/menu";
 
 
