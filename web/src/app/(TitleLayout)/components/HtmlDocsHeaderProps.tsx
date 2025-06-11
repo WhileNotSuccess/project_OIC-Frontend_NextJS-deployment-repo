@@ -49,7 +49,7 @@ export default function HtmlDocsHeaderProps({
 
   return(
     <section className="w-full flex justify-center">
-      <article className="w-11/12 flex flex-col mt-4">
+      <article className="w-full flex flex-col mt-4">
         <div className="flex justify-between items-center border-t-2 border-blue-400 pt-2">
           <div className="text-lg font-bold">{title}</div>
         </div>
