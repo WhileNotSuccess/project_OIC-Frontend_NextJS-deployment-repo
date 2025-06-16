@@ -1092,18 +1092,18 @@ export const Hamburger: Record< // 국제교류원에 맞춰서 수정 된 상�
         { address: "/guidance/introduction", name: "소개글" },
         { address: "/staff/staff-intro", name: "교직원" },
         { address: "/select/international-agreements", name: "국제협약현황" },
-        { address: "/guidance/directions", name: "오시는길" }, // contact로 바꿔야함
+        { address: "/guidance/contact", name: "오시는길" }, // contact로 바꿔야함
       ],
     },
     {
       topMenu: "외국인 입학",
       subMenu: [
-        { address: "/guidance/procedure-guide", name: "입학 안내" },
+        { address: "/guidance/admission-guide", name: "입학 안내" },
         { address: "https://ipsi.yju.ac.kr/ipsi/3828/subview.do", name: "학과 안내" },
-        { address: "/", name: "캠퍼스 생활" }, // 주소 추가 해야함
+        { address: "/campus-life", name: "캠퍼스 생활" }, // 주소 추가 해야함
         { address: "/guidance/student-support", name: "학생 지원 서비스" },
         { address: "/guidance/dormitory", name: "기숙사 안내" },
-        { address: "/board/faq", name: "FAQ" },
+        { address: "/board/resources", name: "자료실" },
       ],
     },
     {
@@ -1135,18 +1135,18 @@ export const Hamburger: Record< // 국제교류원에 맞춰서 수정 된 상�
         { address: "/guidance/introduction", name: "Introduction" },
         { address: "/staff/staff-intro", name: "Faculty and Staff Introduction" },
         { address: "/select/international-agreements", name: "International Agreements Status" },
-        { address: "/guidance/directions", name: "Directions" }, // contact로 바꿔야 함
+        { address: "/guidance/contact", name: "Contact Information" }, // contact로 바꿔야 함
       ],
     },
     {
       topMenu: "International Admissions",
       subMenu: [
-        { address: "/guidance/procedure-guide", name: "Admission Information" },
+        { address: "/guidance/admission-guide", name: "Admission Information" },
         { address: "https://ipsi.yju.ac.kr/ipsi/3828/subview.do", name: "Department Information" },
-        { address: "/", name: "Campus Life" }, // 주소 추가 해야함
+        { address: "/campus-life", name: "Campus Life" }, // 주소 추가 해야함
         { address: "/guidance/student-support", name: "Student Support Services" },
         { address: "/guidance/dormitory", name: "Dormitory Information" },
-        { address: "/board/faq", name: "FAQ" },
+        { address: "/board/resources", name: "Resources" },
       ],
     },
     {
@@ -1178,18 +1178,18 @@ export const Hamburger: Record< // 국제교류원에 맞춰서 수정 된 상�
         { address: "/guidance/introduction", name: "紹介文" },
         { address: "/staff/staff-intro", name: "教職員紹介" },
         { address: "/select/international-agreements", name: "国際協定状況" },
-        { address: "/guidance/directions", name: "連絡先" }, // contact로 바꿔야 함
+        { address: "/guidance/contact", name: "連絡先" }, // contact로 바꿔야 함
       ],
     },
     {
       topMenu: "International Admissions",
       subMenu: [
-        { address: "/guidance/procedure-guide", name: "入学案内" },
+        { address: "/guidance/admission-guide", name: "入学案内" },
         { address: "https://ipsi.yju.ac.kr/ipsi/3828/subview.do", name: "学科案内" },
-        { address: "/", name: "キャンパスライフ" }, // 주소 추가 해야함
+        { address: "/campus-life", name: "キャンパスライフ" }, // 주소 추가 해야함
         { address: "/guidance/student-support", name: "学生支援サービス" },
         { address: "/guidance/dormitory", name: "寮情報" },
-        { address: "/board/faq", name: "FAQ" },
+        { address: "/board/resources", name: "資料ダウンロード" },
       ],
     },
     {
