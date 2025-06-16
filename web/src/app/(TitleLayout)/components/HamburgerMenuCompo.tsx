@@ -7,7 +7,7 @@ import { Hamburger } from "@/app/menu";
 import Link from "next/link";
 import Image from "next/image";
 import ManagementCookieCompo from "./ManagementCookieCompo";
-import LoginCompo from "./LoginCompo";
+// import LoginCompo from "./LoginCompo";
 
 export default function HamburgerMenuCompo() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,7 +43,7 @@ export default function HamburgerMenuCompo() {
           height={36}
         />
         <div className="flex justify-center items-center gap-4">
-          <LoginCompo/>
+          {/* <LoginCompo/> */}
           <ManagementCookieCompo/>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default function HamburgerMenuCompo() {
               <div
                 className={`flex flex-col transition-all overflow-hidden ${
                   openSubMenu === index
-                    ? "max-h-40 opacity-100"
+                    ? "max-h-60 opacity-100"
                     : "max-h-0 opacity-0"
                 }`}
               >
