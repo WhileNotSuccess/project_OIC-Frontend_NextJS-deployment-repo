@@ -102,11 +102,11 @@ export default function SideMenu() {
             className="h-1/6 flex items-center justify-center">
             {smallMenu[language]["admission-guide"]}
           </Link>
-          <Link
+          {/* <Link
             href={"https://ipsi.yju.ac.kr/ipsi/3828/subview.do"}
             className="h-1/6 flex items-center justify-center">
             {smallMenu[language].departmentInformation}
-          </Link>
+          </Link> */}
           <Link
             href={"/guidance/campus-life"}
             className="h-1/6 flex items-center justify-center">
