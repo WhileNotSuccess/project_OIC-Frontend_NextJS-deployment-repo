@@ -42,6 +42,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark:bg-white dark:text-black">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="UBZqAVSxRMQx-RNTswQfq-ltiQ-8EjrzkNLyld0_SP8"
+        />
+      </head>
       <body>
         {children}
       </body>
