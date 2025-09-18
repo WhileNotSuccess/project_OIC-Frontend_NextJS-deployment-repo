@@ -24,7 +24,7 @@ export default function Title({ category } : TitleProps){
     <div className="w-full h-32 sm:h-68 border flex items-center bg-[#000000] relative">
       <Image
         src={"/images/yeungjinTitlePicture.jpg"}
-        alt="영진전문대 국제교류원 제목 사진"
+        alt="영진전문대 국제교류처 제목 사진"
         layout="fill"
         objectFit="cover"
         className="opacity-50"
