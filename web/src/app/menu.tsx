@@ -86,7 +86,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
 export const staffPage: Record<Language, Record<string, string>> = {
   // 직원 소개 페이지
   [Language.korean]: {
-    international: "국제교류원 소개",
+    international: "국제교류처 소개",
     internationalTeam: "국제교류팀 소개",
     chinaCenter: "중국센터 소개",
   },
@@ -699,14 +699,14 @@ export const LoginCompoMenu: Record<Language, Record<string, string>> = {
   [Language.korean]: {
     Login: "로그인",
     register: "회원가입",
-    welcome: "영진전문대학교 국제교류원 방문을 환영합니다.",
+    welcome: "영진전문대학교 국제교류처 방문을 환영합니다.",
     inputId: "아이디 입력",
     inputPassWord: "비밀번호 입력",
   },
   [Language.japanese]: {
     Login: "ログイン",
     register: "会員登録",
-    welcome: "ヨンジン専門大学 国際交流院へようこそ。",
+    welcome: "ヨンジン専門大学 国際交流処へようこそ。",
     inputId: "IDを入力",
     inputPassWord: "パスワードを入力",
   },
@@ -1081,7 +1081,7 @@ export const AuthMenu: Record<Language, Record<string, string>> = {
   },
 };
 
-export const Hamburger: Record< // 국제교류원에 맞춰서 수정 된 상태
+export const Hamburger: Record< // 국제교류처에 맞춰서 수정 된 상태
   Language,
   { topMenu: string; subMenu: { address: string; name: string }[] }[]
 > = {
@@ -1240,7 +1240,7 @@ export const postLanguageList: Record<
 export const HomePageTitle: Record<Language, Record<string, string>> = {
   [Language.korean]: {
     yeungjin: "영진전문대학교",
-    OfficeOfInternationalCooperation: "국제교류원",
+    OfficeOfInternationalCooperation: "국제교류처",
   },
   [Language.english]: {
     yeungjin: "Yeungjin University",
@@ -1248,7 +1248,7 @@ export const HomePageTitle: Record<Language, Record<string, string>> = {
   },
   [Language.japanese]: {
     yeungjin: "ヨンジン専門大学",
-    OfficeOfInternationalCooperation: "国際交流院",
+    OfficeOfInternationalCooperation: "国際交流処",
   },
 };
 
