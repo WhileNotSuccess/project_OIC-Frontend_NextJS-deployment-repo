@@ -20,7 +20,7 @@ interface StaffComponentProps {
   onOrderChange: (newStaff: TeacherGlobal[]) => void;
 }
 
-// item은 국제교류원, 국제교류팀, 중국센터 배열의 값
+// item은 국제교류처, 국제교류팀, 중국센터 배열의 값
 export default function StaffComponent({ item, onOrderChange }: StaffComponentProps) {
   const [items, setItems] = useState(item);
   useEffect(()=>{
