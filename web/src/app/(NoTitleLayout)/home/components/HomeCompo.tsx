@@ -131,7 +131,7 @@ export default function HomeCompo() {
                 아래의 이메일이나 전화번호로 언제든지 연락 주시기 바랍니다.
               </h2>
               <p className="text-base md:text-xl">
-                +82-123-456(영어), +82-123-456(일본어) yju.intl@yju.ac.kr
+                +82-53-940-5555(영어), +82-53-940-5555(일본어) yju.intl@yju.ac.kr
               </p>
             </div>
 
