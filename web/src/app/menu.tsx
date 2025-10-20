@@ -1,5 +1,20 @@
 import { Language } from "./common/types";
 
+export const contactInformation: Record<Language, Record<string, string>> = {
+  [Language.korean]: {
+    first: "학위과정 입학에 관한 문의가 있으시다면, ",
+    second: "아래의 이메일이나 전화번호로 언제든지 연락 주시기 바랍니다.",
+  },
+  [Language.japanese]: {
+    first: "永進専門大学の学位課程への入学に関するお問い合わせがございましたら、", 
+    second: "下記のメールアドレスまたは電話番号まで、いつでもお気軽にご連絡ください。",
+  },
+  [Language.english]: {
+    first: "If you have any inquiries regarding admission to the degree programs," ,
+    second: " please feel free to contact us at the email address or phone number below.",
+  },
+};
+
 export const menu: Record<Language, Record<string, string>> = {
   // 예시메뉴
   [Language.korean]: {
