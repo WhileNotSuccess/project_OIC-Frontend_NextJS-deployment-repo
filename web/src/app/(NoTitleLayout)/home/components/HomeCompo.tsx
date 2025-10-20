@@ -9,6 +9,7 @@ import Pride from "./Pride";
 import { MainComponent } from "@/app/menu";
 import { Language } from "@/app/common/types";
 import Cookies from "js-cookie";
+import { enrollmentInfoMessage, contactInformation } from "@/app/menu";
 
 export default function HomeCompo() {
   const [isVisibleTitle, setIsVisibleTitle] = useState(false);
@@ -127,11 +128,11 @@ export default function HomeCompo() {
 
             <div className="relative z-10 flex flex-col justify-center items-start mt-10 h-full text-white px-2 md:px-10 text-left">
               <h2 className="text-xl md:text-2xl font-bold mb-4">
-                영진전문대학교 학위과정 입학에 관한 문의가 있으시다면,<br />
-                아래의 이메일이나 전화번호로 언제든지 연락 주시기 바랍니다.
+                {contactInformation[language].first}<br />
+                {contactInformation[language].second}
               </h2>
               <p className="text-base md:text-xl">
-                +82-123-456(영어), +82-123-456(일본어) yju.intl@yju.ac.kr
+                +82-53-940-5632 yju.intl@yju.ac.kr
               </p>
             </div>
 
@@ -139,7 +140,7 @@ export default function HomeCompo() {
         </div>
 
         <div className="w-full bg-white px-4 md:px-10 py-10">
-          <h1 className="text-3xl font-bold mb-5">입학신청서 및 모집요강 </h1>
+          <h1 className="text-3xl font-bold mb-5">{enrollmentInfoMessage[language].ApplicationForm} & {enrollmentInfoMessage[language].RecruitmentGuidelines} </h1>
           <EnrollmentInfo />
         </div>
       </div>
