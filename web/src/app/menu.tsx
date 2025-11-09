@@ -58,6 +58,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "해외취업지원센터",
     news: "알림",
     notice: "공지사항",
+    calendar: "캘린더",
     shortcut: "바로가기",
   },
   [Language.japanese]: {
@@ -76,6 +77,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "海外就職支援センター",
     news: "お知らせ",
     notice: "通知",
+    calendar: "カレンダー",
     shortcut: "ショートカット",
   },
   [Language.english]: {
@@ -94,6 +96,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "Overseas Employment Supporting",
     news: "Notifications",
     notice: "Announcements",
+    calendar: "Calendar",
     shortcut: "Shortcut",
   },
 };
