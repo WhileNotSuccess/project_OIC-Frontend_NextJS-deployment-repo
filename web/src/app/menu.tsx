@@ -23,6 +23,8 @@ export const menu: Record<Language, Record<string, string>> = {
     globalProgram: "글로벌 프로그램",
     newsAndAnnouncements: "알림 및 공지사항",
     koreanLanguageEducationCenter: "한국어교육센터",
+    yjuHomepage: "영진전문대학교 홈페이지",
+    yjuAdmissionsWebsite: "영진입학홈페이지",
   },
   [Language.japanese]: {
     introduction: "紹介",
@@ -30,6 +32,8 @@ export const menu: Record<Language, Record<string, string>> = {
     globalProgram: "グローバルプログラム",
     newsAndAnnouncements: "ニュースとお知らせ",
     koreanLanguageEducationCenter: "韓国語教育センター",
+    yjuHomepage: "ヨンジン専門大学ウェブ",
+    yjuAdmissionsWebsite: "ヨンジン入学ウェブ",
   },
   [Language.english]: {
     introduction: "introduction",

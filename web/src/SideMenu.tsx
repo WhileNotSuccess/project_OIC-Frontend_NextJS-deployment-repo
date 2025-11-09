@@ -67,6 +67,16 @@ export default function SideMenu() {
             {/* <LoginCompo /> */}
           </div>
         </div>
+        <div className="w-full h-8">
+          <div className="h-8 flex justify-center items-center">
+            {menu[language].yjuHomepage}
+          </div>
+        </div>
+        <div className="w-full h-8">
+          <div className="h-8 flex justify-center items-center">
+            {menu[language].yjuAdmissionsWebsite}
+          </div>
+        </div>
       </div>
       <div className={`group-hover:block fixed top-0 left-40 bg-[#0C588D] opacity-0 group-hover:opacity-80 translate-x-[-100%] 
       group-hover:translate-x-0 transition-transform duration-300 ease-in-out w-40 h-full 
