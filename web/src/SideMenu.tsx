@@ -172,11 +172,27 @@ export default function SideMenu() {
             {smallMenu[language].calendar}
           </Link>
         </div>
-        <Link
-          href={"https://kcenter.yju.ac.kr/home"}
-          className="h-8 flex items-center justify-center">
-          {smallMenu[language].shortcut}
-        </Link>
+        <div className="h-8 border-b">
+          <Link
+            href={"https://kcenter.yju.ac.kr/home"}
+            className="h-8 flex items-center justify-center">
+            {smallMenu[language].shortcut}
+          </Link>
+        </div>
+        <div className="h-8 border-b">
+          <Link
+            href={"https://www.yju.ac.kr/kr/index.do"}
+            className="h-8 flex items-center justify-center">
+            {smallMenu[language].shortcut}
+          </Link>
+        </div>
+        <div className="h-8 border-b">
+          <Link
+            href={"https://ipsi.yju.ac.kr/ipsi/index.do"}
+            className="h-8 flex items-center justify-center">
+            {smallMenu[language].shortcut}
+          </Link>
+        </div>
       </div>
     </div>
   );

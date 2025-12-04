@@ -41,6 +41,8 @@ export const menu: Record<Language, Record<string, string>> = {
     globalProgram: "Global Program",
     newsAndAnnouncements: "Notifications",
     koreanLanguageEducationCenter: "Korean Language Education Center",
+    yjuHomepage: "Yeungjin University Website",
+    yjuAdmissionsWebsite: "Yeungjin Admissions Website",
   },
 };
 
