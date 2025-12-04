@@ -64,7 +64,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "해외취업지원센터",
     news: "알림",
     notice: "공지사항",
-    calendar: "캘린더",
+    //calendar: "캘린더",
     shortcut: "바로가기",
   },
   [Language.japanese]: {
@@ -83,7 +83,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "海外就職支援センター",
     news: "お知らせ",
     notice: "通知",
-    calendar: "カレンダー",
+    //calendar: "カレンダー",
     shortcut: "ショートカット",
   },
   [Language.english]: {
@@ -102,7 +102,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "Overseas Employment Supporting",
     news: "Notifications",
     notice: "Announcements",
-    calendar: "Calendar",
+    //calendar: "Calendar",
     shortcut: "Shortcut",
   },
 };
@@ -1446,26 +1446,26 @@ export const MainComponent: Record<Language, Record<string, string>> = {
   },
 };
 
-export const calendarMenu: Record<Language, Record<string, string | string[]>> = {
-  [Language.korean]: {
-    monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-    dayNames: ["일", "월", "화", "수", "목", "금", "토"],
-    prevText: "이전달",
-    nextText: "다음달",
-    todayText: "오늘",
-  },
-  [Language.japanese]: {
-    monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-    dayNames: ["日", "月", "火", "水", "木", "金", "土"],
-    prevText: "前月",
-    nextText: "次月",
-    todayText: "今日",
-  },
-  [Language.english]: {
-    monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    prevText: "Previous",
-    nextText: "Next",
-    todayText: "Today",
-  },
-};
+// export const calendarMenu: Record<Language, Record<string, string | string[]>> = {
+//   [Language.korean]: {
+//     monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+//     dayNames: ["일", "월", "화", "수", "목", "금", "토"],
+//     prevText: "이전달",
+//     nextText: "다음달",
+//     todayText: "오늘",
+//   },
+//   [Language.japanese]: {
+//     monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+//     dayNames: ["日", "月", "火", "水", "木", "金", "土"],
+//     prevText: "前月",
+//     nextText: "次月",
+//     todayText: "今日",
+//   },
+//   [Language.english]: {
+//     monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+//     dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+//     prevText: "Previous",
+//     nextText: "Next",
+//     todayText: "Today",
+//   },
+// };

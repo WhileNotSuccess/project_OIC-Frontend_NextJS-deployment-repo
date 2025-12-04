@@ -53,7 +53,7 @@ export default function SideMenu() {
             {menu[language].globalProgram}
           </div>
         </div>
-        <div className="w-full h-8 group-hover:h-24 duration-300 ease-in-out">
+        <div className="w-full h-8 group-hover:h-16 duration-300 ease-in-out">
           <div className="h-8 flex justify-center items-center">
             {menu[language].newsAndAnnouncements}
           </div>
@@ -155,22 +155,22 @@ export default function SideMenu() {
             {smallMenu[language]["overseas-careers"]}
           </Link>
         </div>
-        <div className="h-24 border-b">
+        <div className="h-16 border-b">
           <Link
             href={"/board/news"}
-            className="h-1/3 flex items-center justify-center">
+            className="h-1/2 flex items-center justify-center">
             {smallMenu[language].news}
           </Link>
           <Link
             href={"/board/notice"}
-            className="h-1/3 flex items-center justify-center">
+            className="h-1/2 flex items-center justify-center">
             {smallMenu[language].notice}
           </Link>
-          <Link
-            href={"/board/calendar"}
+          {/* <Link
+            href={"/calendar"}
             className="h-1/3 flex items-center justify-center">
             {smallMenu[language].calendar}
-          </Link>
+          </Link> */}
         </div>
         <div className="h-8 border-b">
           <Link
