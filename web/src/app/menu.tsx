@@ -22,27 +22,21 @@ export const menu: Record<Language, Record<string, string>> = {
     internationalAdmissions: "외국인 입학",
     globalProgram: "글로벌 프로그램",
     newsAndAnnouncements: "알림 및 공지사항",
-    koreanLanguageEducationCenter: "한국어교육센터",
-    yjuHomepage: "영진전문대학교 홈페이지",
-    yjuAdmissionsWebsite: "영진입학홈페이지",
+    shortcut: "바로가기",
   },
   [Language.japanese]: {
     introduction: "紹介",
     internationalAdmissions: "外国人入学",
     globalProgram: "グローバルプログラム",
     newsAndAnnouncements: "ニュースとお知らせ",
-    koreanLanguageEducationCenter: "韓国語教育センター",
-    yjuHomepage: "ヨンジン専門大学ウェブ",
-    yjuAdmissionsWebsite: "ヨンジン入学ウェブ",
+    shortcut: "ショートカット",
   },
   [Language.english]: {
     introduction: "introduction",
     internationalAdmissions: "International Admissions",
     globalProgram: "Global Program",
     newsAndAnnouncements: "Notifications",
-    koreanLanguageEducationCenter: "Korean Language Education Center",
-    yjuHomepage: "Yeungjin University Website",
-    yjuAdmissionsWebsite: "Yeungjin Admissions Website",
+    shortcut: "Shortcut",
   },
 };
 
@@ -65,7 +59,8 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     news: "알림",
     notice: "공지사항",
     //calendar: "캘린더",
-    shortcut: "바로가기",
+    koreanLanguageEducationCenter: "한국어교육센터",
+    yjuHomepage: "영진전문대학교 홈페이지",
   },
   [Language.japanese]: {
     introduction: "紹介文",
@@ -84,7 +79,8 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     news: "お知らせ",
     notice: "通知",
     //calendar: "カレンダー",
-    shortcut: "ショートカット",
+    koreanLanguageEducationCenter: "韓国語教育センター",
+    yjuHomepage: "ヨンジン専門大学ウェブ",
   },
   [Language.english]: {
     introduction: "introduction",
@@ -103,7 +99,8 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     news: "Notifications",
     notice: "Announcements",
     //calendar: "Calendar",
-    shortcut: "Shortcut",
+    koreanLanguageEducationCenter: "Korean Language Education Center",
+    yjuHomepage: "Yeungjin University Website",
   },
 };
 

@@ -58,23 +58,13 @@ export default function SideMenu() {
             {menu[language].newsAndAnnouncements}
           </div>
         </div>
-        <div className="w-full h-8">
+        <div className="w-full h-16">
           <div className="h-8 flex justify-center items-center">
-            {menu[language].koreanLanguageEducationCenter}
+            {menu[language].shortcut}
           </div>
           <div className="w-40 fixed bottom-5">
             <ManagementCookieCompo />
             {/* <LoginCompo /> */}
-          </div>
-        </div>
-        <div className="w-full h-8">
-          <div className="h-8 flex justify-center items-center">
-            {menu[language].yjuHomepage}
-          </div>
-        </div>
-        <div className="w-full h-8">
-          <div className="h-8 flex justify-center items-center">
-            {menu[language].yjuAdmissionsWebsite}
           </div>
         </div>
       </div>
@@ -172,27 +162,25 @@ export default function SideMenu() {
             {smallMenu[language].calendar}
           </Link> */}
         </div>
-        <div className="h-8 border-b">
+        <div className="h-16 border-b">
           <Link
             href={"https://kcenter.yju.ac.kr/home"}
-            className="h-8 flex items-center justify-center">
-            {smallMenu[language].shortcut}
+            className="h-1/2 flex items-center justify-center">
+            {smallMenu[language].koreanLanguageEducationCenter}
           </Link>
-        </div>
-        <div className="h-8 border-b">
           <Link
             href={"https://www.yju.ac.kr/kr/index.do"}
-            className="h-8 flex items-center justify-center">
-            {smallMenu[language].shortcut}
+            className="h-1/2 flex items-center justify-center">
+            {smallMenu[language].yjuHomepage}
           </Link>
         </div>
-        <div className="h-8 border-b">
+        {/* <div className="h-8 border-b">
           <Link
             href={"https://ipsi.yju.ac.kr/ipsi/index.do"}
             className="h-8 flex items-center justify-center">
             {smallMenu[language].shortcut}
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
