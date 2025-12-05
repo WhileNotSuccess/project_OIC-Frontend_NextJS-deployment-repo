@@ -6,7 +6,7 @@ export const contactInformation: Record<Language, Record<string, string>> = {
     second: "아래의 이메일이나 전화번호로 언제든지 연락 주시기 바랍니다.",
   },
   [Language.japanese]: {
-    first: "永進専門大学の学位課程への入学に関するお問い合わせがございましたら、", 
+    first: "ヨンジン専門大学の学位課程への入学に関するお問い合わせがございましたら、", 
     second: "下記のメールアドレスまたは電話番号まで、いつでもお気軽にご連絡ください。",
   },
   [Language.english]: {
@@ -59,7 +59,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     news: "알림",
     notice: "공지사항",
     //calendar: "캘린더",
-    koreanLanguageEducationCenter: "한국어교육센터",
+    koreanEducationCenter: "한국어교육센터",
     yjuHomepage: "영진전문대학교 홈페이지",
   },
   [Language.japanese]: {
@@ -79,7 +79,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     news: "お知らせ",
     notice: "通知",
     //calendar: "カレンダー",
-    koreanLanguageEducationCenter: "韓国語教育センター",
+    koreanEducationCenter: "韓国語教育センター",
     yjuHomepage: "ヨンジン専門大学ウェブ",
   },
   [Language.english]: {
@@ -99,7 +99,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     news: "Notifications",
     notice: "Announcements",
     //calendar: "Calendar",
-    koreanLanguageEducationCenter: "Korean Language Education Center",
+    koreanEducationCenter: "Korean Education Center",
     yjuHomepage: "Yeungjin University Website",
   },
 };
@@ -191,7 +191,7 @@ export const homePage: Record<Language, Record<string, string>> = {
     faq: "FAQ",
     review: "留学生の感想",
     footerAddress:
-      "41527 大邱広域市 北区 復県路 35 (復県2洞 218) 永進専門大学 韓国語教育センター",
+      "41527 大邱広域市 北区 復県路 35 (復県2洞 218)　ヨンジン専門大学 韓国語教育センター",
     footerCallEmail: "代表電話 : +82-53-940-5632 メール : intl@yju.ac.kr",
   },
   [Language.english]: {
@@ -203,7 +203,7 @@ export const homePage: Record<Language, Record<string, string>> = {
     faq: "FAQ",
     review: "International Student Reviews",
     footerAddress:
-      "41527 35 Bokhyeon-ro, Buk-gu, Daegu, Korea Yeungjin College Korean Language Education Center",
+      "41527 35 Bokhyeon-ro, Buk-gu, Daegu, Korea Yeungjin University Korean Education Center",
     footerCallEmail: "Phone: +82-53-940-5632 Email: intl@yju.ac.kr",
   },
 };

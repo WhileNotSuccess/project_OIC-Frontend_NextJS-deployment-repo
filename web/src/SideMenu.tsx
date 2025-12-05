@@ -166,7 +166,7 @@ export default function SideMenu() {
           <Link
             href={"https://kcenter.yju.ac.kr/home"}
             className="h-1/2 flex items-center justify-center">
-            {smallMenu[language].koreanLanguageEducationCenter}
+            {smallMenu[language].koreanEducationCenter}
           </Link>
           <Link
             href={"https://www.yju.ac.kr/kr/index.do"}
