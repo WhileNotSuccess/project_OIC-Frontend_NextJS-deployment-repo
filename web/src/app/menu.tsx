@@ -6,7 +6,7 @@ export const contactInformation: Record<Language, Record<string, string>> = {
     second: "아래의 이메일이나 전화번호로 언제든지 연락 주시기 바랍니다.",
   },
   [Language.japanese]: {
-    first: "永進専門大学の学位課程への入学に関するお問い合わせがございましたら、", 
+    first: "ヨンジン専門大学の学位課程への入学に関するお問い合わせがございましたら、", 
     second: "下記のメールアドレスまたは電話番号まで、いつでもお気軽にご連絡ください。",
   },
   [Language.english]: {
@@ -22,21 +22,21 @@ export const menu: Record<Language, Record<string, string>> = {
     internationalAdmissions: "외국인 입학",
     globalProgram: "글로벌 프로그램",
     newsAndAnnouncements: "알림 및 공지사항",
-    koreanLanguageEducationCenter: "한국어교육센터",
+    shortcut: "바로가기",
   },
   [Language.japanese]: {
     introduction: "紹介",
     internationalAdmissions: "外国人入学",
     globalProgram: "グローバルプログラム",
     newsAndAnnouncements: "ニュースとお知らせ",
-    koreanLanguageEducationCenter: "韓国語教育センター",
+    shortcut: "ショートカット",
   },
   [Language.english]: {
     introduction: "introduction",
     internationalAdmissions: "International Admissions",
     globalProgram: "Global Program",
     newsAndAnnouncements: "Notifications",
-    koreanLanguageEducationCenter: "Korean Language Education Center",
+    shortcut: "Shortcut",
   },
 };
 
@@ -58,7 +58,9 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "해외취업지원센터",
     news: "알림",
     notice: "공지사항",
-    shortcut: "바로가기",
+    //calendar: "캘린더",
+    koreanEducationCenter: "한국어교육센터",
+    yjuHomepage: "영진전문대학교 홈페이지",
   },
   [Language.japanese]: {
     introduction: "紹介文",
@@ -76,7 +78,9 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "海外就職支援センター",
     news: "お知らせ",
     notice: "通知",
-    shortcut: "ショートカット",
+    //calendar: "カレンダー",
+    koreanEducationCenter: "韓国語教育センター",
+    yjuHomepage: "ヨンジン専門大学ウェブ",
   },
   [Language.english]: {
     introduction: "introduction",
@@ -94,7 +98,9 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     "overseas-careers": "Overseas Employment Supporting",
     news: "Notifications",
     notice: "Announcements",
-    shortcut: "Shortcut",
+    //calendar: "Calendar",
+    koreanEducationCenter: "Korean Education Center",
+    yjuHomepage: "Yeungjin University Website",
   },
 };
 
@@ -185,7 +191,7 @@ export const homePage: Record<Language, Record<string, string>> = {
     faq: "FAQ",
     review: "留学生の感想",
     footerAddress:
-      "41527 大邱広域市 北区 復県路 35 (復県2洞 218) 永進専門大学 韓国語教育センター",
+      "41527 大邱広域市 北区 復県路 35 (復県2洞 218)　ヨンジン専門大学 韓国語教育センター",
     footerCallEmail: "代表電話 : +82-53-940-5632 メール : intl@yju.ac.kr",
   },
   [Language.english]: {
@@ -197,7 +203,7 @@ export const homePage: Record<Language, Record<string, string>> = {
     faq: "FAQ",
     review: "International Student Reviews",
     footerAddress:
-      "41527 35 Bokhyeon-ro, Buk-gu, Daegu, Korea Yeungjin College Korean Language Education Center",
+      "41527 35 Bokhyeon-ro, Buk-gu, Daegu, Korea Yeungjin University Korean Education Center",
     footerCallEmail: "Phone: +82-53-940-5632 Email: intl@yju.ac.kr",
   },
 };
@@ -1436,3 +1442,27 @@ export const MainComponent: Record<Language, Record<string, string>> = {
     Admissions: "入学案内",
   },
 };
+
+// export const calendarMenu: Record<Language, Record<string, string | string[]>> = {
+//   [Language.korean]: {
+//     monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+//     dayNames: ["일", "월", "화", "수", "목", "금", "토"],
+//     prevText: "이전달",
+//     nextText: "다음달",
+//     todayText: "오늘",
+//   },
+//   [Language.japanese]: {
+//     monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+//     dayNames: ["日", "月", "火", "水", "木", "金", "土"],
+//     prevText: "前月",
+//     nextText: "次月",
+//     todayText: "今日",
+//   },
+//   [Language.english]: {
+//     monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+//     dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+//     prevText: "Previous",
+//     nextText: "Next",
+//     todayText: "Today",
+//   },
+// };

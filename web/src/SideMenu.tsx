@@ -43,7 +43,7 @@ export default function SideMenu() {
             {menu[language].introduction}
           </div>
         </div>
-        <div className="w-full h-8 group-hover:h-48 duration-300 ease-in-out">
+        <div className="w-full h-8 group-hover:h-40 duration-300 ease-in-out">
           <div className="h-8 flex justify-center items-center">
             {menu[language].internationalAdmissions}
           </div>
@@ -58,9 +58,9 @@ export default function SideMenu() {
             {menu[language].newsAndAnnouncements}
           </div>
         </div>
-        <div className="w-full h-8">
+        <div className="w-full h-16">
           <div className="h-8 flex justify-center items-center">
-            {menu[language].koreanLanguageEducationCenter}
+            {menu[language].shortcut}
           </div>
           <div className="w-40 fixed bottom-5">
             <ManagementCookieCompo />
@@ -96,10 +96,10 @@ export default function SideMenu() {
             {smallMenu[language].contact}
           </Link>
         </div>
-        <div className="h-48 border-b">
+        <div className="h-40 border-b">
           <Link
             href={"/guidance/admission-guide"}
-            className="h-1/6 flex items-center justify-center">
+            className="h-1/5 flex items-center justify-center">
             {smallMenu[language]["admission-guide"]}
           </Link>
           {/* <Link
@@ -109,22 +109,22 @@ export default function SideMenu() {
           </Link> */}
           <Link
             href={"/guidance/campus-life"}
-            className="h-1/6 flex items-center justify-center">
+            className="h-1/5 flex items-center justify-center">
             {smallMenu[language]["campus-life"]}
           </Link>
           <Link
             href={"/guidance/student-support"}
-            className="h-1/6 flex items-center justify-center">
+            className="h-1/5 flex items-center justify-center">
             {smallMenu[language]["student-support"]}
           </Link>
           <Link
             href={"/guidance/dormitory"}
-            className="h-1/6 flex items-center justify-center">
+            className="h-1/5 flex items-center justify-center">
             {smallMenu[language].dormitory}
           </Link>
           <Link
             href={"/board/resources"}
-            className="h-1/6 flex items-center justify-center">
+            className="h-1/5 flex items-center justify-center">
             {smallMenu[language].resources}
           </Link>
         </div>
@@ -156,12 +156,31 @@ export default function SideMenu() {
             className="h-1/2 flex items-center justify-center">
             {smallMenu[language].notice}
           </Link>
+          {/* <Link
+            href={"/calendar"}
+            className="h-1/3 flex items-center justify-center">
+            {smallMenu[language].calendar}
+          </Link> */}
         </div>
-        <Link
-          href={"https://kcenter.yju.ac.kr/home"}
-          className="h-8 flex items-center justify-center">
-          {smallMenu[language].shortcut}
-        </Link>
+        <div className="h-16 border-b">
+          <Link
+            href={"https://kcenter.yju.ac.kr/home"}
+            className="h-1/2 flex items-center justify-center">
+            {smallMenu[language].koreanEducationCenter}
+          </Link>
+          <Link
+            href={"https://www.yju.ac.kr/kr/index.do"}
+            className="h-1/2 flex items-center justify-center">
+            {smallMenu[language].yjuHomepage}
+          </Link>
+        </div>
+        {/* <div className="h-8 border-b">
+          <Link
+            href={"https://ipsi.yju.ac.kr/ipsi/index.do"}
+            className="h-8 flex items-center justify-center">
+            {smallMenu[language].shortcut}
+          </Link>
+        </div> */}
       </div>
     </div>
   );
