@@ -1412,16 +1412,19 @@ export const enrollmentInfoMessage: Record<Language, Record<string, string>> = {
     EnrollmentLoadingError: "입학신청서 및 모집요강 데이터를 불러오는데 실패했습니다.",
     ApplicationForm: "입학신청서",
     RecruitmentGuidelines: "모집요강",
+    GuideBook: "한국 유학 가이드북",
   },
   [Language.english]: {
     EnrollmentLoadingError: "Failed to load enrollment application and recruitment guidelines data.",
     ApplicationForm: "Enrollment Application",
     RecruitmentGuidelines: "Recruitment Guidelines",
+    GuideBook: "Study Abroad Guide Book",
   },
   [Language.japanese]: {
     EnrollmentLoadingError: "入学申請書と募集要項データの読み込みに失敗しました。",
     ApplicationForm: "入学申請書",
     RecruitmentGuidelines: "募集要項",
+    GuideBook: "韓国留学ガイドブック",
   },
 };
 

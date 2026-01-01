@@ -33,6 +33,10 @@ export default function EnrollmentInfo() {
       fileUrl: "",
       imageUrl: "",
     },
+    guideBook: {
+      fileUrl: "",
+      imageUrl: "",
+    },
   });
 
   const customFetch = useCustomFetch();
@@ -85,6 +89,25 @@ export default function EnrollmentInfo() {
         <Image
           src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.entry.imageUrl}`}
           alt={enrollmentInfoMessage[language].ApplicationForm}
+          width={2000}
+          height={300}
+          unoptimized={true}
+          className="w-full h-64 object-cover mt-4"
+        />
+      </div>
+
+      <div className="flex flex-col w-64">
+        <div
+          className="text-center bg-gray-100 hover:bg-gray-200 cursor-pointer p-2 text-lg rounded-lg"
+          onClick={() => {
+            window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.guideBook.fileUrl}`;
+          }}
+        >
+          {enrollmentInfoMessage[language].GuideBook}
+        </div>
+        <Image
+          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${entranceApplication.guideBook.imageUrl}`}
+          alt={enrollmentInfoMessage[language].GuideBook}
           width={2000}
           height={300}
           unoptimized={true}
