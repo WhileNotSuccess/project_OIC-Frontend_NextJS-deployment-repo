@@ -34,7 +34,7 @@ export default [
       "react-hooks/set-state-in-effect": "off",
 
       "react-hooks/immutability": "off",
-      "react-hooks/exhaustive-deps": "warn",
+      "react-hooks/exhaustive-deps": "off",
       "@next/next/no-img-element": "off",
 
       // 사용자님 커스텀 규칙
