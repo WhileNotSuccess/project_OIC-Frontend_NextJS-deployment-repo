@@ -61,6 +61,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     //calendar: "캘린더",
     koreanEducationCenter: "한국어교육센터",
     yjuHomepage: "영진전문대학교 홈페이지",
+    yjuInformation: "유학생 생활 지원",
   },
   [Language.japanese]: {
     introduction: "紹介文",
@@ -81,6 +82,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     //calendar: "カレンダー",
     koreanEducationCenter: "韓国語教育センター",
     yjuHomepage: "ヨンジン専門大学ウェブ",
+    yjuInformation: "留学生生活支援",
   },
   [Language.english]: {
     introduction: "introduction",
@@ -101,6 +103,7 @@ export const smallMenu: Record<Language, Record<string, string>> = {
     //calendar: "Calendar",
     koreanEducationCenter: "Korean Education Center",
     yjuHomepage: "Yeungjin University Website",
+    yjuInformation: "International student support",
   },
 };
 

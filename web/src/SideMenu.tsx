@@ -162,16 +162,21 @@ export default function SideMenu() {
             {smallMenu[language].calendar}
           </Link> */}
         </div>
-        <div className="h-16 border-b">
+        <div className="h-24 border-b">
           <Link
             href={"https://kcenter.yju.ac.kr/home"}
-            className="h-1/2 flex items-center justify-center">
+            className="h-1/3 flex items-center justify-center">
             {smallMenu[language].koreanEducationCenter}
           </Link>
           <Link
             href={"https://www.yju.ac.kr/kr/index.do"}
-            className="h-1/2 flex items-center justify-center">
+            className="h-1/3 flex items-center justify-center">
             {smallMenu[language].yjuHomepage}
+          </Link>
+          <Link
+            href={"https://yju-intl.my.canva.site"}
+            className="h-1/3 flex items-center justify-center">
+            {smallMenu[language].yjuInformation}
           </Link>
         </div>
         {/* <div className="h-8 border-b">
